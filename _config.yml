@@ -1,12 +1,31 @@
-markdown: rdiscount
-permalink: /posts/:title
-rdiscount:
-  extensions: [smart]
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
 
-gems:
-  - jekyll-sitemap
+# Permalinks
+permalink:        pretty
 
-name: Tim Dennis
-url: http://zachholman.com
-description: A fantastic blog that is fantastic.
-twitter: holman
+# Setup
+title:            Tim Dennis
+tagline:          'Data Librarian'
+description:      'A professional site'
+url:              http://jt14den.github.io
+baseurl:          ''
+
+author:
+  name:           'Tim Dennis'
+  url:            https://twitter.com/jt14den
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/jt14den/jt14den.github.com
+
+#Gems
+gems: [jekyll-paginate]
+paginate: 5
+paginate-path: "page:num"
+
