@@ -43,6 +43,12 @@ upstream	https://github.com/data-lessons/library-shell.git (push)
 git fetch upstream 
 ```
 
+5. Merge those changes into your repo.
+
+```bash
+git merge upstream/gh-pages
+```
+
 4. Create a branch for changes to the lesson: 
 
 ```bash
