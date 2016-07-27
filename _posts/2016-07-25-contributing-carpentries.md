@@ -56,3 +56,11 @@ git checkout -b new-lesson-improvement
 ```
 
 5. Develop on **new-lesson-improvement**, but Do not merge my-new-check branch to the your master (as it should stay equal to upstream master)!!
+
+6. git add, commit, and then push your branch: 
+
+```bash
+git push origin gh-pages 
+```
+
+7. Perform the pull request from your fork. 
