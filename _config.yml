@@ -10,7 +10,7 @@ title:            Tim Dennis
 tagline:          'Data Librarian'
 description:      'Data Librarian'
 url:              http://jt14den.github.io
-baseurl:          ''
+baseurl:          /
 
 author:
   name:           'Tim Dennis'
