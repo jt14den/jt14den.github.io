@@ -15,13 +15,13 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
 
 2. Clone the **library-shell** project to your local machine (**USERNAME** - your GitHub user account name): 
 
-    ~~~
+    ```
     $ git clone https://github.com/USERNAME/library-shell/
-    ~~~
+    ```
 
 3. Configure upstream remote: 
 
-    ```bash
+    ```sh
     $ cd library-shell
     $ git remote add upstream https://github.com/data-lessons/library-shell/
     ```
