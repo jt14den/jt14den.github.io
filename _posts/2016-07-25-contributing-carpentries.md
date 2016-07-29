@@ -13,22 +13,22 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
 
 2. Clone the **library-shell** project to your local machine (**USERNAME** - your GitHub user account name): 
 
-```bash
-$ git clone https://github.com/USERNAME/library-shell/
-```
+    ```bash
+    $ git clone https://github.com/USERNAME/library-shell/
+    ```
 
 3. Configure upstream remote: 
 
-```bash
-$ cd library-shell
-$ git remote add upstream https://github.com/data-lessons/library-shell/
-```
+    ```bash
+    $ cd library-shell
+    $ git remote add upstream https://github.com/data-lessons/library-shell/
+    ```
 
 4. Look at the remotes now and confirm you have an upstream: 
 
-```bash
-git remote -v 
-```
+    ```bash
+    git remote -v 
+    ```
 
 ```bash
 origin	https://github.com/ucsdlib/library-shell.git (fetch)
@@ -49,6 +49,11 @@ git fetch upstream
 git merge upstream/gh-pages
 ```
 
+6. Now your `git status` should look like the below: 
+
+```
+
+```
 4. Create a branch for changes to the lesson: 
 
 ```bash
