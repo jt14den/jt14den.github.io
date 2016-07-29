@@ -41,14 +41,12 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
 
 ### Updating changes from the upstream master
 
-4. Fetch upstream changes to the local branch
+Scenario is your gh-pages is behind the upstream master by one or multiple commits.
+
+4. Fetch upstream changes to the local gh-pages
 
     ```bash
-    git fetch upstream 
-    ```
-
-    ```output
-    git fetch upstream
+    > git fetch upstream
     remote: Counting objects: 11, done.
     remote: Compressing objects: 100% (11/11), done.
     remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0
@@ -57,13 +55,10 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
        67d2478..db5039b  gh-pages   -> upstream/gh-pages
     ```
 
-5. Merge those changes into your repo.
+5. Merge those changes into your gh-pages branch.
 
     ```bash
-    git merge upstream/gh-pages
-    ```
-
-    ```
+    > git merge upstream/gh-pages
     Updating 67d2478..db5039b
     Fast-forward
      _episodes/01-intro-shell.md | 22 +++++++++++-----------
@@ -72,26 +67,32 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
      3 files changed, 22 insertions(+), 11 deletions(-)
      create mode 100644 contribute.md
     ```
-    
+
 6. Now your `git status` should look like the below: 
 
-    ```
+    ```bash
+    > git status
     On branch gh-pages
     Your branch is up-to-date with 'upstream/gh-pages'.
     nothing to commit, working directory clean
     ```
+
+### Contributing to the lessons
+
+Your are ready to make improvements to the lessons! We need to create a branch in which to add our changes. 
+
 4. Create a branch for changes to the lesson: 
 
     ```bash
-    git checkout -b new-lesson-improvement
+    > git checkout -b new-lesson-improvement
     ```
 
-5. Develop on **new-lesson-improvement**, but Do not merge my-new-check branch to the your master (as it should stay equal to upstream master)!!
+5. `git` will create the **new-lesson-improvement** branch and switch you into it. Now, develop on **new-lesson-improvement**, but **do not** merge **new-lesson-improvement** branch to the your gh-pages (as it should stay equal to upstream gh-pages)!!
 
 6. git add, commit, and then push your branch: 
 
     ```bash
-    git push origin gh-pages 
+    > git push origin new-lesson-improvement
     ```
 
-7. Perform the pull request from your fork. 
+7. Perform the Pull Request from your fork. 
