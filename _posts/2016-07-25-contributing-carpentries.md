@@ -21,22 +21,19 @@ Development workflow with Git: Fork, Branching, Commits, and Pull Request
 
 3. Configure upstream remote: 
 
-    ```sh
-    $ cd library-shell
-    $ git remote add upstream https://github.com/data-lessons/library-shell/
+    ```
+    $ cd library-shell  
+    $ git remote add upstream https://github.com/data-lessons/library-shell/  
     ```
 
 4. Look at the remotes now and confirm you have an upstream: 
 
-    ```bash
-    git remote -v 
     ```
-
-    ```bash
-    origin  https://github.com/ucsdlib/library-shell.git (fetch)
-    origin  https://github.com/ucsdlib/library-shell.git (push)
-    upstream    https://github.com/data-lessons/library-shell.git (fetch)
-    upstream    https://github.com/data-lessons/library-shell.git (push)
+    $ git remote -v  
+    origin  https://github.com/ucsdlib/library-shell.git (fetch)  
+    origin  https://github.com/ucsdlib/library-shell.git (push)  
+    upstream    https://github.com/data-lessons/library-shell.git (fetch)  
+    upstream    https://github.com/data-lessons/library-shell.git (push)  
     ```
 
 ### Updating changes from the upstream master
@@ -45,27 +42,27 @@ Scenario is your gh-pages is behind the upstream master by one or multiple commi
 
 4. Fetch upstream changes to the local gh-pages
 
-    ```bash
-    > git fetch upstream
-    remote: Counting objects: 11, done.
-    remote: Compressing objects: 100% (11/11), done.
-    remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0
-    Unpacking objects: 100% (11/11), done.
-    From https://github.com/data-lessons/library-shell
-       67d2478..db5039b  gh-pages   -> upstream/gh-pages
+    ```
+    $ git fetch upstream
+    remote: Counting objects: 11, done.  
+    remote: Compressing objects: 100% (11/11), done.  
+    remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0  
+    Unpacking objects: 100% (11/11), done.  
+    From https://github.com/data-lessons/library-shell  
+       67d2478..db5039b  gh-pages   -> upstream/gh-pages  
     ```
 
 5. Merge those changes into your gh-pages branch.
 
-    ```bash
-    > git merge upstream/gh-pages
-    Updating 67d2478..db5039b
-    Fast-forward
-     _episodes/01-intro-shell.md | 22 +++++++++++-----------
-     _includes/navbar.html       |  1 +
-     contribute.md               | 10 ++++++++++
-     3 files changed, 22 insertions(+), 11 deletions(-)
-     create mode 100644 contribute.md
+    ```
+    $ git merge upstream/gh-pages  
+    Updating 67d2478..db5039b  
+    Fast-forward  
+     _episodes/01-intro-shell.md | 22 +++++++++++-----------  
+     _includes/navbar.html       |  1 +  
+     contribute.md               | 10 ++++++++++  
+     3 files changed, 22 insertions(+), 11 deletions(-)  
+     create mode 100644 contribute.md  
     ```
 
 6. Now your `git status` should look like the below: 
