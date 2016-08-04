@@ -1,0 +1,14 @@
+---
+layout: blog
+title: "UCSF Sofware Carpentry"
+description: "Teaching SWC at UCSF - Git and Bash."
+category: "swc"
+permalink: ucsf-sw/
+---
+
+### UCSF Sofware Carpentry 8/4-8/5 2016
+
+Course website: <https://jt14den.github.io/2016-08-04-UCSF-R/> 
+Etherpad: <http://pad.software-carpentry.org/ucsf-08-2016>
+
+I'm teaching bash shell and Git at a two day workshop at UCSF from 8/4-5. Ted Hart is teaching R. Lots of fun so far! 
