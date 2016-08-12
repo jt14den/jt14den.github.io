@@ -45,6 +45,24 @@ Ok, let's use AWK to print out some of our fields.
 awk '{print $1 $2}' pos_cut.txt
 ```
 
+```output
+rs11058339t
+rs7338610t
+rs882601t
+rs13290449t
+rs2941056a
+rs10444526a
+rs12190167a
+rs1125337a
+rs7911101a
+rs13053206c
+rs697690t
+rs12447687t
+rs2402752t
+rs12042911a
+...
+```
+
 Now let's use AWK to search for a specific thing. If you don't tell AWK to print specific fields it will print the whole column. 
 
 ```bash
