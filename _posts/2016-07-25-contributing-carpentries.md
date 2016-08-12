@@ -3,7 +3,6 @@ layout: blog
 title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
 category: "swc"
-permalink: contributing/
 ---
 
 ### Setup your fork and local clone
