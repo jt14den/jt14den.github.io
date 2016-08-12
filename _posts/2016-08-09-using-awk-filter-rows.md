@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: post
 title: "Using AWK to Filter Rows"
 description: "A brief explanation on how to use AWK filter data files."
 ---

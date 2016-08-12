@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: post
 title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
 ---
