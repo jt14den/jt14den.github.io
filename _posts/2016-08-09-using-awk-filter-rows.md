@@ -3,10 +3,9 @@ layout: blog
 title: "Using AWK to Filter Rows"
 description: "A brief explanation on how to use AWK filter data files."
 category: "awk"
-permalink: awk/
 ---
 
-I had a student who has large data files she wanted to filter out rows based on some condition in two column values. If she loaded the files in R, it would take time to run the subsetting. After attending my `bash` class she sent me the below sample file and how she wanted to filter them.  I'm using AWK here.
+I had a student with large data files she wanted to filter out rows based on some condition in two columns. If she loaded the files in R, it would take too long to run the subsetting. After attending a `bash` class I taught for Software Carpentry she sent me the below sample file and how she wanted to filter them.  
 
 ### Let's look at the data we want to filter
 
