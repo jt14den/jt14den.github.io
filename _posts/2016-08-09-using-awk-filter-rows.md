@@ -69,6 +69,10 @@ Now let's use AWK to search for a specific thing. If you don't tell AWK to print
 awk '/2410626/' pos_cut.txt
 ```
 
+```output
+rs4853805   a   t   0.2107  0.0029  0.4229  2   2410626
+```
+
 ### Filtering Rows 
 
 Ok, now we can start to add conditional expressions to extract the rows we want.  
