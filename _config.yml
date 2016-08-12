@@ -16,16 +16,13 @@ author:
   name:           'Tim Dennis'
   url:            https://twitter.com/jt14den
 
+
 paginate:         5
 
 # Custom vars
 version:          2.1.0
+   gems: [jekyll-paginate]
 
 github:
   repo:           https://github.com/jt14den/jt14den.github.com
-
-#Gems
-gems: [jekyll-paginate]
-paginate: 5
-paginate-path: "page:num"
 
