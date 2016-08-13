@@ -94,7 +94,7 @@ Your are ready to make improvements to the lessons! We need to create a branch i
 
 Credits:  
 
-1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow.  
+1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider @pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow.  
 1. [Development workflow with Git: Fork, Branching, Commits, and Pull Request](https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/Development-workflow-with-Git:-Fork,-Branching,-Commits,-and-Pull-Request)  
 2. [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)   
 3. [Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)
