@@ -33,9 +33,9 @@ After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) 
     >upstream    https://github.com/data-lessons/library-shell.git (push)  
     >```
 
-### Updating changes from the upstream master
+### Getting changes from the upstream `master`
 
-Scenario is your gh-pages is behind the upstream master by one or multiple commits.
+Scenario is your `gh-pages` is behind the upstream master by one or multiple commits.
 
 4. Fetch upstream changes to the local gh-pages
 
@@ -93,7 +93,8 @@ Your are ready to make improvements to the lessons! We need to create a branch i
 8. The maintainer of the lesson will review the changes and merge them into the upstream repository. They might also have questions for you and will comment on your request before the changes can be merged. 
 
 Credits:  
-1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow. 
+
+1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow.  
 1. [Development workflow with Git: Fork, Branching, Commits, and Pull Request](https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/Development-workflow-with-Git:-Fork,-Branching,-Commits,-and-Pull-Request)  
 2. [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)   
 3. [Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)

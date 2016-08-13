@@ -21,7 +21,7 @@ paginate:         5
 
 # Custom vars
 version:          2.1.0
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-mentions]
 
 github:
   repo:           https://github.com/jt14den/
