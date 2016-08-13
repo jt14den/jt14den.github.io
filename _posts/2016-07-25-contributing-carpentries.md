@@ -4,6 +4,7 @@ title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
 excerpt_separator: <!--more-->
 ---
+After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Caprentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting. One of the confusing aspects on traslating the stated development workflows is that most of the documentation is spelled out for master branches. In Software carpentry land, master in that context can be replace with `gh-pages`. Hopefully, this will help folks new to git contribute more to the lessons. 
 
 ### Setup your fork and local clone
 
@@ -80,7 +81,7 @@ Your are ready to make improvements to the lessons! We need to create a branch i
     >$ git checkout -b new-lesson-improvement
     >```
 
-5. `git` will create the **new-lesson-improvement** branch and switch you into it. Now, develop on **new-lesson-improvement**, but **do not** merge **new-lesson-improvement** branch to the your gh-pages (as it should stay equal to upstream gh-pages)!!
+5. `git` will create the **new-lesson-improvement** branch and switch you into it. Now, develop on **new-lesson-improvement**, but **do not** merge **new-lesson-improvement** branch to the your `gh-pages` branch (as it should stay equal to upstream gh-pages)!!
 
 6. git add, commit, and then push your branch: 
 
@@ -88,9 +89,11 @@ Your are ready to make improvements to the lessons! We need to create a branch i
     >$ git push origin new-lesson-improvement
     >```
 
-7. Perform the Pull Request from your fork. 
+7. Perform the Pull Request from your fork. Follow these [steps]()https://help.github.com/articles/creating-a-pull-request/.
+8. The maintainer of the lesson will review the changes and merge them into the upstream repository. They might also have questions for you and will comment on your request before the changes can be merged. 
 
 Credits:  
+1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow. 
 1. [Development workflow with Git: Fork, Branching, Commits, and Pull Request](https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/Development-workflow-with-Git:-Fork,-Branching,-Commits,-and-Pull-Request)  
 2. [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)   
 3. [Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)
