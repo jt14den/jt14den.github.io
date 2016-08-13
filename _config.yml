@@ -24,5 +24,4 @@ version:          2.1.0
 gems: [jekyll-paginate]
 
 github:
-  repo:           https://github.com/jt14den/jt14den.github.io
-
+  repo:           https://github.com/jt14den/

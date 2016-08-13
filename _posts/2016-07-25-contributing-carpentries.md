@@ -2,6 +2,7 @@
 layout: post
 title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
+excerpt_separator: <!--more-->
 ---
 
 ### Setup your fork and local clone
@@ -13,7 +14,7 @@ description: "Tutorial on how to contribute to the Carpentries."
     >```
     >$ git clone https://github.com/USERNAME/library-shell/
     >```
-
+<!--more-->
 3. Configure upstream remote: 
 
     >```
