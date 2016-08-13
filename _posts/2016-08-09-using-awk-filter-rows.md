@@ -23,7 +23,7 @@ rs12364336  a   g   0.8720  0.0015  0.4542  11  99515186
 rs12562373  a   g   0.7548  0.0020  0.6151  1   164634379
 ```
 
-What we want to do is get the rows from “Chr” (column 7) when it equals 6 and also the “Pos” (column 8) when the values are betwee 11000000  and 25000000.
+What we want to do is get the rows from “Chr” (column 7) when it equals 6 and also the “Pos” (column 8) when the values are between 11000000  and 25000000.
 
 Let's start working out parts of the code in AWK. If you aren't familiar with AWk, it's a programming laguage designed for text processing and data extraction. One of the things it does well is recognize feilds in the data. For instance, we know we have 8 columns in our data. If you didn't know how many columns you have, you can find this out with a bit of AWK: 
 
@@ -63,7 +63,9 @@ rs12042911a
 ...
 ```
 
-Now let's use AWK to search for a specific thing. If you don't tell AWK to print specific fields it will print the whole column. 
+Notice that there's no formatting of the output. There are many ways to format and structure the output in AWK. Checkout the [printing](https://www.gnu.org/software/gawk/manual/gawk.html#Printing) section on the AWK user guide. 
+
+Now let's use AWK to search for a specific thing. If you don't tell AWK to print specific fields it will print the whole line that matches the search. 
 
 ```bash
 awk '/2410626/' pos_cut.txt
@@ -73,9 +75,11 @@ awk '/2410626/' pos_cut.txt
 rs4853805   a   t   0.2107  0.0029  0.4229  2   2410626
 ```
 
-### Filtering Rows 
+Instead of this number to match, it could be a string or regular expression. AWK will return every line that matches the pattern. Check out the [Patterns, Actions and Variables](https://www.gnu.org/software/gawk/manual/gawk.html#Patterns-and-Actions) section of the AWK guide for more on this. 
 
-Ok, now we can start to add conditional expressions to extract the rows we want.  
+### Filtering Rows Based on Field Values
+
+Ok, now we know how to access fields (columns) and find patterns in our document. But how can we control what we want to search? Our initial problem requires that we look into the "Chr" field to get only lines with value 6. Then we want to look into the "Pos" field to grab the lines between 11000000  and 25000000. To do this we use the `if` control statement and a conditional expression. Let's explore this and add a conditional expression to extract the rows we want.  
 
 ```
 awk '{ if ($7 == 6) { print } }' pos_cut1-5.txt | head
@@ -94,9 +98,9 @@ rs12529570  c   g   0.1987  0.0148  0.266   6   110283483
 rs3130560   t   g   0.2706  0.0242  0.2365  6   31205432
 ```
 
-This is pretty straighforward. We use the keyword `if` and then a conditional expression based on the column variable we want to test on. I'm piping the results to `head` to keep the output concise for this blog. 
+This is pretty straightforward. We use the keyword `if` and then a conditional expression based on the column variable we want to test on. When the match is true on that column the line is included in the output. I'm piping the results to `head` to keep the output concise for this blog. 
 
-Now we want to test the other part of the conditional on the `chr` column. 
+Now we want to test the other part of the conditional on the `Pos` column. 
 
 ```bash
 awk '{ if($8 >= 11000000) { print }}' pos_cut.txt | head
@@ -115,7 +119,9 @@ rs17706069  a   t   0.8055  0.0537  0.993   16  27095047
 rs17035887  a   g   0.0588  0.0072  0.6673  2   46983448
 ```
 
-We've confirmed that we can use the `if` statement in AWK to return the rows that meet our conditional. The next step is to combine these conditional expressions with the third to do all the fitlering in one pass. To do this we need to use boolean operators with our conditional expressions. Let's try it for the two conditional expressions we worked out first. 
+We've confirmed that we can use the `if` statement in AWK to return the rows that meet our conditionals. Check out the documentation on using [control statements](https://www.gnu.org/software/gawk/manual/gawk.html#Statements) in AWK. 
+
+The next step is to combine these conditional expressions with the third (less than 25000000) to do all the filtering in one pass. To do this we need to use [boolean operators](https://www.gnu.org/software/gawk/manual/gawk.html#Boolean-Ops) with our conditional expressions. Let's try it for the two conditional expressions we worked out first. 
 
 ```bash
 awk -F "\t" '{ if(($7 == 6) && ($8 >= 11000000)) { print } }' pos_cut.txt | tail
@@ -134,7 +140,7 @@ rs9382099   t   c   0.1443  0.0043  0.7554  6   52328752
 rs2504065   a   g   0.4974  0.0009  0.3366  6   152136860
 ```
 
-We are using the boolean and `&&` here to combine our two conditional statements. Now let's add our second column `$8` condition (<=25000000) to our if 
+We are using the boolean **and** `&&` here (other operators are `||` for **or** and `!` for **not**) to combine our two conditional statements. Now let's add our second column `$8` condition (<=25000000) to our if statement.
 
 ```bash
 awk -F "\t" '{ if(($7 == 6) && ($8 >= 11000000 && $8 <= 25000000)) { print } }' pos_cut.txt
@@ -151,4 +157,7 @@ rs12195885  a   c   0.0224  0.0000  0.9662  6   23600679
 rs9476984   c   g   0.0711  0.0014  0.9935  6   16036569
 ```
 
-The final step would be to redirect this into a new file.  
+That works! The final step here might be to redirect this into a new file. 
+
+AWK is pretty flexible. We can use at the command line in conjunction with other UNIX commands in a pipeline or we can use AWK inside a shell script as well. You can also put an AWK program in it's own file and run with `awk -f source-file`. There are also many more features in the [AWK language](https://www.gnu.org/software/gawk/manual/gawk.html). The big takeaway here is that if you run into a file that exceeds or slows down memory bound languages like R, you can use stream based operations on those files in AWK. 
+
