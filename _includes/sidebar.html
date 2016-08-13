@@ -25,8 +25,25 @@
           {% endif %}
         {% endif %}
       {% endfor %}
-
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub</a>
+      {% if site.twitter_username %}
+        <a class = "sidebar-nav-item" href="https://twitter.com/{{ site.twitter_username }}">
+        <i class="fa fa-twitter"></i> Twitter
+        </a>
+      {% endif %}
+      {% if site.github_username %}
+        <a class = "sidebar-nav-item" href="https://github.com/{{ site.github_username }}">
+         <i class="fa fa-github"></i> GitHub
+        </a>
+      {% endif %}
+      {% if site.linkedin_username %}
+        <a class = "sidebar-nav-item" href="https://linkedin.com/in/{{ site.linkedin_username }}">
+          <i class="fa fa-linkedin"></i> LinkedIn
+        </a>
+      {% endif %}
+      {% if site.orcid %}
+        <a class = "sidebar-nav-item" href = "http://orcid.org/{{site.orcid}}">
+          <i class="ai ai-orcid"></i> Orcid
+      {% endif %}
     </nav>
   </div>
 </div>

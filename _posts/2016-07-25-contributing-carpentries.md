@@ -33,9 +33,16 @@ After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) 
     >upstream    https://github.com/data-lessons/library-shell.git (push)  
     >```
 
-### Getting changes from the upstream `master`
+### Getting changes from the upstream default branch `gh-pages`
 
-Scenario is your `gh-pages` is behind the upstream master by one or multiple commits.
+Typically, the default branch in git and GitHub is set to `master`, however, with the Software/Data/Library Carpentry lessons the default branch is  `gh-pages`. This is for convience, so changes to this branch will trigger a jekyll build of the lesson making the nice lesson webpages.  Our scenario here is that your `gh-pages` have fallen behind the upstream master by one or multiple commits. 
+
+4. You can tell where you are in relation the upstream repository by running a `git status`. 
+    >```
+    >$ git status
+    >On branch gh-pages
+    >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
+    >(use "git pull" to update your local branch)
 
 4. Fetch upstream changes to the local gh-pages
 
@@ -65,7 +72,7 @@ Scenario is your `gh-pages` is behind the upstream master by one or multiple com
 6. Now your `git status` should look like the below: 
 
     >```
-    >$ git status
+    >$ git statusYou can tell this through running a `git status`. 
     >On branch gh-pages
     >Your branch is up-to-date with 'upstream/gh-pages'.
     >nothing to commit, working directory clean

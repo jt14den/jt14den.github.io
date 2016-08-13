@@ -7,8 +7,8 @@ highlighter:      rouge
 
 # Setup
 title:            Tim Dennis
-tagline:          'Data Librarian'
-description:      'Data Librarian'
+tagline:          'Data Librarian @ucsdlib'
+description:      'Data Librarian @ucsdlib'
 url:              http://jt14den.github.io
 baseurl:          /
 
@@ -25,3 +25,8 @@ gems: [jekyll-paginate, jekyll-mentions]
 
 github:
   repo:           https://github.com/jt14den/
+
+twitter_username:     jt14den
+github_username:      jt14den
+linkedin_username:    https://www.linkedin.com/in/jtimdennis
+orcid:                0000-0001-6632-3812
