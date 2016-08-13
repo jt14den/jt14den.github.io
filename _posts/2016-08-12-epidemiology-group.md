@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "UCSD Epidemiology Group"
+title: "Stata ESTOUT: UCSD Epidemiology Group"
 description: "Presenting `estout` to the UCSD epidemiology group."
 ---
 
