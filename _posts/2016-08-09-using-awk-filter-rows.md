@@ -5,7 +5,7 @@ description: "A brief explanation on how to use AWK filter data files."
 excerpt_separator: <!--more-->
 ---
 
-After attending a `bash` class I taught for Software Carpentry, a student contacted me having troubles working with a large data file in R. She wanted to filter out rows based on some condition in two columns. An easy task in R, but because of the size the filtering would take too long.  She sent me the below sample file and how she wanted to filter it. I chose AWK because it is designed for this type of task. It handles data line by line and doesn't need to read the whole file into memory to process the file.   
+After attending a `bash` class I taught for Software Carpentry, a student contacted me having troubles working with a large data file in R. She wanted to filter out rows based on some condition in two columns. An easy task in R, but because of the size of the file and R being memory bound, reading the whole file in was taking too long for my student's computer.  She sent me the below sample file and how she wanted to filter it. I chose AWK because it is designed for this type of task. It handles data line by line and doesn't need to read the whole file into memory to process it.  If we want to speed it up futhre, we can even us a MAWK, an interpreter for AWK built for speed.  
 <!--more-->
 
 ### Let's look at the data we want to filter
@@ -25,7 +25,7 @@ rs12562373  a   g   0.7548  0.0020  0.6151  1   164634379
 
 What we want to do is get the rows from “Chr” (column 7) when it equals 6 and also the “Pos” (column 8) when the values are between 11000000  and 25000000.
 
-Let's start working out parts of the code in AWK. If you aren't familiar with AWk, it's a programming laguage designed for text processing and data extraction. One of the things it does well is recognize feilds in the data. For instance, we know we have 8 columns in our data. If you didn't know how many columns you have, you can find this out with a bit of AWK: 
+Let's start working out parts of the code in AWK. If you aren't familiar with AWk, it's a programming laguage designed for text processing and data extraction. One of the things it does well is recognize feilds in the data. For instance, we know we have 8 columns in our data, but if you didn't know how many columns you have, you can find this out with a bit of AWK: 
 
 ```bash
 awk "{print NF}" < pos_cut.txt | uniq
@@ -35,7 +35,7 @@ awk "{print NF}" < pos_cut.txt | uniq
 8
 ```
 
-`NF` is an AWk built in variable and means number of fields. We pipe this to `uniq` because the default behavior will print the number of columns for each row -- `uniq` will reduce this to one. 
+`NF` is an AWk built in variable and means *number of fields*. We pipe this to `uniq` because the default behavior will print the number of columns for each row -- `uniq` will reduce this to one. 
 
 ### Printing Fields and Searching
 
@@ -65,7 +65,7 @@ rs12042911a
 
 Notice that there's no formatting of the output. There are many ways to format and structure the output in AWK. Checkout the [printing](https://www.gnu.org/software/gawk/manual/gawk.html#Printing) section on the AWK user guide. 
 
-Now let's use AWK to search for a specific thing. If you don't tell AWK to print specific fields it will print the whole line that matches the search. 
+Now let's use AWK to search for a specific thing -- a number we know exists in the dataset. If you don't tell AWK what fields to print it will print the whole line that matches the search. 
 
 ```bash
 awk '/2410626/' pos_cut.txt
@@ -75,11 +75,11 @@ awk '/2410626/' pos_cut.txt
 rs4853805   a   t   0.2107  0.0029  0.4229  2   2410626
 ```
 
-Instead of this number to match, it could be a string or regular expression. AWK will return every line that matches the pattern. Check out the [Patterns, Actions and Variables](https://www.gnu.org/software/gawk/manual/gawk.html#Patterns-and-Actions) section of the AWK guide for more on this. 
+Instead of this number to match, it could be a string or regular expression. AWK will return every line that matches the pattern. In our case above, that number occurs once in the data file. We could have used a regular expression or a range pattern instead. For more on finding patterns in AWK, check out the [Patterns, Actions and Variables](https://www.gnu.org/software/gawk/manual/gawk.html#Patterns-and-Actions) section of the AWK guide. 
 
 ### Filtering Rows Based on Field Values
 
-Ok, now we know how to access fields (columns) and find patterns in our document. But how can we control what we want to search? Our initial problem requires that we look into the "Chr" field to get only lines with value 6. Then we want to look into the "Pos" field to grab the lines between 11000000  and 25000000. To do this we use the `if` control statement and a conditional expression. Let's explore this and add a conditional expression to extract the rows we want.  
+Ok, now we know how to access fields (columns) and find patterns in our document, but how can we control what we want to search and where? Our initial problem requires that we look into the "Chr" field to get only lines with the value 6. Then we want to look into the "Pos" field to grab the lines where those values are between 11000000  and 25000000. To do this we need to use the `if` control statement in AWK and a conditional expression. Let's do this now:
 
 ```
 awk '{ if ($7 == 6) { print } }' pos_cut1-5.txt | head
@@ -119,9 +119,9 @@ rs17706069  a   t   0.8055  0.0537  0.993   16  27095047
 rs17035887  a   g   0.0588  0.0072  0.6673  2   46983448
 ```
 
-We've confirmed that we can use the `if` statement in AWK to return the rows that meet our conditionals. Check out the documentation on using [control statements](https://www.gnu.org/software/gawk/manual/gawk.html#Statements) in AWK. 
+We've confirmed that we can use the `if` statement in AWK to return the rows that meet our conditional expressions when true. Check out the documentation on using [control statements](https://www.gnu.org/software/gawk/manual/gawk.html#Statements) in AWK. 
 
-The next step is to combine these conditional expressions with the third (less than 25000000) to do all the filtering in one pass. To do this we need to use [boolean operators](https://www.gnu.org/software/gawk/manual/gawk.html#Boolean-Ops) with our conditional expressions. Let's try it for the two conditional expressions we worked out first. 
+The next step is to combine these conditional expressions with the third (less than 25000000) to do all the filtering in one pass. To do this we need to use [boolean operators](https://www.gnu.org/software/gawk/manual/gawk.html#Boolean-Ops) with our conditional expressions. Let's try it for the two conditional expressions we worked out above first. 
 
 ```bash
 awk -F "\t" '{ if(($7 == 6) && ($8 >= 11000000)) { print } }' pos_cut.txt | tail
@@ -157,7 +157,7 @@ rs12195885  a   c   0.0224  0.0000  0.9662  6   23600679
 rs9476984   c   g   0.0711  0.0014  0.9935  6   16036569
 ```
 
-That works! The final step here might be to redirect this into a new file. 
+That works! The final step after this might be to redirect this into a new file for further analysis. 
 
-AWK is pretty flexible. We can use at the command line in conjunction with other UNIX commands in a pipeline or we can use AWK inside a shell script as well. You can also put an AWK program in it's own file and run with `awk -f source-file`. There are also many more features in the [AWK language](https://www.gnu.org/software/gawk/manual/gawk.html). The big takeaway here is that if you run into a file that exceeds or slows down memory bound languages like R, you can use stream based operations on those files in AWK. 
+AWK is pretty flexible. We can use at the command line in conjunction with other UNIX commands to build a pipeline of operations or we can use AWK inside a shell script as well. You can also put an AWK program in it's own file and run with `awk -f source-file`. There are many more features in the [AWK language](https://www.gnu.org/software/gawk/manual/gawk.html) I didn't discuss in this blog. The big takeaway here is that if you run into a file that exceeds or slows down memory bound languages like R, you can use stream based operations on those files in AWK. 
 
