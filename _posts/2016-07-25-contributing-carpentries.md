@@ -28,7 +28,7 @@ One of the confusing aspects on translating the common fork/pull-request develop
     >```$ git remote -v  
     >origin  https://github.com/ucsdlib/library-shell.git (fetch)  
     >origin  https://github.com/ucsdlib/library-shell.git (push) 
-    >`` 
+    >``` 
 
 3. Now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from our upstream repository's (`data-lessons/library-shell`) gh-pages branch and merge those with our local gh-pages branch. Setting an upstream remote let's us do this. 
 
