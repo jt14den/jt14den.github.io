@@ -38,6 +38,7 @@ After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) 
 Typically, the default branch in git and GitHub is set to `master`, however, with the Software/Data/Library Carpentry lessons the default branch is  `gh-pages`. This is for convience, so changes to this branch will trigger a jekyll build of the lesson making the nice lesson webpages.  Our scenario here is that your `gh-pages` have fallen behind the upstream master by one or multiple commits. 
 
 4. You can tell where you are in relation the upstream repository by running a `git status`. 
+    
     >```
     >$ git status
     >On branch gh-pages
