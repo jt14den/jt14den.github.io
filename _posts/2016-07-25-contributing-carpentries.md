@@ -4,26 +4,33 @@ title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
 excerpt_separator: <!--more-->
 ---
-After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Caprentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting. One of the confusing aspects on traslating the stated development workflows is that most of the documentation is spelled out for master branches. In Software carpentry land, master in that context can be replace with `gh-pages`. Hopefully, this will help folks new to git contribute more to the lessons. 
+After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Caprentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting. 
+
+One of the confusing aspects on translating the stated development workflows is that most of the documentation found on the web is spelled out for `master` branches. This is because, by convention, the default branch when you initialize a repository in GitHub is named `master`. However, with the Software/Data/Library Carpentry lessons the default branch is set to `gh-pages`. This is mainly for ease, because the web version of the lessons live in this branch and this is where Software Carpentry wants the work to go for contributions. Also, on the GitHub end of things, commits to this branch will be processed on GitHub by Jekyll, a static site generator, making the nice lesson webpages we use in class. The main thing to know is that in Software carpentry land, when you see `master` in Git help or documentation, you can replace with `gh-pages`. Hopefully, this will help folks new to git contribute more to the lessons. 
 
 ### Setup your fork and local clone
 
-1. [Fork a lesson](http://help.github.com/fork-a-repo/) you want to contribute to, for instance, [data-lessons/library-shell](https://github.com/data-lessons/library-shell/). 
+1. [Fork a lesson](http://help.github.com/fork-a-repo/) you want to contribute to, for instance, [data-lessons/library-shell](https://github.com/data-lessons/library-shell/). Forking will create a linked copy of the repository in your own GitHub account.
 
-2. Clone the **library-shell** project to your local machine (**USERNAME** - your GitHub user account name): 
+2. Clone the **library-shell** project to your local machine (**USERNAME** - your GitHub user account name). Having a local copy allows us to edit locally using our favorite tool, create branches for discrete work and easily keep the local repository in synch with our `data-lessons/library-shell`: 
 
     >```
     >$ git clone https://github.com/USERNAME/library-shell/
     >```
 <!--more-->
-3. Configure upstream remote: 
+    `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name) and set up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
+    >```
+    >$ cd library-shell
+    >$ git remote -v 
+    > 
+3. Let's now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from our upstream repository's `data-lessons/library-shell`  gh-pages branch and merge those with our local gh-pages branch. Setting an upstream remote let's us do this. 
 
     >```
     >$ cd library-shell
     >$ git remote add upstream https://github.com/data-lessons/library-shell/  
     >```
 
-4. Look at the remotes now and confirm you have an upstream: 
+4. Now, take a look at the remotes and confirm you have an upstream fetch and push pair in addition to your `origin`: 
 
     >```
     >$ git remote -v  
@@ -35,7 +42,7 @@ After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) 
 
 ### Getting changes from the upstream default branch `gh-pages`
 
-Typically, the default branch in git and GitHub is set to `master`, however, with the Software/Data/Library Carpentry lessons the default branch is  `gh-pages`. This is for convience, so changes to this branch will trigger a jekyll build of the lesson making the nice lesson webpages.  Our scenario here is that your `gh-pages` have fallen behind the upstream master by one or multiple commits. 
+ Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you fork and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your coffee and sandwich make your lesson changes, commit and find your work now conflicts with the upstream repository. Argh! So, if you begin work without incorporating the latest sanctioned version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid this, always check for and if there were changes, grab them before you start work. 
 
 4. You can tell where you are in relation the upstream repository by running a `git status`. 
     
@@ -46,7 +53,7 @@ Typically, the default branch in git and GitHub is set to `master`, however, wit
     >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
     >(use "git pull" to update your local branch)
 
-4. Fetch upstream changes to the local gh-pages
+4. If you had no changes below, you are good to go. Skip to 'Contributing to the lessons' below. Otherwise, fetch upstream changes to the local gh-pages
 
     >```
     >$ git fetch upstream
@@ -74,7 +81,8 @@ Typically, the default branch in git and GitHub is set to `master`, however, wit
 6. Now your `git status` should look like the below: 
 
     >```
-    >$ git statusYou can tell this through running a `git status`. 
+    >$ git status  
+    >
     >On branch gh-pages
     >Your branch is up-to-date with 'upstream/gh-pages'.
     >nothing to commit, working directory clean
@@ -98,7 +106,7 @@ Your are ready to make improvements to the lessons! We need to create a branch i
     >$ git push origin new-lesson-improvement
     >```
 
-7. Perform the Pull Request from your fork. Follow these [steps](https://help.github.com/articles/creating-a-pull-request/).
+7. Perform the Pull Request on GitHub from your fork. Follow these [steps](https://help.github.com/articles/creating-a-pull-request/).
 8. The maintainer of the lesson will review the changes and merge them into the upstream repository. They might also have questions for you and will comment on your request before the changes can be merged. 
 
 Credits:  
