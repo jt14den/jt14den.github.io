@@ -21,9 +21,13 @@ One of the confusing aspects on translating the common fork/pull-request develop
     `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name) and sets up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
 
     >```
-    >$ cd library-shell
-    >$ git remote -v 
+    >$ cd library-shell  
+    >$ git remote -v   
+    > ```
     > 
+    > $ git remote -v  
+    > origin  https://github.com/ucsdlib/library-shell.git (fetch)  
+    > origin  https://github.com/ucsdlib/library-shell.git (push)  
 
 3. Now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from our upstream repository's (`data-lessons/library-shell`) gh-pages branch and merge those with our local gh-pages branch. Setting an upstream remote let's us do this. 
 
@@ -105,8 +109,8 @@ Your are ready to make improvements to the lessons! We need to create a branch i
 6. Once done with your work as you see fit, run git add, commit, and then push your branch: 
 
     >```
-    >$ git add .
-    >$ git commit -m "adding loop challenge"
+    >$ git add .  
+    >$ git commit -m "adding loop challenge"  
     >$ git push origin new-lesson-improvement
     >```
 
