@@ -19,11 +19,13 @@ One of the confusing aspects on translating the stated development workflows is 
     >```
 <!--more-->
     `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name) and set up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
+
     >```
     >$ cd library-shell
     >$ git remote -v 
     > 
-3. Let's now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from our upstream repository's `data-lessons/library-shell`  gh-pages branch and merge those with our local gh-pages branch. Setting an upstream remote let's us do this. 
+
+3. Let's now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from our upstream repository's (`data-lessons/library-shell`) gh-pages branch and merge those with our local gh-pages branch. Setting an upstream remote let's us do this. 
 
     >```
     >$ cd library-shell
@@ -42,9 +44,9 @@ One of the confusing aspects on translating the stated development workflows is 
 
 ### Getting changes from the upstream default branch `gh-pages`
 
- Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you fork and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your coffee and sandwich make your lesson changes, commit and find your work now conflicts with the upstream repository. Argh! So, if you begin work without incorporating the latest sanctioned version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid this, always check for and if there were changes, grab them before you start work. 
+ Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you fork and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your coffee and sandwich, make your lesson changes, commit and find your work now conflicts with the upstream repository. Argh! So, if you begin work without incorporating the latest sanctioned version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid this, always check for and if there are changes, grab them before you start work. 
 
-4. You can tell where you are in relation the upstream repository by running a `git status`. 
+4. You can tell where you are in relation the upstream repository by running a `git status`. Below, we are behind by 8 commits. If you had had no changes  you would get a message about your branch being 'up-to-date' with `upstream/gh-pages`. If this is the case, you can skip to 'Contributing to the lessons' below and begin your edits.
     
     >```
     >$ git status  
@@ -53,7 +55,7 @@ One of the confusing aspects on translating the stated development workflows is 
     >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
     >(use "git pull" to update your local branch)
 
-4. If you had no changes below, you are good to go. Skip to 'Contributing to the lessons' below. Otherwise, fetch upstream changes to the local gh-pages
+4.  But being behind the upstream, we need to fetch the changes down. Note above, git says to use `git pull` to update the local. (Some hand waving here). A `git pull` is really two commands in one: `git fetch` then `git merge`. If things are mergable (word?) without conflict they are `fast-forwarded`. So, `git pull` would do both the fetch and merge below. 
 
     >```
     >$ git fetch upstream
@@ -78,7 +80,7 @@ One of the confusing aspects on translating the stated development workflows is 
     > create mode 100644 contribute.md  
     >```
 
-6. Now your `git status` should look like the below: 
+6. Now your `git status` should look like the below. Yay! Let's work.  
 
     >```
     >$ git status  
@@ -90,7 +92,7 @@ One of the confusing aspects on translating the stated development workflows is 
 
 ### Contributing to the lessons
 
-Your are ready to make improvements to the lessons! We need to create a branch in which to add our changes. 
+Your are ready to make improvements to the lessons! We need to create a branch in which to add our changes. Think of branches as a unit of work that hangs together. So, maybe you are going to work on the loop episode in the shell lesson. 
 
 4. Create a branch for changes to the lesson: 
 
@@ -98,16 +100,19 @@ Your are ready to make improvements to the lessons! We need to create a branch i
     >$ git checkout -b new-lesson-improvement
     >```
 
-5. `git` will create the **new-lesson-improvement** branch and switch you into it. Now, develop on **new-lesson-improvement**, but **do not** merge **new-lesson-improvement** branch to the your `gh-pages` branch (as it should stay equal to upstream gh-pages)!!
+5. `git` will create the **new-lesson-improvement** branch and switch you into it. Now, develop on **new-lesson-improvement**, but **do not** merge **new-lesson-improvement** branch to the your `gh-pages` branch (as `gh-pages` should stay equal to upstream gh-pages)!!
 
 6. git add, commit, and then push your branch: 
 
     >```
+    >$ git add .
+    >$ git commit -m "adding loop challenge"
     >$ git push origin new-lesson-improvement
     >```
 
 7. Perform the Pull Request on GitHub from your fork. Follow these [steps](https://help.github.com/articles/creating-a-pull-request/).
-8. The maintainer of the lesson will review the changes and merge them into the upstream repository. They might also have questions for you and will comment on your request before the changes can be merged. 
+8. The maintainer of the lesson will review the changes (be patient!) and merge them into the upstream repository. They might also have questions for you and in this case, will comment on your request before the changes can be merged.
+9. Begin beautiful contributor-maintainer interation here. 
 
 Credits:  
 
