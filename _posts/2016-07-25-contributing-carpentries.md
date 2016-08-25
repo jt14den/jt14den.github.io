@@ -40,7 +40,7 @@ Typically, the default branch in git and GitHub is set to `master`, however, wit
 4. You can tell where you are in relation the upstream repository by running a `git status`. 
     
     >```
-    >$ git status
+    >$ git status  
     >On branch gh-pages
     >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
     >(use "git pull" to update your local branch)
