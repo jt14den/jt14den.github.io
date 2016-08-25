@@ -41,6 +41,7 @@ Typically, the default branch in git and GitHub is set to `master`, however, wit
     
     >```
     >$ git status  
+    >
     >On branch gh-pages
     >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
     >(use "git pull" to update your local branch)
