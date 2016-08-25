@@ -98,7 +98,7 @@ Your are ready to make improvements to the lessons! We need to create a branch i
     >$ git push origin new-lesson-improvement
     >```
 
-7. Perform the Pull Request from your fork. Follow these [steps]()https://help.github.com/articles/creating-a-pull-request/.
+7. Perform the Pull Request from your fork. Follow these [steps](https://help.github.com/articles/creating-a-pull-request/).
 8. The maintainer of the lesson will review the changes and merge them into the upstream repository. They might also have questions for you and will comment on your request before the changes can be merged. 
 
 Credits:  
