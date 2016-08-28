@@ -8,6 +8,8 @@ After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) 
 
 One of the confusing aspects on translating the common fork/pull-request development workflows is that most of the documentation found on the web is spelled out for `master` branches. This is because, by convention, the default branch when you initialize a repository in GitHub (or locally) is named `master`. However, with the Software/Data/Library Carpentry lessons the default branch is set to `gh-pages`. This is mainly for ease, because the web version of the lessons live in this branch and this is where Software Carpentry wants the work to go for contributions. Also, on GitHub, commits to this branch will be processed by Jekyll, a static site generator, making the nice lesson webpages we use in class. The main thing to know is that in Software Carpentry lesson land, when you see `master` in Git help or online documentation, you can mentally subsitute it with `gh-pages`. Hopefully, this will help folks new to git contribute more to the lessons. 
 
+Update 2016-08-28: Corrected the **Getting changes from the upstream default branch `gh-pages`** section to remove using `git status` to check changes in the upstream remote as this won't work! `git fetch upstream` is the right command to pull down any changes that may have been made. 
+
 ### Setup your fork and local clone
 
 1. [Fork a lesson](http://help.github.com/fork-a-repo/) you want to contribute to, for instance, [data-lessons/library-shell](https://github.com/data-lessons/library-shell/). Forking will create a linked copy of the repository in your own GitHub account.
@@ -49,16 +51,7 @@ One of the confusing aspects on translating the common fork/pull-request develop
 
 ### Getting changes from the upstream default branch `gh-pages`
 
- Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you forked and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your break, make your lesson changes, commit, push and then find in GitHub your work conflicts with the upstream repository. Argh! You don't want to deal with that after a nice coffee and sandwich. So, if you begin work without incorporating the latest sanctioned version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid this, always check for and if there are changes, grab them before you start work. 
-
-4. You can tell where you are in relation the upstream repository by running a `git status`. Below, we are behind by 8 commits. If you had had no changes  you would get a message about your branch being 'up-to-date' with `upstream/gh-pages`. If this is the case, you can skip to 'Contributing to the lessons' below and begin your edits.
-    
-    >```
-    >$ git status  
-    >
-    >On branch gh-pages
-    >Your branch is behind 'upstream/gh-pages' by 8 commits, and can be fast-forwarded.
-    >(use "git pull" to update your local branch)
+ Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you forked and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your break, make your lesson changes, commit, push and then find in GitHub your work conflicts with the upstream repository. Argh! You don't want to deal with that after a nice coffee and sandwich. So, if you begin work **without incorporating** the latest approved version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid working on an outdated base document, always run `get fetch` and update you local repository them before you start work. 
 
 4.  But since we are behind the upstream, we need to fetch the changes down. Note above, git says to use `git pull` to update the local. (Some hand waving here). A `git pull` is really two commands in one: `git fetch` then `git merge`. If things are mergable (word?) without conflict they are `fast-forwarded`. So, `git pull`, in this case, would do both the fetch and merge below. 
 
