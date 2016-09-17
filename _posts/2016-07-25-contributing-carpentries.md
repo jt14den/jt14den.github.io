@@ -27,7 +27,7 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
     >$ git remote -v   
     > ```
     > 
-    >```outpu
+    >```output
     >origin  https://github.com/ucsdlib/library-shell.git (fetch)  
     >origin  https://github.com/ucsdlib/library-shell.git (push) 
     >``` 
@@ -53,7 +53,7 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
 
  Before you begin your work on contributing to a lesson, you should always fetch and merge changes from the upstream repository. Why? Think about how many contributors are involved in working on some of the Carpentry lessons (hundreds). Imagine this: after you forked and cloned the `data-lessons/library-shell` repository, you take a break and go out for a coffee and sandwich. While you were away a contributor made a pull request and the lesson maintainer merged it into the lesson. Now you return from your break, make your lesson changes, commit, push and then find in GitHub your work conflicts with the upstream repository. Argh! You don't want to deal with that after a nice coffee and sandwich. So, if you begin work **without incorporating** the latest approved version of the lesson there will be a greater chance for conflicts when you are ready to make the pull request. Further, maybe the change made while you were away fixes the same issue you had with the lesson. To avoid working on an outdated base document, always run `get fetch` and update you local repository them before you start work. 
 
-4.  But since we are behind the upstream, we need to fetch the changes down. Note above, git says to use `git pull` to update the local. (Some hand waving here). A `git pull` is really two commands in one: `git fetch` then `git merge`. If things are mergable (word?) without conflict they are `fast-forwarded`. So, `git pull`, in this case, would do both the fetch and merge below. 
+4.  Let's fetch the changes down. 
 
     >```
     >$ git fetch upstream
