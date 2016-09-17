@@ -90,7 +90,7 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
 
 ### Contributing to the lessons
 
-Your are ready to make improvements to the lessons! We need to create a branch in which to add our changes. Think of branches as a unit of work that hangs together. So, maybe you are going to work on the loop episode in the shell lesson. 
+Your are ready to make improvements to the lessons! We need to create a branch in which to add our changes. Think of branches as a unit of work that hangs together. So, if you are going to work on the loop episode in the shell lesson, this should hang together as a named  `branch`. 
 
 4. Create a branch for changes to the lesson: 
 
