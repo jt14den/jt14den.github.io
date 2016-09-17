@@ -22,12 +22,12 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
 <!--more-->
     `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name) and sets up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
 
-    >```
+    >```bash
     >$ cd library-shell  
     >$ git remote -v   
     > ```
     > 
-    >```$ git remote -v  
+    >```outpu
     >origin  https://github.com/ucsdlib/library-shell.git (fetch)  
     >origin  https://github.com/ucsdlib/library-shell.git (push) 
     >``` 
