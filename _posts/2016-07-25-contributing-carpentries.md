@@ -3,6 +3,7 @@ layout: post
 title: "Contributing to carpentry lessons with GitHub"
 description: "Tutorial on how to contribute to the Carpentries."
 excerpt_separator: <!--more-->
+categories: SWC
 ---
 After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Carpentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting.
 

@@ -3,6 +3,7 @@ layout: post
 title: "Using AWK to Filter Rows"
 description: "A brief explanation on how to use AWK filter data files."
 excerpt_separator: <!--more-->
+categories: [data, tech]
 ---
 
 After attending a `bash` class I taught for Software Carpentry, a student contacted me having troubles working with a large data file in R. She wanted to filter out rows based on some condition in two columns. An easy task in R, but because of the size of the file and R objects being memory bound, reading the whole file in was too much for my student's computer to handle.  She sent me the below sample file and how she wanted to filter it. I chose **AWK** because it is designed for this type of task. It parses data line-by-line and doesn't need to read the whole file into memory to process it.  Further, if we wanted to speed up our AWK even more, we can investigate **AWK** ports, such as [MAWK](http://invisible-island.net/mawk/mawk.html), that are built for speed.  

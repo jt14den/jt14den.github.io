@@ -1,44 +1,37 @@
-##Chapter 2: Why it's better than it seems 
+---
+layout: post
+title: "Chapter 2: Why it's better than it seems"
+description: "More and more faculty and instructors are having to teach outside their expertise."
+excerpt_separator: <!--more-->
+categories: SWC
+---
 
-general education course
-rousseau quote 
->>"hard to be shown up by a nineteen year old"
+## Why it's scary 
 
-### why not?
+>"It's hard to be shown up by a nineteen year old."
 
-outsmarted, asked quest can't answer, hours for every class, explain things wrong, trouble sleeping 
+In *Teaching What You Don't Know*, Terese Huston interviews 28 faculty and administrators about their experiences teaching outside their expertise.  There are clear reasons on why you would not want to do this.   Generally, the author found that teaching what you don't know can be very stressful. An instructor doesn't want to be outsmarted by students or asked questions she or he can answer.  Also, when teaching outside of your expertise, you typically spend more time preparing for the courses, get less sleep. 
 
-### What are the advantages of teaching outside expertise? 
+<!--more--> 
 
-Distinguish faculty within and outside 
+## Why Teach  Outside Your Expertise
 
-content expert and content novice
+Considering the downsides -- lack of sleep, extra preparation, anxiousness, etc., -- why would you do this to yourself?  Why would you teach what you do not know?  Houston found that there are a number of reasons why her interview cohort found it beneficial to teach outside of their expertise:
+1. An opportunity to learn something new and most academics love to explore and learn something new.  A corollary benefit of this is that teaching is a real solid way to focus the mind to be able to learn something.  
+2. An opportunity to connect with faculty outside of your department. If you are teaching subject where someone else on campus in another department has content expertise, asking for that person's help with the class is a great way to make new acquaintances.  
+3. Broadens your CV and you become more attractive to potential employers because you become more versatile. 
+4. Can lead you to developing a new area of research.
 
-simple division too simple
-
-### Why Teach  OE 
-
-1. Learn something new and interesting, most love to dig into new area , opportunity to dive into something of interest, gain better understanding as you teach it
-2. Connect with faculty outside dept, v well be center of someone else's knowledge, make aquainces, 
-3. Broaden you CV add new courses, you expand repertoire, versatile , could get shoehorned though
-4. Devel a new area of research, maybe not gen ed or surveys but poss upper level 
-
-### comfort categories:
-
-* poised and confident - weren't sptressed, sought out OE
-* undecide but untroubled - uncomfortable some of the Tim but not always
-* straiged and anxious - don't like it at all tired and overstretched 
-factors that dont matter: discipline 
-, prior instructor, 
+Houston also found within her  interview subjects that there were different comfort levels with teaching what you don't know:  some instructors felt *poised and confident* about  teaching outside their expertise, some were *undecided but untroubled* and some were *stressed and anxious* about it. The distinguishing characteristic  
 
 one factor beyond but 2 are
 * had to teach it, new person etc
 *  honest about it 
 
+## Creating a learning environment 
 
-two principles on good **learning environment**
-1. learn most when we drawn on their pre-existing understanding.  "no one is a blank slate". good learning environemtn brings out that understanding, challenges what's incorrect, and builds on the rest
-2. learn most when instructors engage them on a few topics in-depth and provide them with examples as meaningful anchors, rather than a blizzard of topics and fleeitng specs
+1. Students learn most when, as instructors, we drawn on their pre-existing understanding.  In this sense "no one is a blank slate".  A good learning environment brings out the student's existing understanding, challenges what is incorrect, and builds knowledge on the rest. 
+2. Student's learn most when instructors engage them on a few topics in-depth and provide them with examples as meaningful anchors, rather than a blizzard of topics and fleeting specs. 
 
 
 ### References 
