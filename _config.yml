@@ -4,7 +4,7 @@ highlighter:      rouge
 
 # Permalinks
 #permalink:      /:categories/:title/
-#permalink:  pretty 
+#permalink:  pretty
 
 # Setup
 title:            Tim Dennis
@@ -18,7 +18,7 @@ author:
   url:            https://twitter.com/jt14den
 
 
-paginate:         5
+paginate:         8
 
 # Custom vars
 version:          2.1.0
