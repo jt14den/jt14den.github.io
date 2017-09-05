@@ -5,6 +5,7 @@ description: "Tutorial on how to contribute to the Carpentries."
 excerpt_separator: <!--more-->
 categories: SWC
 ---
+
 After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Carpentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting.
 
 One of the confusing aspects on translating the common fork/pull-request development workflows is that most of the documentation found on the web is spelled out for `master` branches. This is because, by convention, the default branch when you initialize a repository in GitHub (or locally) is named `master`. However, with the Software/Data/Library Carpentry lessons the default branch is set to `gh-pages`. This is mainly for ease, because the web version of the lessons live in this branch and this is where Software Carpentry wants the work to go for contributions. Also, on GitHub, commits to this branch will be processed by Jekyll, a static site generator, making the nice lesson webpages we use in class. The main thing to know is that in Software Carpentry lesson land, when you see `master` in Git help or online documentation, you can mentally substitute it with `gh-pages`. Hopefully, this will help folks new to git contribute more to the lessons.
@@ -20,7 +21,7 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
     >```
     >$ git clone https://github.com/USERNAME/library-shell/
     >```
-<!--more-->
+
     `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name by default) and sets up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
 
     >```bash
@@ -33,6 +34,7 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
     >origin  https://github.com/ucsdlib/library-shell.git (push)
     >```
 
+<!--more-->
 3. Now configure the upstream remote. We are doing this because we want to be able to periodically grab -- especially before we start our lesson improvements --  new changes from the upstream repository's (`data-lessons/library-shell`) gh-pages branch and merge those with our local gh-pages branch. To set an upstream remote let's us do this:
 
     >```
