@@ -24,12 +24,12 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
     `clone` grabs the repository and makes a local copy. It will create the directory (named for the repository name by default) and sets up the linkages between your clone and the remote repository (called `origin`). Let's confirm this by running `git remote -v`.
 
     >```bash
-    >$ cd library-shell  
-    >$ git remote -v   
+    >$ cd library-shell
+    >$ git remote -v
     > ```
     >
     >```output
-    >origin  https://github.com/ucsdlib/library-shell.git (fetch)  
+    >origin  https://github.com/ucsdlib/library-shell.git (fetch)
     >origin  https://github.com/ucsdlib/library-shell.git (push)
     >```
 
@@ -37,17 +37,17 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
 
     >```
     >$ cd library-shell
-    >$ git remote add upstream https://github.com/data-lessons/library-shell/  
+    >$ git remote add upstream https://github.com/data-lessons/library-shell/
     >```
 
 4. Now, take a look at the remotes again and confirm you have an upstream fetch and push pair in addition to your `origin` ones:
 
     >```
-    >$ git remote -v  
-    >origin  https://github.com/ucsdlib/library-shell.git (fetch)  
-    >origin  https://github.com/ucsdlib/library-shell.git (push)  
-    >upstream    https://github.com/data-lessons/library-shell.git (fetch)  
-    >upstream    https://github.com/data-lessons/library-shell.git (push)  
+    >$ git remote -v
+    >origin  https://github.com/ucsdlib/library-shell.git (fetch)
+    >origin  https://github.com/ucsdlib/library-shell.git (push)
+    >upstream    https://github.com/data-lessons/library-shell.git (fetch)
+    >upstream    https://github.com/data-lessons/library-shell.git (push)
     >```
 
 ### Getting changes from the upstream default branch `gh-pages`
@@ -58,31 +58,31 @@ Update 2016-08-28: Corrected the **Getting changes from the upstream default bra
 
     >```
     >$ git fetch upstream
-    >remote: Counting objects: 11, done.  
-    >remote: Compressing objects: 100% (11/11), done.  
-    >remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0  
-    >Unpacking objects: 100% (11/11), done.  
-    >From https://github.com/data-lessons/library-shell  
-    >   67d2478..db5039b  gh-pages   -> upstream/gh-pages  
+    >remote: Counting objects: 11, done.
+    >remote: Compressing objects: 100% (11/11), done.
+    >remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0
+    >Unpacking objects: 100% (11/11), done.
+    >From https://github.com/data-lessons/library-shell
+    >   67d2478..db5039b  gh-pages   -> upstream/gh-pages
     >```
 
 5. Merge those changes into your gh-pages branch. Note, you are currently in your `gh-pages` branch and the following command will merge the fetched changes from `upstream/gh-pages` 'here'.
 
     >```
-    >$ git merge upstream/gh-pages  
-    >Updating 67d2478..db5039b  
-    >Fast-forward  
-    > _episodes/01-intro-shell.md | 22 +++++++++++-----------  
-    > _includes/navbar.html       |  1 +  
-    > contribute.md               | 10 ++++++++++  
-    > 3 files changed, 22 insertions(+), 11 deletions(-)  
-    > create mode 100644 contribute.md  
+    >$ git merge upstream/gh-pages
+    >Updating 67d2478..db5039b
+    >Fast-forward
+    > _episodes/01-intro-shell.md | 22 +++++++++++-----------
+    > _includes/navbar.html       |  1 +
+    > contribute.md               | 10 ++++++++++
+    > 3 files changed, 22 insertions(+), 11 deletions(-)
+    > create mode 100644 contribute.md
     >```
 
-6. Now your `git status` should look like the below. Yay! We are now ready to work on the lesson.   
+6. Now your `git status` should look like the below. Yay! We are now ready to work on the lesson.
 
     >```
-    >$ git status  
+    >$ git status
     >
     >On branch gh-pages
     >Your branch is up-to-date with 'upstream/gh-pages'.
@@ -99,13 +99,37 @@ Your are ready to make improvements to the lessons! To do this, we need to creat
     >$ git checkout -b new-lesson-improvement
     >```
 
-5. `git` will create the `new-lesson-improvement` branch and switch you into it. Now, develop (work) on `new-lesson-improvement`, but **do not** merge `new-lesson-improvement` branch to the your `gh-pages` branch (as `gh-pages` should stay equal to upstream gh-pages)!  We want to add, commit and push our branch to our forked repository of `library-shell`.
+   `git` will create the `new-lesson-improvement` branch and switch you into it.
+
+5. Now, develop (work) on `new-lesson-improvement` and make the improvement or addition to the lesson. How do I know it looks ok? I mean this is webcontent and I want to see what it looks like. To do this we need to have Jekyll -- the static site generator that GitHub uses to prepare and render our lessons -- installed locally. Follow these [instructions](https://swcarpentry.github.io/lesson-example/setup/#optional-jekyll-setup-for-lesson-development) to install Jekyll. (You can safely skip step 4 "R Packages" most likely).
+
+6. Now, we can kick the tires and see what our work looks like locally, by going back to our terminal and running:
+
+    >```
+    >$ make serve
+    >```
+
+    If it runs successfully, the output will contain a line that tells you where your server is running:
+
+    >```
+    >  Server address: http://127.0.0.1:4000/
+    > ```
+
+    Navigate to that url in your browser and you should see the lesson you are working on and your changes.  You can continue to work on your changes and refresh to see the changes in the browser.
+
+    But wait, why didn't I use `jekyll serve` instead?  That's what the Jekyll documentation says. You could run `jekyll serve` and it would do the same thing.  The template developers for Software Carpentry have created a make file that supports a number of command in addition to running a wrapper for `jekyll serve`. Go ahead and `ctr-c` to kill your server and type `make` by itself on the command line and you'll see this:
+
+    >```
+    > make
+    > ```
+
+   The make command contains a number of helpful commands for working with your lesson including `lesson-check` to validate markdown and `clean-rmd` to clean intermedicate R files.
 
 6. Once done with your work as you see fit, run `git add`, `git commit`, and then `git push origin new-lesson-improvement` up to your forked repository:
 
     >```
-    >$ git add .  
-    >$ git commit -m "adding loop challenge"  
+    >$ git add .
+    >$ git commit -m "adding loop challenge"
     >$ git push origin new-lesson-improvement
     >```
 
@@ -113,9 +137,9 @@ Your are ready to make improvements to the lessons! To do this, we need to creat
 8. The maintainer of the lesson will review the changes (be patient!) and merge them into the upstream repository. They might also have questions for you and in this case, will comment on your request before the changes can be merged.
 9. Begin beautiful contributor-maintainer iteration here.
 
-Credits:  
+Credits:
 
-1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider @pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow.  
-1. [Development workflow with Git: Fork, Branching, Commits, and Pull Request](https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/Development-workflow-with-Git:-Fork,-Branching,-Commits,-and-Pull-Request)  
-2. [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)   
+1. Matt Critchlow @mcritchlow led us through the development workflow. Juliane Schneider @pitviper6, as a maintainer for the Open Refine lesson, also was a great resource for figuring out the carpentry workflow.
+1. [Development workflow with Git: Fork, Branching, Commits, and Pull Request](https://github.com/sevntu-checkstyle/sevntu.checkstyle/wiki/Development-workflow-with-Git:-Fork,-Branching,-Commits,-and-Pull-Request)
+2. [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 3. [Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)
