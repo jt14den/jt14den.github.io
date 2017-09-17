@@ -5,6 +5,22 @@ description: "Tutorial on how to contribute to the Carpentries."
 excerpt_separator: <!--more-->
 categories: SWC
 ---
+### tl;dr
+#### Set up your remote upstream
+1. Fork the repo you want to work on.
+2. Clone that repo down, e.g., `git clone https://github.com/USERNAME/library-shell/`
+3. So you can fetch changes from the originating repo, add remote reference there: `git remote add upstream https://github.com/data-lessons/library-shell/` (you can see your remotes by `git remote -v`)
+4. Get changes from `upstream`: `git fetch upstream`
+5. Merge those changes locally: `git merge upstream/gh-pages`
+
+#### Do work in a local branch
+1. Create a branch for your improvements: `git checkout -b new-lesson-improvement`
+2. [Install Jekyll](https://swcarpentry.github.io/lesson-example/setup/#optional-jekyll-setup-for-lesson-development) if you want to preview your changes locally
+3. Run `make serve` to preview locally, typically at <http://127.0.0.1:4000/>
+4. Once done with your work as you see fit, run `git add`, `git commit`, and then `git push origin new-lesson-improvement` up to your forked repository.
+5. [Make a pull request]((https://help.github.com/articles/creating-a-pull-request/)) from your repo in GitHub (this tells the upstream maintainers: hey, pull my improvement into the upstream repo)
+
+## Getting set up to improve lessons
 
 After we taught [Library Carpentry](https://ucsdlib.github.io/2016-07-18-UCSD/) here at UCSD, we sat down and worked through the workflow for contributing to Carpentry lessons. Matt Critchlow, our IT Dev Manager, walked us through the [CONTRIBUTING.md](https://github.com/data-lessons/library-shell/blob/gh-pages/CONTRIBUTING.md) document and I worked up the steps below from our meeting.
 
