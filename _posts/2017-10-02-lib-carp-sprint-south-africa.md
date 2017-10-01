@@ -4,7 +4,7 @@ title: "Library Carpentry sprint, 2 Oct, 2017 - LiASA"
 author: ["Belinda Weaver", "Tim Dennis"]
 ---
 
-The Library Carpentry sprint is part of the [Library and Information Association of South Africa 2017 Conference](http://www.liasa.org.za/liasa2017/), which will take place on 2 October, 2017 in Johannesburg. For those new to the field, a sprint is like a hackathon - it is a way to get people working together to create, update or extend open projects like Library Carpentry.
+The Library Carpentry sprint is part of the [Library and Information Association of South Africa 2017 Conference](http://www.liasa.org.za/liasa2017/), which will take place on 2 October, 2017 in Johannesburg. For those new to the field, a sprint is like a hackathon - it is a way to get people working together to create, update or extend open projects like Library Carpentry. We'll use this [etherpad](http://pad.software-carpentry.org/lc-liasa-2017) to organize the sprint.
 
 We are using this sprint to give participants an introduction to Library Carpentry, cover how the community works and how to get involved.  We'll also provide details on how to host and organise a workshop with hands-on exercises in setting up a workshop website. Following workshop operations, we'll shift to explore how Library Carpentry lessons are collaboratively created and maintained. We'll amend, update, extend and improve the existing [Library Carpentry](https://librarycarpentry.github.io/) lessons. Along the way, you'll learn how to collaborate in GitHub and make your own blog. Finally, we'll conclude with the a preliminary outline for a follow-up workshop during the first quarter of 2018.
 
