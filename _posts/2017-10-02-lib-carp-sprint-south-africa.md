@@ -72,9 +72,7 @@ This is a list of people who maintain each Library Carpentry lesson. If you are 
 
 [OpenRefine](https://github.com/data-lessons/library-openrefine) - @ostephens, @ccronje, @pitviper
 
-[Python](https://github.com/data-lessons/library-python) - @c-martinez, # sprint-goal: find a second maintainer
-
-[Draft new Python](https://github.com/richyvk/library-python-new) - @richyvk # new version of python lesson linked above - aiming to complete and make THE python lesson
+[Python](https://github.com/data-lessons/library-python-intro) - @c-martinez 
 
 [SQL](https://github.com/data-lessons/library-sql) - @mpfl, @c-martinez, @mkuzak
 
