@@ -1,48 +1,62 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Tim Dennis</h1>
-			<h2>Director, UCLA Library Data Science Center</h2>
-			
-			<p>
-				I lead research data services and open science initiatives at UCLA Library, with 26 years 
-				of experience in the UC system. My work focuses on building capacity for reproducible research, 
-				data management, and open science practices across the academic community.
-			</p>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} fullTitle={true}>
+	<h1>Tim Dennis</h1>
+	<p class="lead">
+		Director, UCLA Library Data Science Center — building durable research infrastructure,
+		open science education, and workforce capacity across the UC system.
+	</p>
 
-			<h3>Current Focus</h3>
-			<ul>
-				<li>Leading major grant initiatives in open science education and infrastructure</li>
-				<li>Scaling research data services and computational training programs</li>
-				<li>Building partnerships across the UC system and beyond</li>
-				<li>Advancing library leadership in the digital research landscape</li>
-			</ul>
+	<nav class="page-links">
+		<a href="/programs">Programs</a>
+		<a href="/impact">Impact</a>
+		<a href="/case-studies">Case Studies</a>
+		<a href="/governance">Governance</a>
+	</nav>
 
-			<h3>Recent Highlights</h3>
-			<ul>
-				<li><strong>IMLS Grant PI</strong> - "Lessons for Librarians in Open Science" ($237K)</li>
-				<li><strong>Sloan Foundation Co-PI</strong> - UC Open Source Program Office Network ($1.85M)</li>
-				<li><strong>UC Carpentries</strong> - Founded and scaled to 500+ annual learners</li>
-				<li><strong>DataSquad</strong> - Developed peer consulting model for research support</li>
-			</ul>
+	<p>
+		With 26 years of experience in the UC system, I lead research data services, open science
+		initiatives, and computational training at UCLA Library. My work spans data infrastructure,
+		restricted data environments, peer consulting models, and system-wide education programs.
+	</p>
 
-			<p>
-				Explore my <a href="/projects">major projects</a>, read my <a href="/blog">recent posts</a> 
-				on library technology and open science, or <a href="/about">learn more about my background</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<p>
+		Explore my <a href="/scholarship">scholarship and citable outputs</a>, review
+		<a href="/talks-grants">talks and grant awards</a>, or read about the specific
+		<a href="/case-studies">research partnerships</a> that shaped this work.
+	</p>
+</BaseLayout>
+
+<style>
+	h1 {
+		margin-bottom: 0.25rem;
+	}
+	.lead {
+		font-size: 1.1rem;
+		color: rgb(var(--gray-dark));
+		margin-bottom: 2rem;
+	}
+	.page-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+	.page-links a {
+		display: inline-block;
+		padding: 0.5rem 1.25rem;
+		background: rgb(var(--gray-light));
+		border-radius: 4px;
+		text-decoration: none;
+		font-weight: 600;
+		color: rgb(var(--black));
+		transition: background 0.15s ease;
+	}
+	.page-links a:hover {
+		background: var(--accent);
+		color: white;
+	}
+</style>

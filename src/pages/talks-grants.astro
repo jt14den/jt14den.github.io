@@ -1,0 +1,151 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allItems = (await getCollection('talks')).sort(
+	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
+);
+
+const grants = allItems.filter((i) => i.data.type === 'grant');
+const talks = allItems.filter((i) => i.data.type === 'talk');
+
+// Group talks by year
+const talksByYear = talks.reduce<Record<number, typeof talks>>((acc, talk) => {
+	const year = talk.data.year ?? 0;
+	if (!acc[year]) acc[year] = [];
+	acc[year].push(talk);
+	return acc;
+}, {});
+const talkYears = Object.keys(talksByYear)
+	.map(Number)
+	.sort((a, b) => b - a);
+---
+
+<BaseLayout
+	title="Talks & Grants"
+	description="Selected talks, keynotes, and grant awards."
+>
+	<h1>Talks & Grants</h1>
+
+	<section>
+		<h2>Grants</h2>
+		<ul class="item-list">
+			{
+				grants.map((grant) => (
+					<li>
+						<div class="item-meta">
+							<span class="type">Grant</span>
+							{grant.data.year && <span class="year">{grant.data.year}</span>}
+							{grant.data.amount && (
+								<span class="amount">{grant.data.amount}</span>
+							)}
+						</div>
+						<h3>{grant.data.title}</h3>
+						{grant.data.venue && <p class="venue">{grant.data.venue}</p>}
+						{grant.data.role && <p class="role">{grant.data.role}</p>}
+						<p>{grant.data.description}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>Selected Talks</h2>
+		{
+			talkYears.map((year) => (
+				<div class="year-group">
+					<h3 class="year-label">{year}</h3>
+					<ul class="item-list">
+						{talksByYear[year].map((talk) => (
+							<li>
+								<h4>{talk.data.title}</h4>
+								{talk.data.venue && <p class="venue">{talk.data.venue}</p>}
+								{talk.data.role && <p class="role">{talk.data.role}</p>}
+								<p>{talk.data.description}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</section>
+</BaseLayout>
+
+<style>
+	section {
+		margin-bottom: 3rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid rgb(var(--gray-light));
+	}
+	h3 {
+		font-size: 1.1rem;
+		margin: 0 0 0.25rem;
+	}
+	h4 {
+		font-size: 1rem;
+		margin: 0 0 0.25rem;
+	}
+	.item-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+	.item-list li {
+		padding: 1.25rem 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.item-list li:last-child {
+		border-bottom: none;
+	}
+	.item-meta {
+		display: flex;
+		gap: 0.75rem;
+		align-items: center;
+		margin-bottom: 0.25rem;
+	}
+	.type {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 0.15rem 0.5rem;
+		background: var(--accent);
+		color: white;
+		border-radius: 3px;
+	}
+	.year,
+	.amount {
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+	}
+	.amount {
+		font-weight: 700;
+		color: rgb(var(--gray-dark));
+	}
+	.venue,
+	.role {
+		margin: 0 0 0.25rem;
+		font-size: 0.875rem;
+		color: rgb(var(--gray));
+	}
+	p {
+		margin: 0.25rem 0 0;
+		font-size: 0.95rem;
+		color: rgb(var(--gray-dark));
+	}
+	.year-group {
+		margin-bottom: 1.5rem;
+	}
+	.year-label {
+		font-size: 1rem;
+		color: rgb(var(--gray));
+		margin-bottom: 0.5rem;
+	}
+</style>

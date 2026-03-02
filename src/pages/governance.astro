@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Governance"
+	description="Governance work across UC Carpentries, Library Carpentry, and restricted data infrastructure."
+>
+	<h1>Governance</h1>
+
+	<p class="intro">
+		I've spent a lot of time building systems that keep running without constant intervention.
+		That requires governance, not just goodwill.
+	</p>
+	<p>
+		Governance work can look invisible from the outside. In practice, it's how programs scale
+		without collapsing into a few overcommitted people.
+	</p>
+
+	<section>
+		<h2>UC Carpentries</h2>
+		<p>
+			UC Carpentries is a distributed, cross-campus teaching network. I built it into a formal
+			<strong>10-campus</strong> network with shared norms and decision-making structures.
+			During the review period, it delivered <strong>28 workshops reaching 2,896 learners</strong>.
+		</p>
+		<p>
+			The point isn't volume. It's resilience. The network runs without depending on any
+			single campus.
+		</p>
+	</section>
+
+	<section>
+		<h2>Library Carpentry Curriculum Governance</h2>
+		<p>
+			In Library Carpentry, governance shows up as process:
+		</p>
+		<ul>
+			<li>How lessons are reviewed</li>
+			<li>How adoption decisions get made</li>
+			<li>How quality standards stay consistent</li>
+			<li>How lesson teams get supported instead of burned out</li>
+		</ul>
+		<p>
+			As Chair of the Library Carpentry Curriculum Advisory / Governance group, I formalized
+			adoption pathways and helped bring multiple lessons into the official curriculum,
+			including lessons developed under the IMLS open science work.
+		</p>
+	</section>
+
+	<section>
+		<h2>Redivis Governance for Restricted Data</h2>
+		<p>
+			Restricted data environments fail when governance is ad hoc.
+		</p>
+		<p>
+			When we implemented Redivis, I designed a governance model intended to scale. The goal
+			was to support routine access requests and Data Use Agreement controls without turning
+			the platform into a bottleneck that routes everything to the Director.
+		</p>
+		<p>
+			That governance work is part of why the platform could grow from early workflows into
+			high-throughput research use — from 5 workflows and 444 GB processed to 2.9 PB
+			processed in 2024.
+		</p>
+	</section>
+
+	<section>
+		<h2>Governance as Sustainability</h2>
+		<p>
+			My bias is toward systems that outlast individuals. Programs like UC Carpentries,
+			platforms like Dataverse and Redivis, and curricula like the IMLS open science lessons
+			only matter if they keep working over time.
+		</p>
+		<p>Governance is what makes that possible.</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.intro {
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: rgb(var(--black));
+		margin-bottom: 0.5rem;
+	}
+	section {
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	section:last-child {
+		border-bottom: none;
+	}
+	h2 {
+		font-size: 1.4rem;
+		margin-bottom: 0.75rem;
+	}
+</style>

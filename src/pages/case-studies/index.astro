@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const studies = (await getCollection('caseStudies')).sort(
+	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
+);
+---
+
+<BaseLayout
+	title="Case Studies"
+	description="Concrete research partnerships showing how infrastructure and consulting support translates into research outcomes."
+>
+	<h1>Case Studies</h1>
+
+	<p>
+		These are not success stories in the marketing sense. They are accounts of specific
+		partnerships — what we built, what changed, and why the model matters.
+	</p>
+
+	<ul class="study-list">
+		{
+			studies.map((study) => (
+				<li>
+					<a href={`/case-studies/${study.id}/`}>
+						<h2>{study.data.title}</h2>
+						{study.data.partner && <p class="partner">{study.data.partner}</p>}
+						<p>{study.data.description}</p>
+						{study.data.outcomes.length > 0 && (
+							<ul class="outcomes">
+								{study.data.outcomes.slice(0, 2).map((o) => (
+									<li>{o}</li>
+								))}
+							</ul>
+						)}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>
+
+<style>
+	.study-list {
+		list-style: none;
+		padding: 0;
+		margin: 2rem 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.study-list li a {
+		display: block;
+		text-decoration: none;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.5rem;
+		transition: box-shadow 0.2s ease;
+	}
+	.study-list li a:hover {
+		box-shadow: var(--box-shadow);
+	}
+	h2 {
+		margin: 0 0 0.25rem;
+		font-size: 1.2rem;
+		color: rgb(var(--black));
+	}
+	.partner {
+		font-size: 0.875rem;
+		color: rgb(var(--gray));
+		margin: 0 0 0.5rem;
+	}
+	p {
+		margin: 0 0 0.75rem;
+		color: rgb(var(--gray-dark));
+	}
+	.outcomes {
+		margin: 0;
+		padding-left: 1.25rem;
+		font-size: 0.9rem;
+		color: rgb(var(--gray-dark));
+	}
+</style>

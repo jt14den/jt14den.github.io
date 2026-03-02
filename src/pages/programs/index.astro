@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const programs = (await getCollection('programs')).sort(
+	(a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
+---
+
+<BaseLayout
+	title="Programs"
+	description="Durable programs and initiatives in research data infrastructure, open science education, and workforce capacity."
+>
+	<h1>Programs</h1>
+
+	<p class="intro">
+		I build programs that outlast a single workshop, a single person, or a single funding cycle.
+	</p>
+	<p>
+		Most of my work sits at the intersection of research infrastructure, open source, and education.
+		The common thread is capacity — making it easier for researchers, students, and librarians to do
+		good work with data and software, and making sure the underlying systems keep running.
+	</p>
+	<p>
+		Browse the program pages below for the concrete pieces: what we built, how it works, and what
+		it enabled.
+	</p>
+
+	<ul class="program-list">
+		{
+			programs.map((program) => (
+				<li>
+					<a href={`/programs/${program.id}/`}>
+						<h2>{program.data.title}</h2>
+						<p>{program.data.description}</p>
+						{program.data.tags.length > 0 && (
+							<ul class="tags">
+								{program.data.tags.map((tag) => (
+									<li>{tag}</li>
+								))}
+							</ul>
+						)}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>
+
+<style>
+	.intro {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: rgb(var(--black));
+		margin-bottom: 0.5rem;
+	}
+	.program-list {
+		list-style: none;
+		padding: 0;
+		margin: 2rem 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	.program-list li a {
+		display: block;
+		text-decoration: none;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.5rem;
+		transition: box-shadow 0.2s ease;
+	}
+	.program-list li a:hover {
+		box-shadow: var(--box-shadow);
+	}
+	.program-list h2 {
+		margin: 0 0 0.5rem;
+		font-size: 1.25rem;
+		color: rgb(var(--black));
+	}
+	.program-list p {
+		margin: 0 0 0.75rem;
+		color: rgb(var(--gray-dark));
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.tags li {
+		font-size: 0.75rem;
+		padding: 0.2rem 0.6rem;
+		background: rgb(var(--gray-light));
+		border-radius: 999px;
+		color: rgb(var(--gray-dark));
+	}
+</style>

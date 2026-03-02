@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Impact"
+	description="Quantitative outcomes across research infrastructure, education, workforce development, and grants."
+>
+	<h1>Impact</h1>
+	<p class="intro">
+		Numbers that represent real systems built, real people trained, and real research enabled.
+	</p>
+
+	<section>
+		<h2>Research Infrastructure</h2>
+		<ul class="metrics">
+			<li><strong>1,603</strong> datasets published on UCLA Dataverse</li>
+			<li><strong>54,655</strong> files archived</li>
+			<li><strong>142,300+</strong> dataset downloads</li>
+			<li><strong>2.9 PB</strong> of data processed through Redivis in 2024</li>
+			<li><strong>2 minutes</strong> — Carceral Ecologies pipeline (down from 318 minutes)</li>
+		</ul>
+		<p>
+			UCLA Dataverse supports self-service data publishing across disciplines. Redivis provides
+			a compliant, governed environment for restricted and sensitive datasets — P3/P4 data that
+			had no institutional home before 2021.
+		</p>
+		<p>
+			Two of UCLA's six <strong>2024 Public Impact Research Award</strong> winners were directly
+			supported by DSC infrastructure and services.
+		</p>
+	</section>
+
+	<section>
+		<h2>Education & Training</h2>
+		<ul class="metrics">
+			<li><strong>28 workshops</strong> delivered through UC Carpentries</li>
+			<li><strong>2,896 learners</strong> reached system-wide</li>
+			<li><strong>10 campuses</strong> in the UC Carpentries network</li>
+			<li><strong>14+</strong> open science lessons in development (IMLS)</li>
+			<li><strong>500+</strong> annual learners at peak UC Carpentries scale</li>
+		</ul>
+		<p>
+			UC Carpentries delivers computational and data skills training across the UC system.
+			The IMLS Open Science Curriculum trains librarians as open science educators — a
+			train-the-trainers model that multiplies reach beyond any single institution.
+		</p>
+	</section>
+
+	<section>
+		<h2>Workforce Development</h2>
+		<ul class="metrics">
+			<li><strong>1,175</strong> documented service interactions</li>
+			<li><strong>190</strong> consultations handled by DataSquad students (24%)</li>
+			<li><strong>100%</strong> placement rate for a full DataSquad cohort</li>
+		</ul>
+		<p>
+			DataSquad trains undergraduates as research data consultants. Students contributed to
+			award-winning research while gaining professional experience. The program force-multiplies
+			DSC capacity without proportional staffing increases.
+		</p>
+	</section>
+
+	<section>
+		<h2>Grants & Funding</h2>
+		<ul class="metrics">
+			<li>
+				<strong>$1,850,000</strong> — Sloan Foundation, UC OSPO Network (Co-PI, UCLA Lead)
+			</li>
+			<li>
+				<strong>$237,000</strong> — IMLS, Open Science Curriculum for Librarians (PI)
+			</li>
+		</ul>
+		<p>
+			These grants reflect external validation of the work and fund programs with multi-campus
+			and national reach.
+		</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.intro {
+		font-size: 1.05rem;
+		color: rgb(var(--gray-dark));
+		margin-bottom: 2rem;
+	}
+	section {
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	section:last-child {
+		border-bottom: none;
+	}
+	h2 {
+		font-size: 1.4rem;
+		margin-bottom: 1rem;
+	}
+	.metrics {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.metrics li {
+		font-size: 1rem;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.metrics li:last-child {
+		border-bottom: none;
+	}
+</style>

@@ -1,71 +1,56 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={`About - ${SITE_TITLE}`} description="Professional background and experience of Tim Dennis" />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>About Tim Dennis</h1>
-			
-			<section>
-				<h2>Professional Overview</h2>
-				<p>
-					I serve as Director of the UCLA Library Data Science Center, where I lead initiatives 
-					in research data services, open science, and computational training. With 26 years of 
-					experience in the UC system, I focus on building capacity for reproducible research 
-					and advancing library leadership in the digital research landscape.
-				</p>
-			</section>
+<BaseLayout title="About" description="Professional background and experience of Tim Dennis, Director of the UCLA Library Data Science Center.">
+	<h1>About Tim Dennis</h1>
 
-			<section>
-				<h2>Current Role & Responsibilities</h2>
-				<p>
-					As Director of the UCLA Library Data Science Center, I oversee:
-				</p>
-				<ul>
-					<li>Research data management and open science initiatives</li>
-					<li>Computational training programs and workshops</li>
-					<li>Grant development and management for major funding initiatives</li>
-					<li>Strategic partnerships across UC system and national networks</li>
-					<li>Team leadership and professional development</li>
-				</ul>
-			</section>
+	<section>
+		<h2>Professional Overview</h2>
+		<p>
+			I serve as Director of the UCLA Library Data Science Center, where I lead initiatives
+			in research data services, open science, and computational training. With 26 years of
+			experience in the UC system, I focus on building capacity for reproducible research
+			and advancing library leadership in the digital research landscape.
+		</p>
+	</section>
 
-			<section>
-				<h2>Areas of Expertise</h2>
-				<ul>
-					<li>Open Science and Reproducible Research</li>
-					<li>Research Data Management</li>
-					<li>Library Leadership and Strategic Planning</li>
-					<li>Grant Writing and Project Management</li>
-					<li>Computational Training and Education</li>
-					<li>Academic Library Innovation</li>
-				</ul>
-			</section>
+	<section>
+		<h2>Current Role & Responsibilities</h2>
+		<p>As Director of the UCLA Library Data Science Center, I oversee:</p>
+		<ul>
+			<li>Research data management and open science initiatives</li>
+			<li>Computational training programs and workshops</li>
+			<li>Grant development and management for major funding initiatives</li>
+			<li>Strategic partnerships across the UC system and national networks</li>
+			<li>Team leadership and professional development</li>
+		</ul>
+	</section>
 
-			<section>
-				<h2>Career Transition</h2>
-				<p>
-					I am currently seeking University Librarian positions where I can apply my extensive 
-					experience in research services, open science leadership, and strategic innovation to 
-					advance academic library missions at the institutional level.
-				</p>
-			</section>
+	<section>
+		<h2>Areas of Expertise</h2>
+		<ul>
+			<li>Open Science and Reproducible Research</li>
+			<li>Research Data Management and Infrastructure</li>
+			<li>Library Leadership and Strategic Planning</li>
+			<li>Grant Writing and Project Management</li>
+			<li>Computational Training and Education</li>
+			<li>Academic Library Innovation</li>
+		</ul>
+	</section>
 
-			<p>
-				<a href="/cv">View my complete CV</a> | 
-				<a href="/projects">Explore my major projects</a> | 
-				<a href="/blog">Read my recent posts</a>
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<section>
+		<h2>Career Transition</h2>
+		<p>
+			I am currently seeking University Librarian positions where I can apply my extensive
+			experience in research services, open science leadership, and strategic innovation to
+			advance academic library missions at the institutional level.
+		</p>
+	</section>
+
+	<p>
+		<a href="/programs">Explore my programs</a> |
+		<a href="/scholarship">View scholarship and outputs</a> |
+		<a href="/talks-grants">Talks and grants</a>
+	</p>
+</BaseLayout>
