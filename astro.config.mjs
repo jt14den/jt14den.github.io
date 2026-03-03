@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://jt14den.github.io',
+	site: 'https://www.tim-dennis.com',
 	integrations: [
 		starlight({
 			title: 'Tim Dennis',
