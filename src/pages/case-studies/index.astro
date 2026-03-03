@@ -1,18 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 const studies = (await getCollection('caseStudies')).sort(
 	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
 );
 ---
 
-<BaseLayout
-	title="Case Studies"
-	description="Concrete research partnerships showing how infrastructure and consulting support translates into research outcomes."
+<StarlightPage
+	frontmatter={{
+		title: 'Case Studies',
+		description:
+			'Concrete research partnerships showing how infrastructure and consulting support translates into research outcomes.',
+	}}
 >
-	<h1>Case Studies</h1>
-
 	<p>
 		These are not success stories in the marketing sense. They are accounts of specific
 		partnerships — what we built, what changed, and why the model matters.
@@ -38,7 +39,7 @@ const studies = (await getCollection('caseStudies')).sort(
 			))
 		}
 	</ul>
-</BaseLayout>
+</StarlightPage>
 
 <style>
 	.study-list {
@@ -60,10 +61,9 @@ const studies = (await getCollection('caseStudies')).sort(
 	.study-list li a:hover {
 		box-shadow: var(--box-shadow);
 	}
-	h2 {
+	.study-list h2 {
 		margin: 0 0 0.25rem;
-		font-size: 1.2rem;
-		color: rgb(var(--black));
+		font-size: 1.15rem;
 	}
 	.partner {
 		font-size: 0.875rem;
@@ -73,11 +73,12 @@ const studies = (await getCollection('caseStudies')).sort(
 	p {
 		margin: 0 0 0.75rem;
 		color: rgb(var(--gray-dark));
+		font-size: 0.95rem;
 	}
 	.outcomes {
 		margin: 0;
 		padding-left: 1.25rem;
-		font-size: 0.9rem;
+		font-size: 0.875rem;
 		color: rgb(var(--gray-dark));
 	}
 </style>

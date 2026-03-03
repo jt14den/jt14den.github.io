@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 export async function getStaticPaths() {
 	const studies = await getCollection('caseStudies');
@@ -13,14 +13,20 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'caseStudies'>;
 
 const study = Astro.props;
-const { Content } = await render(study);
+const { Content, headings } = await render(study);
 const { title, description, partner, year, outcomes, tags } = study.data;
 ---
 
-<BaseLayout title={title} description={description}>
+<StarlightPage
+	frontmatter={{
+		title,
+		description,
+		tableOfContents: headings.length > 1,
+	}}
+	headings={headings}
+>
 	<article>
 		<header class="study-header">
-			<h1>{title}</h1>
 			<div class="meta">
 				{partner && <span class="partner">{partner}</span>}
 				{year && <span class="year">{year}</span>}
@@ -39,22 +45,19 @@ const { title, description, partner, year, outcomes, tags } = study.data;
 			}
 		</header>
 
-		<div class="prose">
+		<div class="sl-markdown-content">
 			<Content />
 		</div>
 	</article>
 
-	<p class="back"><a href="/case-studies">← All case studies</a></p>
-</BaseLayout>
+	<p class="back"><a href="/case-studies/">← All case studies</a></p>
+</StarlightPage>
 
 <style>
 	.study-header {
 		margin-bottom: 2rem;
 		padding-bottom: 1.5rem;
 		border-bottom: 1px solid rgb(var(--gray-light));
-	}
-	h1 {
-		margin-bottom: 0.5rem;
 	}
 	.meta {
 		display: flex;

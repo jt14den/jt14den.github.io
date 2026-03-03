@@ -1,0 +1,101 @@
+/*
+  Custom CSS for Tim Dennis's professional portfolio.
+  Loaded via Starlight's `customCss` option — applied globally.
+
+  Goals:
+  - Load Atkinson Hyperlegible (already in public/fonts/)
+  - Override Starlight accent colors to match brand (#2337ff)
+  - Expose legacy CSS custom properties (--black, --gray, --accent, etc.) so
+    the scoped <style> blocks in each .astro page continue to resolve correctly
+  - Keep changes minimal; let Starlight handle layout, spacing, and a11y
+*/
+
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ── Design tokens ─────────────────────────────────────────────────────── */
+
+:root {
+	/* Font */
+	--sl-font: 'Atkinson', system-ui, -apple-system, sans-serif;
+
+	/* Accent — light mode */
+	--sl-color-accent-low: #c5caff;
+	--sl-color-accent: #2337ff;
+	--sl-color-accent-high: #000d8a;
+
+	/*
+	  Legacy custom properties used by the existing scoped <style> blocks.
+	  Keeping these avoids rewriting every page's inline CSS.
+	*/
+	--black: 15, 18, 25;
+	--gray: 96, 115, 159;
+	--gray-light: 229, 233, 240;
+	--gray-dark: 34, 41, 57;
+	--accent: #2337ff;
+	--accent-dark: #000d8a;
+	--box-shadow:
+		0 2px 6px rgba(96, 115, 159, 0.25),
+		0 8px 24px rgba(96, 115, 159, 0.33);
+}
+
+:root[data-theme='dark'] {
+	/* Accent — dark mode (lighter so it meets contrast on dark bg) */
+	--sl-color-accent-low: #000d8a;
+	--sl-color-accent: #4d62ff;
+	--sl-color-accent-high: #c5caff;
+
+	/* Legacy vars in dark mode */
+	--accent: #4d62ff;
+}
+
+/* ── Header / site title ───────────────────────────────────────────────── */
+
+/* Slightly larger site title weight */
+.site-title {
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+/* ── Content prose ─────────────────────────────────────────────────────── */
+
+/* Use a comfortable reading size inside Starlight's content area */
+.sl-markdown-content {
+	line-height: 1.7;
+}
+
+/* Tighter heading margins inside prose — Starlight defaults are spacious */
+.sl-markdown-content h2 {
+	margin-top: 2rem;
+}
+
+.sl-markdown-content h3 {
+	margin-top: 1.5rem;
+}
+
+/* ── Splash / home page ────────────────────────────────────────────────── */
+
+/* Remove the decorative image slot on the splash hero (Tim uses text only) */
+.hero > .hero-image {
+	display: none;
+}
+
+/* Center the hero text block */
+.hero-html {
+	text-align: center;
+}

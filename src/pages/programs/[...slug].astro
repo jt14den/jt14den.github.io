@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 export async function getStaticPaths() {
 	const programs = await getCollection('programs');
@@ -13,14 +13,20 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'programs'>;
 
 const program = Astro.props;
-const { Content } = await render(program);
+const { Content, headings } = await render(program);
 const { title, description, tags, startYear, collaborators, relatedLinks } = program.data;
 ---
 
-<BaseLayout title={title} description={description}>
+<StarlightPage
+	frontmatter={{
+		title,
+		description,
+		tableOfContents: headings.length > 1,
+	}}
+	headings={headings}
+>
 	<article>
 		<header class="program-header">
-			<h1>{title}</h1>
 			{startYear && <p class="meta">{startYear}–present</p>}
 			<p class="description">{description}</p>
 			{
@@ -34,7 +40,7 @@ const { title, description, tags, startYear, collaborators, relatedLinks } = pro
 			}
 		</header>
 
-		<div class="prose">
+		<div class="sl-markdown-content">
 			<Content />
 		</div>
 
@@ -70,17 +76,14 @@ const { title, description, tags, startYear, collaborators, relatedLinks } = pro
 		}
 	</article>
 
-	<p class="back"><a href="/programs">← All programs</a></p>
-</BaseLayout>
+	<p class="back"><a href="/programs/">← All programs</a></p>
+</StarlightPage>
 
 <style>
 	.program-header {
 		margin-bottom: 2rem;
 		padding-bottom: 1.5rem;
 		border-bottom: 1px solid rgb(var(--gray-light));
-	}
-	h1 {
-		margin-bottom: 0.25rem;
 	}
 	.meta {
 		color: rgb(var(--gray));

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 const allItems = (await getCollection('talks')).sort(
 	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
@@ -21,12 +21,12 @@ const talkYears = Object.keys(talksByYear)
 	.sort((a, b) => b - a);
 ---
 
-<BaseLayout
-	title="Talks & Grants"
-	description="Selected talks, keynotes, and grant awards."
+<StarlightPage
+	frontmatter={{
+		title: 'Grants & Talks',
+		description: 'Grant awards, selected talks, and keynotes.',
+	}}
 >
-	<h1>Talks & Grants</h1>
-
 	<section>
 		<h2>Grants</h2>
 		<ul class="item-list">
@@ -36,9 +36,7 @@ const talkYears = Object.keys(talksByYear)
 						<div class="item-meta">
 							<span class="type">Grant</span>
 							{grant.data.year && <span class="year">{grant.data.year}</span>}
-							{grant.data.amount && (
-								<span class="amount">{grant.data.amount}</span>
-							)}
+							{grant.data.amount && <span class="amount">{grant.data.amount}</span>}
 						</div>
 						<h3>{grant.data.title}</h3>
 						{grant.data.venue && <p class="venue">{grant.data.venue}</p>}
@@ -70,20 +68,20 @@ const talkYears = Object.keys(talksByYear)
 			))
 		}
 	</section>
-</BaseLayout>
+</StarlightPage>
 
 <style>
 	section {
 		margin-bottom: 3rem;
 	}
 	h2 {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		margin-bottom: 1rem;
 		padding-bottom: 0.5rem;
 		border-bottom: 2px solid rgb(var(--gray-light));
 	}
 	h3 {
-		font-size: 1.1rem;
+		font-size: 1.05rem;
 		margin: 0 0 0.25rem;
 	}
 	h4 {
@@ -144,7 +142,7 @@ const talkYears = Object.keys(talksByYear)
 		margin-bottom: 1.5rem;
 	}
 	.year-label {
-		font-size: 1rem;
+		font-size: 0.95rem;
 		color: rgb(var(--gray));
 		margin-bottom: 0.5rem;
 	}

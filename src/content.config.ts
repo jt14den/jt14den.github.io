@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 
 // Shared base fields present in every collection
 const base = {
@@ -75,4 +77,12 @@ const talks = defineCollection({
 	}),
 });
 
-export const collections = { blog, programs, caseStudies, scholarship, talks };
+// Starlight docs collection — required by the Starlight integration.
+// Content lives in src/content/docs/. Currently empty; all portfolio pages
+// use StarlightPage directly from .astro files.
+const docs = defineCollection({
+	loader: docsLoader(),
+	schema: docsSchema(),
+});
+
+export const collections = { docs, blog, programs, caseStudies, scholarship, talks };

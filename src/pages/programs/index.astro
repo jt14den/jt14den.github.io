@@ -1,18 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
 const programs = (await getCollection('programs')).sort(
 	(a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
 );
 ---
 
-<BaseLayout
-	title="Programs"
-	description="Durable programs and initiatives in research data infrastructure, open science education, and workforce capacity."
+<StarlightPage
+	frontmatter={{
+		title: 'Programs',
+		description:
+			'Durable programs and initiatives in research data infrastructure, open science education, and workforce capacity.',
+	}}
 >
-	<h1>Programs</h1>
-
 	<p class="intro">
 		I build programs that outlast a single workshop, a single person, or a single funding cycle.
 	</p>
@@ -22,8 +23,8 @@ const programs = (await getCollection('programs')).sort(
 		good work with data and software, and making sure the underlying systems keep running.
 	</p>
 	<p>
-		Browse the program pages below for the concrete pieces: what we built, how it works, and what
-		it enabled.
+		Browse the program pages below for the concrete pieces: what we built, how it works, and what it
+		enabled.
 	</p>
 
 	<ul class="program-list">
@@ -45,13 +46,12 @@ const programs = (await getCollection('programs')).sort(
 			))
 		}
 	</ul>
-</BaseLayout>
+</StarlightPage>
 
 <style>
 	.intro {
-		font-size: 1.1rem;
+		font-size: 1.05rem;
 		font-weight: 600;
-		color: rgb(var(--black));
 		margin-bottom: 0.5rem;
 	}
 	.program-list {
@@ -75,12 +75,12 @@ const programs = (await getCollection('programs')).sort(
 	}
 	.program-list h2 {
 		margin: 0 0 0.5rem;
-		font-size: 1.25rem;
-		color: rgb(var(--black));
+		font-size: 1.15rem;
 	}
 	.program-list p {
 		margin: 0 0 0.75rem;
 		color: rgb(var(--gray-dark));
+		font-size: 0.95rem;
 	}
 	.tags {
 		display: flex;

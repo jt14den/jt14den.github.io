@@ -1,16 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 ---
 
-<BaseLayout
-	title="Governance"
-	description="Governance work across UC Carpentries, Library Carpentry, and restricted data infrastructure."
+<StarlightPage
+	frontmatter={{
+		title: 'Governance',
+		description:
+			'Governance work across UC Carpentries, Library Carpentry, and restricted data infrastructure.',
+	}}
 >
-	<h1>Governance</h1>
-
 	<p class="intro">
-		I've spent a lot of time building systems that keep running without constant intervention.
-		That requires governance, not just goodwill.
+		I've spent a lot of time building systems that keep running without constant intervention. That
+		requires governance, not just goodwill.
 	</p>
 	<p>
 		Governance work can look invisible from the outside. In practice, it's how programs scale
@@ -20,21 +21,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section>
 		<h2>UC Carpentries</h2>
 		<p>
-			UC Carpentries is a distributed, cross-campus teaching network. I built it into a formal
-			<strong>10-campus</strong> network with shared norms and decision-making structures.
-			During the review period, it delivered <strong>28 workshops reaching 2,896 learners</strong>.
+			<a href="/programs/uc-carpentries/">UC Carpentries</a> is a distributed, cross-campus teaching
+			network. I built it into a formal <strong>10-campus</strong> network with shared norms and
+			decision-making structures. During the review period, it delivered
+			<strong>28 workshops reaching 2,896 learners</strong>.
 		</p>
 		<p>
-			The point isn't volume. It's resilience. The network runs without depending on any
-			single campus.
+			The point isn't volume. It's resilience. The network runs without depending on any single
+			campus.
 		</p>
 	</section>
 
 	<section>
 		<h2>Library Carpentry Curriculum Governance</h2>
-		<p>
-			In Library Carpentry, governance shows up as process:
-		</p>
+		<p>In Library Carpentry, governance shows up as process:</p>
 		<ul>
 			<li>How lessons are reviewed</li>
 			<li>How adoption decisions get made</li>
@@ -43,44 +43,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		</ul>
 		<p>
 			As Chair of the Library Carpentry Curriculum Advisory / Governance group, I formalized
-			adoption pathways and helped bring multiple lessons into the official curriculum,
-			including lessons developed under the IMLS open science work.
+			adoption pathways and helped bring multiple lessons into the official curriculum, including
+			lessons developed under the
+			<a href="/programs/imls-open-science-curriculum/">IMLS open science work</a>.
 		</p>
 	</section>
 
 	<section>
 		<h2>Redivis Governance for Restricted Data</h2>
+		<p>Restricted data environments fail when governance is ad hoc.</p>
 		<p>
-			Restricted data environments fail when governance is ad hoc.
-		</p>
-		<p>
-			When we implemented Redivis, I designed a governance model intended to scale. The goal
-			was to support routine access requests and Data Use Agreement controls without turning
-			the platform into a bottleneck that routes everything to the Director.
+			When we implemented <a href="/programs/redivis-restricted-data/">Redivis</a>, I designed a
+			governance model intended to scale. The goal was to support routine access requests and Data
+			Use Agreement controls without turning the platform into a bottleneck that routes everything
+			to the Director.
 		</p>
 		<p>
 			That governance work is part of why the platform could grow from early workflows into
-			high-throughput research use — from 5 workflows and 444 GB processed to 2.9 PB
-			processed in 2024.
+			high-throughput research use — from 5 workflows and 444 GB processed to 2.9 PB processed in
+			2024.
 		</p>
 	</section>
 
 	<section>
 		<h2>Governance as Sustainability</h2>
 		<p>
-			My bias is toward systems that outlast individuals. Programs like UC Carpentries,
-			platforms like Dataverse and Redivis, and curricula like the IMLS open science lessons
-			only matter if they keep working over time.
+			My bias is toward systems that outlast individuals. Programs like
+			<a href="/programs/uc-carpentries/">UC Carpentries</a>, platforms like
+			<a href="/programs/ucla-dataverse/">Dataverse</a> and
+			<a href="/programs/redivis-restricted-data/">Redivis</a>, and curricula like the
+			<a href="/programs/imls-open-science-curriculum/">IMLS open science lessons</a> only matter
+			if they keep working over time.
 		</p>
 		<p>Governance is what makes that possible.</p>
 	</section>
-</BaseLayout>
+</StarlightPage>
 
 <style>
 	.intro {
 		font-size: 1.05rem;
 		font-weight: 600;
-		color: rgb(var(--black));
 		margin-bottom: 0.5rem;
 	}
 	section {
@@ -90,9 +92,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	}
 	section:last-child {
 		border-bottom: none;
-	}
-	h2 {
-		font-size: 1.4rem;
-		margin-bottom: 0.75rem;
 	}
 </style>
