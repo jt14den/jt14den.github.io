@@ -1,0 +1,183 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const scholarship = (await getCollection('scholarship'))
+	.filter((s) => s.data.status === 'published')
+	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+
+const allTalks = (await getCollection('talks')).filter((t) => t.data.status === 'published');
+const grants = allTalks
+	.filter((t) => t.data.type === 'grant')
+	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+const talks = allTalks
+	.filter((t) => t.data.type === 'talk')
+	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+
+const typeLabels: Record<string, string> = {
+	journal: 'Journal article',
+	'book-chapter': 'Book chapter',
+	report: 'Report',
+	dataset: 'Dataset',
+	curriculum: 'Curriculum',
+	other: 'Output',
+};
+---
+
+<BaseLayout
+	title="CV"
+	description="Curriculum vitae for Tim Dennis, Director of the UCLA Library Data Science Center."
+>
+	<div class="cv-header">
+		<h1>Tim Dennis</h1>
+		<p class="cv-contact">
+			Director, UCLA Library Data Science Center ·
+			<a href="mailto:dennis.tim@gmail.com">dennis.tim@gmail.com</a> ·
+			<a href="https://www.tim-dennis.com">tim-dennis.com</a> ·
+			ORCID <a href="https://orcid.org/0000-0001-6632-3812" target="_blank" rel="noopener">0000-0001-6632-3812</a>
+		</p>
+		<p class="cv-pdf">
+			<a href="/tim_dennis_cv.pdf" target="_blank" rel="noopener">Download PDF version</a>
+		</p>
+	</div>
+
+	<section>
+		<h2>Professional experience</h2>
+		<div class="cv-entry">
+			<div class="cv-entry-header">
+				<strong>Director, UCLA Library Data Science Center</strong>
+				<span class="cv-date">2017 – present</span>
+			</div>
+			<p class="cv-org">University of California, Los Angeles</p>
+			<ul>
+				<li>Lead research data services, open science initiatives, and computational training at UCLA Library</li>
+				<li>Built and direct UCLA Dataverse (1,600+ datasets, 142,000+ downloads) and Redivis restricted data platform (2.9 PB processed in 2024)</li>
+				<li>Founded and coordinate UC Carpentries, a 10-campus training network reaching 2,800+ learners</li>
+				<li>PI and Co-PI on $2M+ in federal and foundation grants</li>
+				<li>Developed DataSquad peer consulting program with 100% post-graduation placement rate</li>
+			</ul>
+		</div>
+
+		<!-- TODO: Add earlier positions (UCSD, UC Berkeley, etc.) -->
+		<div class="cv-entry cv-placeholder">
+			<p><em>Earlier positions — add here</em></p>
+		</div>
+	</section>
+
+	<section>
+		<h2>Education</h2>
+		<!-- TODO: Add education -->
+		<div class="cv-placeholder">
+			<p><em>Education — add here</em></p>
+		</div>
+	</section>
+
+	<section>
+		<h2>Grants & funding</h2>
+		<ul class="item-list">
+			{grants.map((grant) => (
+				<li class="cv-entry">
+					<div class="cv-entry-header">
+						<strong>{grant.data.title}</strong>
+						<span class="cv-date">{grant.data.year}</span>
+					</div>
+					<p class="cv-org">
+						{grant.data.venue}
+						{grant.data.amount && <span class="cv-amount"> · {grant.data.amount}</span>}
+					</p>
+					{grant.data.role && <p class="cv-role">{grant.data.role}</p>}
+					<p>{grant.data.description}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section>
+		<h2>Scholarship</h2>
+		<ul class="item-list">
+			{scholarship.map((output) => (
+				<li class="cv-entry">
+					<div class="cv-entry-header">
+						<strong>{output.data.title}</strong>
+						<span class="cv-date">{output.data.year}</span>
+					</div>
+					<p class="cv-org">
+						<span class="cv-type">{typeLabels[output.data.type] ?? 'Output'}</span>
+						{output.data.venue && <span> · {output.data.venue}</span>}
+					</p>
+					<p>{output.data.description}</p>
+					{output.data.doi && (
+						<a class="doi" href={`https://doi.org/${output.data.doi}`} target="_blank" rel="noopener">
+							DOI: {output.data.doi}
+						</a>
+					)}
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section>
+		<h2>Selected talks & keynotes</h2>
+		<ul class="item-list">
+			{talks.map((talk) => (
+				<li class="cv-entry">
+					<div class="cv-entry-header">
+						<strong>{talk.data.title}</strong>
+						<span class="cv-date">{talk.data.year}</span>
+					</div>
+					<p class="cv-org">
+						{talk.data.venue}
+						{talk.data.role && <span class="cv-role"> · {talk.data.role}</span>}
+					</p>
+					<p>{talk.data.description}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section>
+		<h2>Service & leadership</h2>
+		<!-- TODO: Add service roles (Library Carpentry governance, advisory boards, etc.) -->
+		<div class="cv-placeholder">
+			<p><em>Service — add here</em></p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.cv-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid rgb(var(--gray-light)); }
+	h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+	.cv-contact { font-size: 0.9rem; color: rgb(var(--gray)); margin: 0 0 0.5rem; }
+	.cv-pdf { font-size: 0.875rem; margin: 0; }
+	h2 {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: rgb(var(--gray));
+		margin: 0 0 1rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	section { margin-bottom: 2.5rem; }
+	.cv-entry { margin-bottom: 1.25rem; }
+	.cv-entry-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	.cv-date { font-size: 0.875rem; color: rgb(var(--gray)); white-space: nowrap; }
+	.cv-org { font-size: 0.9rem; color: rgb(var(--gray)); margin: 0.15rem 0 0.35rem; }
+	.cv-amount { font-weight: 700; color: rgb(var(--gray-dark)); }
+	.cv-role { font-size: 0.875rem; color: rgb(var(--gray-dark)); margin: 0 0 0.25rem; font-style: italic; }
+	.cv-type { font-style: italic; }
+	.cv-entry p { font-size: 0.95rem; margin: 0 0 0.25rem; }
+	.cv-entry ul { font-size: 0.95rem; margin: 0.5rem 0 0; padding-left: 1.25rem; }
+	.cv-entry ul li { margin-bottom: 0.25rem; }
+	.doi { font-size: 0.875rem; font-family: monospace; }
+	.cv-placeholder { color: rgb(var(--gray)); font-size: 0.9rem; }
+	.item-list { list-style: none; padding: 0; margin: 0; }
+	.item-list li { border-bottom: 1px solid rgb(var(--gray-light)); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
+	.item-list li:last-child { border-bottom: none; }
+</style>

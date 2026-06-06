@@ -1,46 +1,86 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	"mainEntity": {
+		"@type": "Person",
+		"name": "Tim Dennis",
+		"jobTitle": "Director, UCLA Library Data Science Center",
+		"affiliation": {
+			"@type": "EducationalOrganization",
+			"name": "University of California, Los Angeles"
+		},
+		"url": "https://www.tim-dennis.com",
+		"sameAs": [
+			"https://orcid.org/0000-0001-6632-3812",
+			"https://scholar.google.com/citations?user=RpiRBrAAAAAJ",
+			"https://github.com/jt14den",
+			"https://www.linkedin.com/in/jtimdennis/",
+			"https://www.library.ucla.edu/about/staff/tim-dennis/"
+		],
+		"knowsAbout": [
+			"Open Science",
+			"Research Data Management",
+			"Research Data Infrastructure",
+			"Data Governance",
+			"Library Leadership",
+			"Computational Training",
+			"Workforce Development"
+		]
+	}
+};
 ---
 
-<BaseLayout title="About" description="Professional background and experience of Tim Dennis, Director of the UCLA Library Data Science Center.">
+<BaseLayout
+	title="About Tim Dennis"
+	fullTitle={true}
+	description="Director of the UCLA Library Data Science Center — 26 years building research data infrastructure, open science networks, and scalable training programs across the University of California system."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</Fragment>
+
 	<h1>About Tim Dennis</h1>
 
 	<section>
-		<h2>Professional Overview</h2>
 		<p>
-			I serve as Director of the UCLA Library Data Science Center, where I lead initiatives in
-			research data services, open science, and computational training. With 26 years of experience
-			in the UC system, I focus on building capacity for reproducible research and advancing library
-			leadership in the digital research landscape.
+			I'm Director of the <a href="/programs/ucla-data-science-center/">UCLA Library Data Science Center</a>,
+			a position I've held since 2017. Over 26 years in the UC system, I've built the infrastructure,
+			programs, and networks that make data-intensive research sustainable at institutional scale.
+		</p>
+		<p>
+			That work includes <a href="/programs/ucla-dataverse/">UCLA Dataverse</a> — a campus-wide
+			research data publishing platform with 1,600+ datasets — <a href="/programs/redivis-restricted-data/">Redivis</a>,
+			UCLA's governed environment for restricted and sensitive data, and the
+			<a href="/programs/uc-carpentries/">UC Carpentries</a> network spanning 10 campuses and 2,800+
+			learners. I'm Co-PI on a <a href="/programs/uc-ospo-education/">$1.85M Sloan Foundation grant</a>
+			building open source program offices across UC, and PI on a
+			<a href="/programs/imls-open-science-curriculum/">$237,000 IMLS grant</a> developing open science
+			curriculum for librarians nationally.
+		</p>
+		<p>
+			My work sits at the intersection of research infrastructure, open science policy, and workforce
+			development. I care about building systems that outlast any single grant, any single person, and
+			any single funding cycle.
 		</p>
 	</section>
 
 	<section>
-		<h2>Current Role & Responsibilities</h2>
-		<p>As Director of the UCLA Library Data Science Center, I oversee:</p>
+		<h2>Areas of focus</h2>
 		<ul>
-			<li>Research data management and open science initiatives</li>
-			<li>Computational training programs and workshops</li>
-			<li>Grant development and management for major funding initiatives</li>
-			<li>Strategic partnerships across the UC system and national networks</li>
-			<li>Team leadership and professional development</li>
+			<li>Research data infrastructure and repositories</li>
+			<li>Open science policy and practice</li>
+			<li>Computational training and curriculum development</li>
+			<li>Library leadership and strategic planning</li>
+			<li>Workforce development and peer consulting models</li>
+			<li>Data governance for restricted and sensitive datasets</li>
 		</ul>
 	</section>
 
 	<section>
-		<h2>Areas of Expertise</h2>
-		<ul>
-			<li>Open Science and Reproducible Research</li>
-			<li>Research Data Management and Infrastructure</li>
-			<li>Library Leadership and Strategic Planning</li>
-			<li>Grant Writing and Project Management</li>
-			<li>Computational Training and Education</li>
-			<li>Academic Library Innovation</li>
-		</ul>
-	</section>
-
-	<section>
-		<h2>Profiles & Identifiers</h2>
+		<h2>Profiles & identifiers</h2>
 		<ul class="profiles">
 			<li>
 				<a href="https://orcid.org/0000-0001-6632-3812" target="_blank" rel="noopener">
@@ -70,7 +110,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</section>
 
 	<p>
-		<a href="/tim_dennis_cv.pdf" download>Download CV (PDF)</a> ·
+		<a href="/tim_dennis_cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a> ·
+		<a href="/cv/">CV</a> ·
 		<a href="/programs/">Programs</a> ·
 		<a href="/scholarship/">Scholarship</a> ·
 		<a href="/talks-grants/">Grants & talks</a>

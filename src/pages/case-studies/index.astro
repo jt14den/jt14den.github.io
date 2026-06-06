@@ -7,7 +7,7 @@ const studies = (await getCollection('caseStudies')).sort(
 );
 ---
 
-<BaseLayout title="Case Studies" description="Concrete research partnerships showing how infrastructure and consulting support translates into research outcomes.">
+<BaseLayout title="Case Studies" description="Concrete research partnerships — including a pipeline reduced from 318 to 2 minutes and a $5M follow-on grant — showing how infrastructure work translates into measurable research outcomes.">
 	<h1>Case Studies</h1>
 	<p class="page-intro">
 		These are not success stories in the marketing sense. They are accounts of specific
@@ -26,7 +26,7 @@ const studies = (await getCollection('caseStudies')).sort(
 					)}
 					<p>{study.data.description}</p>
 					{study.data.outcomes.length > 0 && (
-						<ul style="font-size: 0.875rem; padding-left: 1.25rem; margin: 0; color: rgb(var(--gray-dark));">
+						<ul class="outcomes-preview">
 							{study.data.outcomes.slice(0, 2).map((o) => (
 								<li>{o}</li>
 							))}
@@ -40,4 +40,18 @@ const studies = (await getCollection('caseStudies')).sort(
 
 <style>
 	h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+	.outcomes-preview {
+		list-style: none;
+		padding: 0.75rem 0 0;
+		margin: 0.5rem 0 0;
+		border-top: 1px solid rgb(var(--gray-light));
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+	.outcomes-preview li {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: rgb(var(--gray-dark));
+	}
 </style>

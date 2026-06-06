@@ -66,13 +66,20 @@ const { title, description, partner, year, outcomes, tags } = study.data;
 	}
 	.partner { font-style: italic; }
 	.outcomes-block h3 {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
 		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.06em;
 		color: rgb(var(--gray));
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.75rem;
 	}
-	.outcomes-block ul { margin: 0; padding-left: 1.25rem; }
-	.outcomes-block li { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.outcomes-block ul { margin: 0; padding: 0; list-style: none; }
+	.outcomes-block li {
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: rgb(var(--black));
+		padding: 0.5rem 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.outcomes-block li:last-child { border-bottom: none; }
 	.back { margin-top: 2rem; font-size: 0.9rem; }
 </style>

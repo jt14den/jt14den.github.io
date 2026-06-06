@@ -6,6 +6,42 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"name": "Tim Dennis",
+			"url": "https://www.tim-dennis.com",
+			"description": SITE_DESCRIPTION,
+			"author": { "@type": "Person", "name": "Tim Dennis" }
+		},
+		{
+			"@type": "Person",
+			"name": "Tim Dennis",
+			"jobTitle": "Director, UCLA Library Data Science Center",
+			"affiliation": {
+				"@type": "EducationalOrganization",
+				"name": "University of California, Los Angeles"
+			},
+			"url": "https://www.tim-dennis.com",
+			"sameAs": [
+				"https://orcid.org/0000-0001-6632-3812",
+				"https://scholar.google.com/citations?user=RpiRBrAAAAAJ",
+				"https://github.com/jt14den",
+				"https://www.linkedin.com/in/jtimdennis/"
+			],
+			"knowsAbout": [
+				"Open Science",
+				"Research Data Management",
+				"Research Data Infrastructure",
+				"Data Governance",
+				"Library Leadership"
+			]
+		}
+	]
+};
+
 // Latest 5 published blog posts
 const blogPosts = (await getCollection('blog'))
 	.filter((p) => p.data.status === 'published')
@@ -26,20 +62,21 @@ const allNotes = (await getCollection('notes'))
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title="Tim Dennis | Research Data Infrastructure & Academic Library Leadership" description={SITE_DESCRIPTION} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 	</head>
 	<body>
 		<Header />
 		<main id="main-content">
 			<div class="home-intro">
 				<p>
-					I'm Tim Dennis — Director of the UCLA Library Data Science Center. I build research
-					data infrastructure, open science programs, and computational training that outlasts
-					any single grant cycle.
+					I'm Tim Dennis. I've spent 26 years in the UC system building research data
+					infrastructure that keeps running after the grant ends, after the staff
+					turns over, after the priorities shift.
 				</p>
 				<p>
-					This is where I write about research data, open science, library leadership, and
-					building things that last.
+					I run the UCLA Library Data Science Center. This is where I write about what that
+					work actually takes.
 				</p>
 			</div>
 

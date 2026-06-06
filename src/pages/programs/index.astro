@@ -2,37 +2,91 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const programs = (await getCollection('programs')).sort(
-	(a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
-);
+const allPrograms = await getCollection('programs');
+const byId = Object.fromEntries(allPrograms.map((p) => [p.id, p]));
+
+const umbrella = byId['ucla-data-science-center'];
+
+const pillars = [
+	{
+		label: 'Infrastructure & Platforms',
+		ids: ['ucla-dataverse', 'redivis-restricted-data'],
+	},
+	{
+		label: 'Workforce & Capacity',
+		ids: ['ucla-datasquad', 'imls-open-science-curriculum'],
+	},
+	{
+		label: 'System-Wide Networks',
+		ids: ['uc-carpentries', 'uc-ospo-education'],
+	},
+];
 ---
 
-<BaseLayout title="Programs" description="Durable programs and initiatives in research data infrastructure, open science education, and workforce capacity.">
+<BaseLayout title="Programs" description="Infrastructure platforms, system-wide open science networks, and workforce development programs built at UCLA and across the University of California — designed to outlast any single grant cycle.">
 	<h1>Programs</h1>
 	<p class="page-intro">
 		I build programs that outlast a single workshop, a single person, or a single funding cycle.
 		Most of my work sits at the intersection of research infrastructure, open source, and education.
 	</p>
 
-	<ul class="card-list">
-		{programs.map((program) => (
+	{umbrella && (
+		<ul class="card-list umbrella-card">
 			<li>
-				<a href={`/programs/${program.id}/`}>
-					<h2>{program.data.title}</h2>
-					<p>{program.data.description}</p>
-					{program.data.tags.length > 0 && (
+				<a href={`/programs/${umbrella.id}/`}>
+					<h2>{umbrella.data.title}</h2>
+					<p>{umbrella.data.description}</p>
+					{umbrella.data.tags.length > 0 && (
 						<ul class="tags">
-							{program.data.tags.map((tag) => (
-								<li>{tag}</li>
-							))}
+							{umbrella.data.tags.map((tag) => <li>{tag}</li>)}
 						</ul>
 					)}
 				</a>
 			</li>
-		))}
-	</ul>
+		</ul>
+	)}
+
+	{pillars.map((pillar) => {
+		const items = pillar.ids.map((id) => byId[id]).filter(Boolean);
+		return (
+			<div class="pillar">
+				<h2 class="pillar-label">{pillar.label}</h2>
+				<ul class="card-list">
+					{items.map((program) => (
+						<li>
+							<a href={`/programs/${program.id}/`}>
+								<h3>{program.data.title}</h3>
+								<p>{program.data.description}</p>
+								{program.data.tags.length > 0 && (
+									<ul class="tags">
+										{program.data.tags.map((tag) => <li>{tag}</li>)}
+									</ul>
+								)}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		);
+	})}
 </BaseLayout>
 
 <style>
 	h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+	.umbrella-card { margin-bottom: 2.5rem; }
+	.pillar { margin-bottom: 2.5rem; }
+	.pillar-label {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.75rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.card-list h3 {
+		font-size: 1.1rem;
+		margin: 0 0 0.35rem;
+		color: rgb(var(--black));
+	}
 </style>
