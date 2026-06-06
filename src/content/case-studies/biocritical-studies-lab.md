@@ -38,3 +38,7 @@ DataSquad students contributed directly to the work — pairing workforce develo
 If research support creates dependency, it hasn't succeeded. The measure of good infrastructure work is whether the research group can keep going without you.
 
 That's the kind of model I'm trying to normalize.
+
+## Press
+
+- [UCLA BioCritical Studies Lab combines social, life sciences to analyze jail deaths](https://dailybruin.com/2026/01/25/ucla-biocritical-studies-lab-combines-social-life-sciences-to-analyze-jail-deaths) — *Daily Bruin*, January 2026

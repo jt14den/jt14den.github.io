@@ -2,6 +2,9 @@
 title: "From Teaching Workshops to Building Research Infrastructure"
 description: "How eight years of work at UCLA evolved from teaching data skills to building the systems that make open, sustainable research possible."
 pubDate: 2026-03-01
+status: published
+type: essay
+tags: [research infrastructure, carpentries, UCLA, open science]
 ---
 
 By 2018, I was teaching constantly.

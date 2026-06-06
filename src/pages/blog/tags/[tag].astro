@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Header from '../../../components/Header.astro';
+import { SITE_TITLE } from '../../../consts';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const notes = await getCollection('notes');
+
+	// Collect all tags from both collections
+	const tagSet = new Set<string>();
+	posts.forEach((p) => p.data.tags.forEach((t) => tagSet.add(t)));
+	notes.filter((n) => n.data.promoteToBlog).forEach((n) => n.data.tags.forEach((t) => tagSet.add(t)));
+
+	return Array.from(tagSet).map((tag) => ({
+		params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+		props: { tag },
+	}));
+}
+
+const { tag } = Astro.props;
+const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+
+const posts = (await getCollection('blog'))
+	.filter(
+		(p) =>
+			p.data.status === 'published' &&
+			p.data.tags.some((t) => t.toLowerCase().replace(/\s+/g, '-') === tagSlug),
+	)
+	.sort((a, b) => {
+		const da = (a.data.date ?? a.data.pubDate)?.valueOf() ?? 0;
+		const db = (b.data.date ?? b.data.pubDate)?.valueOf() ?? 0;
+		return db - da;
+	});
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`#${tag} — ${SITE_TITLE}`} description={`Posts tagged "${tag}"`} />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<p style="font-size: 0.85rem; color: rgb(var(--gray)); margin-bottom: 0.5rem;">
+				<a href="/blog/" style="color: rgb(var(--gray)); text-decoration: none;">Blog</a> › Tag
+			</p>
+			<h1 style="font-size: 1.4rem; margin-bottom: 1.5rem;">#{tag}</h1>
+
+			{posts.length > 0 ? (
+				<ul class="post-list">
+					{posts.map((post) => {
+						const d = post.data.date ?? post.data.pubDate;
+						return (
+							<li>
+								<p class="post-meta">
+									{d && <FormattedDate date={d} />}
+								</p>
+								<p class="post-title">
+									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								</p>
+								{post.data.description && (
+									<p class="post-desc">{post.data.description}</p>
+								)}
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<p style="color: rgb(var(--gray));">No posts with this tag.</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

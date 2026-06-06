@@ -1,113 +1,102 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { SITE_TITLE } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Include published posts + notes that promoted to blog
+const blogPosts = (await getCollection('blog'))
+	.filter((p) => p.data.status === 'published')
+	.sort((a, b) => {
+		const da = (a.data.date ?? a.data.pubDate)?.valueOf() ?? 0;
+		const db = (b.data.date ?? b.data.pubDate)?.valueOf() ?? 0;
+		return db - da;
+	});
+
+const promotedNotes = (await getCollection('notes'))
+	.filter((n) => n.data.status === 'published' && n.data.promoteToBlog)
+	.sort((a, b) => ((b.data.date)?.valueOf() ?? 0) - ((a.data.date)?.valueOf() ?? 0));
+
+// Gather all unique tags
+const allTags = [
+	...new Set([
+		...blogPosts.flatMap((p) => p.data.tags),
+		...promotedNotes.flatMap((n) => n.data.tags),
+	]),
+].sort();
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title={`Blog — ${SITE_TITLE}`} description="Writing on research data, open science, library leadership, and building things that last." />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
+		<main id="main-content" data-pagefind-ignore>
+			<h1 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Blog</h1>
+			<p style="color: rgb(var(--gray)); font-size: 0.9rem; margin-bottom: 1.5rem;">
+				<a href="/blog/archive/">Archive</a>
+				{allTags.length > 0 && ' · Tags: '}
+				{allTags.slice(0, 8).map((tag, i) => (
+					<>
+						<a href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>{tag}</a>
+						{i < Math.min(allTags.length, 8) - 1 && ', '}
+					</>
+				))}
+			</p>
+
+			{blogPosts.length > 0 || promotedNotes.length > 0 ? (
+				<ul class="post-list">
+					{blogPosts.map((post) => {
+						const d = post.data.date ?? post.data.pubDate;
+						return (
 							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+								<p class="post-meta">
+									{d && <FormattedDate date={d} />}
+									{post.data.type === 'crosspost' && (
+										<span class="type-badge crosspost">Crosspost</span>
 									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
+									{post.data.type === 'linkpost' && (
+										<span class="type-badge linkpost">Link</span>
+									)}
+									{post.data.tags.slice(0, 2).map((tag) => (
+										<a
+											href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
+											class="tag"
+											style="font-size: 0.72rem;"
+										>{tag}</a>
+									))}
+								</p>
+								<p class="post-title">
+									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								</p>
+								{post.data.description && (
+									<p class="post-desc">{post.data.description}</p>
+								)}
 							</li>
-						))
-					}
+						);
+					})}
+					{promotedNotes.map((note) => (
+						<li>
+							<p class="post-meta">
+								{note.data.date && <FormattedDate date={note.data.date} />}
+								<span class="type-badge from-notes">From Notes</span>
+							</p>
+							<p class="post-title">
+								<a href={`/notes/${note.id}/`}>{note.data.title}</a>
+							</p>
+							{note.data.description && (
+								<p class="post-desc">{note.data.description}</p>
+							)}
+						</li>
+					))}
 				</ul>
-			</section>
+			) : (
+				<p style="color: rgb(var(--gray));">No published posts yet.</p>
+			)}
 		</main>
 		<Footer />
 	</body>

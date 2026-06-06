@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
 	const programs = await getCollection('programs');
@@ -13,103 +13,71 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'programs'>;
 
 const program = Astro.props;
-const { Content, headings } = await render(program);
+const { Content } = await render(program);
 const { title, description, tags, startYear, collaborators, relatedLinks } = program.data;
 ---
 
-<StarlightPage
-	frontmatter={{
-		title,
-		description,
-		tableOfContents: headings.length > 1,
-	}}
-	headings={headings}
->
-	<article>
+<BaseLayout title={title} description={description}>
+	<article data-pagefind-body>
 		<header class="program-header">
+			<h1>{title}</h1>
 			{startYear && <p class="meta">{startYear}–present</p>}
 			<p class="description">{description}</p>
-			{
-				tags.length > 0 && (
-					<ul class="tags">
-						{tags.map((tag) => (
-							<li>{tag}</li>
-						))}
-					</ul>
-				)
-			}
+			{tags.length > 0 && (
+				<ul class="tags">
+					{tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+				</ul>
+			)}
 		</header>
 
-		<div class="sl-markdown-content">
+		<div class="prose">
 			<Content />
 		</div>
 
-		{
-			(collaborators.length > 0 || relatedLinks.length > 0) && (
-				<aside class="program-meta">
-					{collaborators.length > 0 && (
-						<div>
-							<h3>Collaborators</h3>
-							<ul>
-								{collaborators.map((c) => (
-									<li>{c}</li>
-								))}
-							</ul>
-						</div>
-					)}
-					{relatedLinks.length > 0 && (
-						<div>
-							<h3>Links</h3>
-							<ul>
-								{relatedLinks.map((link) => (
-									<li>
-										<a href={link.url} target="_blank" rel="noopener">
-											{link.label}
-										</a>
-									</li>
-								))}
-							</ul>
-						</div>
-					)}
-				</aside>
-			)
-		}
+		{(collaborators.length > 0 || relatedLinks.length > 0) && (
+			<aside class="program-meta">
+				{collaborators.length > 0 && (
+					<div>
+						<h3>Collaborators</h3>
+						<ul>
+							{collaborators.map((c) => (
+								<li>{c}</li>
+							))}
+						</ul>
+					</div>
+				)}
+				{relatedLinks.length > 0 && (
+					<div>
+						<h3>Links</h3>
+						<ul>
+							{relatedLinks.map((link) => (
+								<li>
+									<a href={link.url} target="_blank" rel="noopener">
+										{link.label}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</aside>
+		)}
 	</article>
 
 	<p class="back"><a href="/programs/">← All programs</a></p>
-</StarlightPage>
+</BaseLayout>
 
 <style>
+	h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
 	.program-header {
 		margin-bottom: 2rem;
 		padding-bottom: 1.5rem;
 		border-bottom: 1px solid rgb(var(--gray-light));
 	}
-	.meta {
-		color: rgb(var(--gray));
-		font-size: 0.9rem;
-		margin: 0 0 0.75rem;
-	}
-	.description {
-		font-size: 1.05rem;
-		color: rgb(var(--gray-dark));
-		margin: 0 0 1rem;
-	}
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.tags li {
-		font-size: 0.75rem;
-		padding: 0.2rem 0.6rem;
-		background: rgb(var(--gray-light));
-		border-radius: 999px;
-		color: rgb(var(--gray-dark));
-	}
+	.meta { color: rgb(var(--gray)); font-size: 0.9rem; margin: 0 0 0.75rem; }
+	.description { font-size: 1.05rem; color: rgb(var(--gray-dark)); margin: 0 0 1rem; }
 	.program-meta {
 		margin-top: 2rem;
 		padding-top: 1.5rem;
@@ -125,17 +93,7 @@ const { title, description, tags, startYear, collaborators, relatedLinks } = pro
 		color: rgb(var(--gray));
 		margin-bottom: 0.5rem;
 	}
-	.program-meta ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.program-meta li {
-		font-size: 0.9rem;
-		margin-bottom: 0.25rem;
-	}
-	.back {
-		margin-top: 2rem;
-		font-size: 0.9rem;
-	}
+	.program-meta ul { list-style: none; padding: 0; margin: 0; }
+	.program-meta li { font-size: 0.9rem; margin-bottom: 0.25rem; }
+	.back { margin-top: 2rem; font-size: 0.9rem; }
 </style>

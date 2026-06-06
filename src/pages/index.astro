@@ -1,43 +1,125 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+// Latest 5 published blog posts
+const blogPosts = (await getCollection('blog'))
+	.filter((p) => p.data.status === 'published')
+	.sort((a, b) => {
+		const da = (a.data.date ?? a.data.pubDate)?.valueOf() ?? 0;
+		const db = (b.data.date ?? b.data.pubDate)?.valueOf() ?? 0;
+		return db - da;
+	})
+	.slice(0, 5);
+
+// Latest 3 notes + blog-promoted notes
+const allNotes = (await getCollection('notes'))
+	.filter((n) => n.data.status === 'published')
+	.sort((a, b) => ((b.data.date)?.valueOf() ?? 0) - ((a.data.date)?.valueOf() ?? 0))
+	.slice(0, 3);
 ---
 
-<StarlightPage
-	frontmatter={{
-		title: 'Tim Dennis',
-		description:
-			'Director, UCLA Library Data Science Center — programs, scholarship, and leadership in research data services and open science.',
-		template: 'splash',
-		hero: {
-			title: 'Tim Dennis',
-			tagline:
-				'Director, UCLA Library Data Science Center — programs, scholarship, and leadership in research data services and open science.',
-			actions: [
-				{ text: 'Programs', link: '/programs/', icon: 'right-arrow', variant: 'primary' },
-				{ text: 'Impact', link: '/impact/', variant: 'secondary' },
-			],
-		},
-	}}
->
-	<div class="home-body">
-		<p>
-			26 years of experience in the UC system, building research data infrastructure, open science
-			programs, and computational training that outlast any single grant cycle.
-		</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<div class="home-intro">
+				<p>
+					I'm Tim Dennis — Director of the UCLA Library Data Science Center. I build research
+					data infrastructure, open science programs, and computational training that outlasts
+					any single grant cycle.
+				</p>
+				<p>
+					This is where I write about research data, open science, library leadership, and
+					building things that last.
+				</p>
+			</div>
 
-		<p>
-			<a href="/case-studies/">Case studies</a> ·
-			<a href="/scholarship/">Scholarship</a> ·
-			<a href="/talks-grants/">Grants & talks</a> ·
-			<a href="/about/">About</a>
-		</p>
-	</div>
-</StarlightPage>
+			<section class="home-section">
+				<h2>Recent writing</h2>
+				{blogPosts.length > 0 ? (
+					<ul class="post-list">
+						{blogPosts.map((post) => {
+							const d = post.data.date ?? post.data.pubDate;
+							return (
+								<li>
+									<p class="post-meta">
+										{d && <FormattedDate date={d} />}
+										{post.data.type === 'crosspost' && (
+											<span class="type-badge crosspost">Crosspost</span>
+										)}
+										{post.data.type === 'linkpost' && (
+											<span class="type-badge linkpost">Link</span>
+										)}
+									</p>
+									<p class="post-title">
+										<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+									</p>
+									{post.data.description && (
+										<p class="post-desc">{post.data.description}</p>
+									)}
+								</li>
+							);
+						})}
+					</ul>
+				) : (
+					<p style="color: rgb(var(--gray)); font-size: 0.95rem;">No posts yet.</p>
+				)}
+				<p style="margin-top: 1rem; font-size: 0.9rem;">
+					<a href="/blog/">All posts →</a>
+				</p>
+			</section>
 
-<style>
-	.home-body {
-		max-width: 44rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-</style>
+			{allNotes.length > 0 && (
+				<section class="home-section">
+					<h2>Notes</h2>
+					<ul class="post-list">
+						{allNotes.map((note) => (
+							<li>
+								<p class="post-meta">
+									{note.data.date && <FormattedDate date={note.data.date} />}
+									{note.data.type === 'linkpost' && (
+										<span class="type-badge linkpost">Link</span>
+									)}
+									{note.data.type === 'crosspost' && (
+										<span class="type-badge crosspost">Crosspost</span>
+									)}
+								</p>
+								<p class="post-title">
+									<a href={`/notes/${note.id}/`}>{note.data.title}</a>
+								</p>
+								{note.data.description && (
+									<p class="post-desc">{note.data.description}</p>
+								)}
+							</li>
+						))}
+					</ul>
+					<p style="margin-top: 1rem; font-size: 0.9rem;">
+						<a href="/notes/">All notes →</a>
+					</p>
+				</section>
+			)}
+
+			<section class="home-section">
+				<h2>Work</h2>
+				<div class="home-links">
+					<a href="/programs/">Programs</a>
+					<a href="/impact/">Impact</a>
+					<a href="/case-studies/">Case Studies</a>
+					<a href="/scholarship/">Scholarship</a>
+					<a href="/talks-grants/">Talks & Grants</a>
+					<a href="/governance/">Governance</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog'))
+	.filter((p) => p.data.status === 'published')
+	.sort((a, b) => {
+		const da = (a.data.date ?? a.data.pubDate)?.valueOf() ?? 0;
+		const db = (b.data.date ?? b.data.pubDate)?.valueOf() ?? 0;
+		return db - da;
+	});
+
+// Group by year
+const byYear: Record<number, typeof posts> = {};
+for (const post of posts) {
+	const d = post.data.date ?? post.data.pubDate;
+	const year = d ? new Date(d).getFullYear() : 0;
+	if (!byYear[year]) byYear[year] = [];
+	byYear[year].push(post);
+}
+const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Archive — ${SITE_TITLE}`} description="All blog posts by year." />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<p style="font-size: 0.85rem; color: rgb(var(--gray)); margin-bottom: 0.5rem;">
+				<a href="/blog/" style="color: rgb(var(--gray)); text-decoration: none;">Blog</a> › Archive
+			</p>
+			<h1 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Archive</h1>
+
+			{years.map((year) => (
+				<div class="archive-year">
+					<h2>{year !== 0 ? year : 'Undated'}</h2>
+					<ul class="post-list">
+						{byYear[year].map((post) => {
+							const d = post.data.date ?? post.data.pubDate;
+							return (
+								<li>
+									<p class="post-meta">
+										{d && <FormattedDate date={d} />}
+									</p>
+									<p class="post-title">
+										<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+									</p>
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			))}
+		</main>
+		<Footer />
+	</body>
+</html>

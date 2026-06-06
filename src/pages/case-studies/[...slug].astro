@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
 	const studies = await getCollection('caseStudies');
@@ -13,47 +13,45 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'caseStudies'>;
 
 const study = Astro.props;
-const { Content, headings } = await render(study);
+const { Content } = await render(study);
 const { title, description, partner, year, outcomes, tags } = study.data;
 ---
 
-<StarlightPage
-	frontmatter={{
-		title,
-		description,
-		tableOfContents: headings.length > 1,
-	}}
-	headings={headings}
->
-	<article>
+<BaseLayout title={title} description={description}>
+	<article data-pagefind-body>
 		<header class="study-header">
+			<h1>{title}</h1>
 			<div class="meta">
 				{partner && <span class="partner">{partner}</span>}
 				{year && <span class="year">{year}</span>}
 			</div>
-			{
-				outcomes.length > 0 && (
-					<div class="outcomes-block">
-						<h3>Key outcomes</h3>
-						<ul>
-							{outcomes.map((o) => (
-								<li>{o}</li>
-							))}
-						</ul>
-					</div>
-				)
-			}
+			{outcomes.length > 0 && (
+				<div class="outcomes-block">
+					<h3>Key outcomes</h3>
+					<ul>
+						{outcomes.map((o) => (
+							<li>{o}</li>
+						))}
+					</ul>
+				</div>
+			)}
+			{tags.length > 0 && (
+				<ul class="tags" style="margin-top: 1rem;">
+					{tags.map((tag) => <li>{tag}</li>)}
+				</ul>
+			)}
 		</header>
 
-		<div class="sl-markdown-content">
+		<div class="prose">
 			<Content />
 		</div>
 	</article>
 
 	<p class="back"><a href="/case-studies/">← All case studies</a></p>
-</StarlightPage>
+</BaseLayout>
 
 <style>
+	h1 { font-size: 1.8rem; margin-bottom: 0.75rem; }
 	.study-header {
 		margin-bottom: 2rem;
 		padding-bottom: 1.5rem;
@@ -66,9 +64,7 @@ const { title, description, partner, year, outcomes, tags } = study.data;
 		font-size: 0.9rem;
 		color: rgb(var(--gray));
 	}
-	.partner {
-		font-style: italic;
-	}
+	.partner { font-style: italic; }
 	.outcomes-block h3 {
 		font-size: 0.875rem;
 		text-transform: uppercase;
@@ -76,16 +72,7 @@ const { title, description, partner, year, outcomes, tags } = study.data;
 		color: rgb(var(--gray));
 		margin-bottom: 0.5rem;
 	}
-	.outcomes-block ul {
-		margin: 0;
-		padding-left: 1.25rem;
-	}
-	.outcomes-block li {
-		font-size: 0.95rem;
-		margin-bottom: 0.25rem;
-	}
-	.back {
-		margin-top: 2rem;
-		font-size: 0.9rem;
-	}
+	.outcomes-block ul { margin: 0; padding-left: 1.25rem; }
+	.outcomes-block li { font-size: 0.95rem; margin-bottom: 0.25rem; }
+	.back { margin-top: 2rem; font-size: 0.9rem; }
 </style>

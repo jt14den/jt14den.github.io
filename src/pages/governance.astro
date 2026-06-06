@@ -1,14 +1,9 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<StarlightPage
-	frontmatter={{
-		title: 'Governance',
-		description:
-			'Governance work across UC Carpentries, Library Carpentry, and restricted data infrastructure.',
-	}}
->
+<BaseLayout title="Governance" description="Governance work across UC Carpentries, Library Carpentry, and restricted data infrastructure.">
+	<h1>Governance</h1>
 	<p class="intro">
 		I've spent a lot of time building systems that keep running without constant intervention. That
 		requires governance, not just goodwill.
@@ -55,8 +50,7 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 		<p>
 			When we implemented <a href="/programs/redivis-restricted-data/">Redivis</a>, I designed a
 			governance model intended to scale. The goal was to support routine access requests and Data
-			Use Agreement controls without turning the platform into a bottleneck that routes everything
-			to the Director.
+			Use Agreement controls without turning the platform into a bottleneck.
 		</p>
 		<p>
 			That governance work is part of why the platform could grow from early workflows into
@@ -77,20 +71,16 @@ import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 		</p>
 		<p>Governance is what makes that possible.</p>
 	</section>
-</StarlightPage>
+</BaseLayout>
 
 <style>
-	.intro {
-		font-size: 1.05rem;
-		font-weight: 600;
-		margin-bottom: 0.5rem;
-	}
+	h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+	h2 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+	.intro { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
 	section {
-		margin-bottom: 3rem;
+		margin-bottom: 2.5rem;
 		padding-bottom: 2rem;
 		border-bottom: 1px solid rgb(var(--gray-light));
 	}
-	section:last-child {
-		border-bottom: none;
-	}
+	section:last-child { border-bottom: none; }
 </style>

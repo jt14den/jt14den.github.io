@@ -1,8 +1,42 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+/* Tim Dennis — minimal blog theme
+   Based on Bear Blog CSS (MIT) with additions for tags, post lists, badges.
+   https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+*/
+
+/* ── Fonts ──────────────────────────────────────────────────────────────── */
+
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-regular.woff2') format('woff2'),
+	     url('/fonts/atkinson-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-bold.woff2') format('woff2'),
+	     url('/fonts/atkinson-bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Atkinson';
+	src: url('/fonts/atkinson-bold-italic.woff2') format('woff2');
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* ── Design tokens ──────────────────────────────────────────────────────── */
 
 :root {
 	--accent: #2337ff;
@@ -13,25 +47,21 @@
 	--gray-dark: 34, 41, 57;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
 	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px
-		rgba(var(--gray), 33%);
+		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
+		0 16px 32px rgba(var(--gray), 33%);
+	--max-w: 720px;
 }
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
+
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: 'Atkinson', system-ui, -apple-system, sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -43,12 +73,16 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 }
+
 main {
-	width: 720px;
+	width: var(--max-w);
 	max-width: calc(100% - 2em);
-	margin: auto;
+	margin: 0 auto;
 	padding: 3em 1em;
 }
+
+/* ── Headings ────────────────────────────────────────────────────────────── */
+
 h1,
 h2,
 h3,
@@ -59,82 +93,81 @@ h6 {
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.1em; }
+h5 { font-size: 1em; }
+
+/* ── Prose ───────────────────────────────────────────────────────────────── */
+
+strong, b { font-weight: 700; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+p { margin-bottom: 1em; }
+.prose p { margin-bottom: 1.5em; }
+
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
+	font-size: 0.875em;
 }
+
 pre {
-	padding: 1.5em;
+	padding: 1.25em 1.5em;
 	border-radius: 8px;
+	overflow-x: auto;
 }
-pre > code {
-	all: unset;
-}
+pre > code { all: unset; }
+
 blockquote {
 	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+	padding: 0 0 0 1.25em;
+	margin: 1.5em 0;
+	font-size: 1.1em;
+	color: rgb(var(--gray-dark));
 }
+
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
+	margin: 2em 0;
 }
+
+/* Responsive table wrapper — prevents overflow on mobile */
+.prose table,
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.prose table {
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+th, td {
+	padding: 0.5em 0.75em;
+	border: 1px solid rgb(var(--gray-light));
+	text-align: left;
+	white-space: nowrap;
+}
+
+textarea { width: 100%; font-size: 16px; }
+input { font-size: 16px; }
+
 @media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+	body { font-size: 18px; }
+	main { padding: 1.5em 1em; }
 }
+
+/* ── Utility ─────────────────────────────────────────────────────────────── */
 
 .sr-only {
 	border: 0;
@@ -144,12 +177,325 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Skip to main content — visually hidden until focused */
+.skip-link {
+	position: absolute;
+	top: -100%;
+	left: 0;
+	padding: 0.5rem 1.25rem;
+	background: var(--accent);
+	color: white;
+	font-weight: 700;
+	font-size: 0.9rem;
+	text-decoration: none;
+	border-radius: 0 0 6px 6px;
+	z-index: 9999;
+	transition: top 0.1s ease;
+}
+.skip-link:focus {
+	top: 0;
+}
+
+/* Focus styles — visible keyboard focus ring on all interactive elements */
+:focus-visible {
+	outline: 3px solid var(--accent);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* ── Tags ────────────────────────────────────────────────────────────────── */
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.tags li,
+.tag {
+	font-size: 0.75rem;
+	padding: 0.2rem 0.6rem;
+	background: rgb(var(--gray-light));
+	border-radius: 999px;
+	color: rgb(var(--gray-dark));
+	white-space: nowrap;
+}
+.tags a,
+.tag a {
+	color: inherit;
+	text-decoration: none;
+}
+.tags a:hover,
+.tag a:hover {
+	background: rgb(var(--gray));
+	color: white;
+}
+
+/* ── Type badges ─────────────────────────────────────────────────────────── */
+
+.type-badge {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 0.15rem 0.5rem;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+.type-badge.crosspost {
+	background: #e8f4fd;
+	color: #1a6fa3;
+	border: 1px solid #b3d9f2;
+}
+.type-badge.linkpost {
+	background: #f0fdf4;
+	color: #166534;
+	border: 1px solid #bbf7d0;
+}
+.type-badge.from-notes {
+	background: #fef9c3;
+	color: #713f12;
+	border: 1px solid #fde047;
+}
+
+/* ── Post lists (blog index, notes index) ────────────────────────────────── */
+
+.post-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-list li {
+	padding: 1.25rem 0;
+	border-bottom: 1px solid rgb(var(--gray-light));
+}
+.post-list li:last-child {
+	border-bottom: none;
+}
+.post-list .post-title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	margin: 0 0 0.2rem;
+	line-height: 1.3;
+}
+.post-list .post-title a {
+	color: rgb(var(--black));
+	text-decoration: none;
+}
+.post-list .post-title a:hover {
+	color: var(--accent);
+}
+.post-list .post-meta {
+	font-size: 0.85rem;
+	color: rgb(var(--gray));
+	margin: 0 0 0.4rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+.post-list .post-desc {
+	font-size: 0.95rem;
+	color: rgb(var(--gray-dark));
+	margin: 0.25rem 0 0;
+}
+
+/* ── Section pages (programs, case studies etc.) ─────────────────────────── */
+
+.page-intro {
+	font-size: 1.05rem;
+	margin-bottom: 2rem;
+}
+
+.card-list {
+	list-style: none;
+	padding: 0;
+	margin: 1.5rem 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.card-list li a {
+	display: block;
+	text-decoration: none;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 8px;
+	padding: 1.25rem 1.5rem;
+	transition: box-shadow 0.15s ease;
+}
+.card-list li a:hover {
+	box-shadow: var(--box-shadow);
+}
+.card-list h2 {
+	font-size: 1.1rem;
+	margin: 0 0 0.35rem;
+	color: rgb(var(--black));
+}
+.card-list p {
+	margin: 0 0 0.5rem;
+	color: rgb(var(--gray-dark));
+	font-size: 0.95rem;
+}
+
+/* ── Section headings ────────────────────────────────────────────────────── */
+
+.section-heading {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: rgb(var(--gray));
+	margin: 0 0 0.4rem;
+}
+
+/* ── Item lists (scholarship, talks) ─────────────────────────────────────── */
+
+.item-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+.item-list li {
+	padding: 1.25rem 0;
+	border-bottom: 1px solid rgb(var(--gray-light));
+}
+.item-list li:last-child {
+	border-bottom: none;
+}
+
+/* ── LinkedIn share link ─────────────────────────────────────────────────── */
+
+.share-linkedin {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 0.85rem;
+	color: rgb(var(--gray));
+	text-decoration: none;
+	padding: 0.3rem 0.7rem;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 4px;
+	transition: background 0.15s ease;
+}
+.share-linkedin:hover {
+	background: #0077b5;
+	color: white;
+	border-color: #0077b5;
+}
+
+/* ── Post page layout ────────────────────────────────────────────────────── */
+
+.post-header {
+	margin-bottom: 2rem;
+	padding-bottom: 1.25rem;
+	border-bottom: 1px solid rgb(var(--gray-light));
+}
+.post-header h1 {
+	font-size: 1.8rem;
+	margin: 0 0 0.5rem;
+	line-height: 1.25;
+}
+.post-date {
+	font-size: 0.85rem;
+	color: rgb(var(--gray));
+	margin: 0 0 0.6rem;
+}
+.post-footer {
+	margin-top: 3rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid rgb(var(--gray-light));
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* ── Home page ───────────────────────────────────────────────────────────── */
+
+.home-intro {
+	margin-bottom: 2.5rem;
+}
+.home-intro p {
+	font-size: 1.05rem;
+	color: rgb(var(--gray-dark));
+}
+.home-section {
+	margin-bottom: 2.5rem;
+}
+.home-section h2 {
+	font-size: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: rgb(var(--gray));
+	margin-bottom: 0.75rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid rgb(var(--gray-light));
+}
+.home-links {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+	font-size: 0.95rem;
+	margin-top: 0.5rem;
+}
+.home-links a {
+	color: rgb(var(--gray-dark));
+	text-decoration: none;
+	font-weight: 600;
+}
+.home-links a:hover {
+	color: var(--accent);
+}
+
+/* ── Archive ─────────────────────────────────────────────────────────────── */
+
+.archive-year {
+	margin-bottom: 2rem;
+}
+.archive-year h2 {
+	font-size: 1rem;
+	color: rgb(var(--gray));
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 1px solid rgb(var(--gray-light));
+}
+
+/* ── Crosspost notice ────────────────────────────────────────────────────── */
+
+.crosspost-notice {
+	background: #e8f4fd;
+	border: 1px solid #b3d9f2;
+	border-radius: 6px;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
+	margin-bottom: 2rem;
+	color: #1a4f6e;
+}
+.crosspost-notice a {
+	color: #1a4f6e;
+	font-weight: 600;
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

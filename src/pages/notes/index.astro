@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const notes = (await getCollection('notes'))
+	.filter((n) => n.data.status === 'published')
+	.sort((a, b) => ((b.data.date)?.valueOf() ?? 0) - ((a.data.date)?.valueOf() ?? 0));
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Notes — ${SITE_TITLE}`} description="Quick notes, technical observations, linkposts, and crosspost summaries." />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content" data-pagefind-ignore>
+			<h1 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Notes</h1>
+			<p style="color: rgb(var(--gray)); font-size: 0.9rem; margin-bottom: 1.5rem;">
+				Quick notes, linkposts, and crosspost summaries.
+				Notes marked <span class="type-badge from-notes" style="font-size: 0.7rem;">From Notes</span> also appear in the blog index.
+			</p>
+
+			{notes.length > 0 ? (
+				<ul class="post-list">
+					{notes.map((note) => (
+						<li>
+							<p class="post-meta">
+								{note.data.date && <FormattedDate date={note.data.date} />}
+								{note.data.type === 'linkpost' && (
+									<span class="type-badge linkpost">Link</span>
+								)}
+								{note.data.type === 'crosspost' && (
+									<span class="type-badge crosspost">Crosspost</span>
+								)}
+								{note.data.promoteToBlog && (
+									<span class="type-badge from-notes">Also in Blog</span>
+								)}
+							</p>
+							<p class="post-title">
+								<a href={`/notes/${note.id}/`}>{note.data.title}</a>
+							</p>
+							{note.data.description && (
+								<p class="post-desc">{note.data.description}</p>
+							)}
+						</li>
+					))}
+				</ul>
+			) : (
+				<p style="color: rgb(var(--gray));">No notes yet.</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

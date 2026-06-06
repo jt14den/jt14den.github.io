@@ -1,35 +1,51 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { docsLoader } from '@astrojs/starlight/loaders';
-import { docsSchema } from '@astrojs/starlight/schema';
 
-// Shared base fields present in every collection
-const base = {
+// Shared post fields
+const postBase = {
 	title: z.string(),
-	description: z.string(),
+	description: z.string().optional(),
 	date: z.coerce.date().optional(),
+	pubDate: z.coerce.date().optional(), // legacy alias
+	updated: z.coerce.date().optional(),
 	tags: z.array(z.string()).default([]),
+	topic: z.array(z.string()).default([]),
 	status: z.enum(['draft', 'published']).default('draft'),
+	type: z
+		.enum(['essay', 'note', 'linkpost', 'announcement', 'roundup', 'crosspost'])
+		.default('essay'),
+	canonicalUrl: z.string().optional(),
+	externalUrl: z.string().optional(),
 };
 
-// Blog — legacy collection, kept as-is
+// Blog — primary writing collection
 const blog = defineCollection({
 	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
 	schema: ({ image }) =>
 		z.object({
-			title: z.string(),
-			description: z.string(),
-			pubDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
+			...postBase,
 			heroImage: image().optional(),
 		}),
+});
+
+// Notes — quick capture, technical notes, linkposts
+const notes = defineCollection({
+	loader: glob({ base: './src/content/notes', pattern: '**/*.{md,mdx}' }),
+	schema: z.object({
+		...postBase,
+		promoteToBlog: z.boolean().default(false),
+	}),
 });
 
 // Programs — durable program/initiative pages
 const programs = defineCollection({
 	loader: glob({ base: './src/content/programs', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		...base,
+		title: z.string(),
+		description: z.string(),
+		date: z.coerce.date().optional(),
+		tags: z.array(z.string()).default([]),
+		status: z.enum(['draft', 'published']).default('draft'),
 		startYear: z.number().optional(),
 		collaborators: z.array(z.string()).default([]),
 		relatedLinks: z
@@ -43,7 +59,11 @@ const programs = defineCollection({
 const caseStudies = defineCollection({
 	loader: glob({ base: './src/content/case-studies', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		...base,
+		title: z.string(),
+		description: z.string(),
+		date: z.coerce.date().optional(),
+		tags: z.array(z.string()).default([]),
+		status: z.enum(['draft', 'published']).default('draft'),
 		partner: z.string().optional(),
 		outcomes: z.array(z.string()).default([]),
 		year: z.number().optional(),
@@ -54,7 +74,11 @@ const caseStudies = defineCollection({
 const scholarship = defineCollection({
 	loader: glob({ base: './src/content/scholarship', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		...base,
+		title: z.string(),
+		description: z.string(),
+		date: z.coerce.date().optional(),
+		tags: z.array(z.string()).default([]),
+		status: z.enum(['draft', 'published']).default('draft'),
 		doi: z.string().optional(),
 		venue: z.string().optional(),
 		year: z.number().optional(),
@@ -64,11 +88,15 @@ const scholarship = defineCollection({
 	}),
 });
 
-// Talks & Grants — combined collection (type field distinguishes them)
+// Talks & Grants — combined collection
 const talks = defineCollection({
 	loader: glob({ base: './src/content/talks', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
-		...base,
+		title: z.string(),
+		description: z.string(),
+		date: z.coerce.date().optional(),
+		tags: z.array(z.string()).default([]),
+		status: z.enum(['draft', 'published']).default('draft'),
 		venue: z.string().optional(),
 		year: z.number().optional(),
 		type: z.enum(['talk', 'grant', 'award']).default('talk'),
@@ -77,12 +105,4 @@ const talks = defineCollection({
 	}),
 });
 
-// Starlight docs collection — required by the Starlight integration.
-// Content lives in src/content/docs/. Currently empty; all portfolio pages
-// use StarlightPage directly from .astro files.
-const docs = defineCollection({
-	loader: docsLoader(),
-	schema: docsSchema(),
-});
-
-export const collections = { docs, blog, programs, caseStudies, scholarship, talks };
+export const collections = { blog, notes, programs, caseStudies, scholarship, talks };
