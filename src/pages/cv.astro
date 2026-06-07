@@ -20,7 +20,7 @@ const typeLabels: Record<string, string> = {
 	report: 'Report',
 	dataset: 'Dataset',
 	curriculum: 'Curriculum',
-	other: 'Output',
+	other: 'Other',
 };
 ---
 
@@ -31,10 +31,10 @@ const typeLabels: Record<string, string> = {
 	<div class="cv-header">
 		<h1>Tim Dennis</h1>
 		<p class="cv-contact">
-			Director, UCLA Library Data Science Center ·
-			<a href="mailto:dennis.tim@gmail.com">dennis.tim@gmail.com</a> ·
+			<a href="mailto:timdennis@ucla.edu">timdennis@ucla.edu</a> ·
 			<a href="https://www.tim-dennis.com">tim-dennis.com</a> ·
-			ORCID <a href="https://orcid.org/0000-0001-6632-3812" target="_blank" rel="noopener">0000-0001-6632-3812</a>
+			ORCID <a href="https://orcid.org/0000-0001-6632-3812" target="_blank" rel="noopener">0000-0001-6632-3812</a> ·
+			<a href="https://github.com/jt14den" target="_blank" rel="noopener">GitHub: jt14den</a>
 		</p>
 		<p class="cv-pdf">
 			<a href="/tim_dennis_cv.pdf" target="_blank" rel="noopener">Download PDF version</a>
@@ -42,33 +42,46 @@ const typeLabels: Record<string, string> = {
 	</div>
 
 	<section>
-		<h2>Professional experience</h2>
+		<h2>Experience</h2>
 		<div class="cv-entry">
 			<div class="cv-entry-header">
-				<strong>Director, UCLA Library Data Science Center</strong>
+				<strong>Director, Data Science Center, UCLA Library</strong>
 				<span class="cv-date">2017 – present</span>
 			</div>
-			<p class="cv-org">University of California, Los Angeles</p>
-			<ul>
-				<li>Lead research data services, open science initiatives, and computational training at UCLA Library</li>
-				<li>Built and direct UCLA Dataverse (1,600+ datasets, 142,000+ downloads) and Redivis restricted data platform (2.9 PB processed in 2024)</li>
-				<li>Founded and coordinate UC Carpentries, a 10-campus training network reaching 2,800+ learners</li>
-				<li>PI and Co-PI on $2M+ in federal and foundation grants</li>
-				<li>Developed DataSquad peer consulting program with 100% post-graduation placement rate</li>
-			</ul>
+			<p class="cv-org">Los Angeles, CA</p>
+			<p>Lead a unit that supports researchers throughout the full data life cycle: planning research projects and data management plans; data acquisition, storage, cleaning, and usage; analysis; publication; curation; and preservation.</p>
 		</div>
-
-		<!-- TODO: Add earlier positions (UCSD, UC Berkeley, etc.) -->
-		<div class="cv-entry cv-placeholder">
-			<p><em>Earlier positions — add here</em></p>
+		<div class="cv-entry">
+			<div class="cv-entry-header">
+				<strong>Data Services & Collections Librarian, UC San Diego Library</strong>
+				<span class="cv-date">2015 – 2017</span>
+			</div>
+			<p class="cv-org">La Jolla, CA</p>
+			<p>Provided consultation and training on data discovery and re-use, research data management, and statistical programming to students, faculty, and staff. Identified and acquired new data resources. Collaborated with non-Library campus data service providers. Provided technology training and mentoring to library staff.</p>
+		</div>
+		<div class="cv-entry">
+			<div class="cv-entry-header">
+				<strong>Research Technology & Services Specialist, UC Berkeley Library Data Lab</strong>
+				<span class="cv-date">2006 – 2015</span>
+			</div>
+			<p class="cv-org">Berkeley, CA</p>
+			<p>Provided numeric data and quantitative reasoning consultation to students and faculty. Co-designed, opened, and managed the Library Data Lab in 2008. Established the Library's LibTech training programming providing internal training on a diverse array of technologies including Google Analytics, web widgets, Python, and Drupal.</p>
 		</div>
 	</section>
 
 	<section>
 		<h2>Education</h2>
-		<!-- TODO: Add education -->
-		<div class="cv-placeholder">
-			<p><em>Education — add here</em></p>
+		<div class="cv-entry">
+			<div class="cv-entry-header">
+				<strong>MS, Information Management & Systems</strong>
+			</div>
+			<p class="cv-org">School of Information, University of California, Berkeley</p>
+		</div>
+		<div class="cv-entry">
+			<div class="cv-entry-header">
+				<strong>BS, Sociology</strong>
+			</div>
+			<p class="cv-org">Millsaps College, Jackson, MS</p>
 		</div>
 	</section>
 
@@ -93,7 +106,7 @@ const typeLabels: Record<string, string> = {
 	</section>
 
 	<section>
-		<h2>Scholarship</h2>
+		<h2>Publications</h2>
 		<ul class="item-list">
 			{scholarship.map((output) => (
 				<li class="cv-entry">
@@ -105,7 +118,6 @@ const typeLabels: Record<string, string> = {
 						<span class="cv-type">{typeLabels[output.data.type] ?? 'Output'}</span>
 						{output.data.venue && <span> · {output.data.venue}</span>}
 					</p>
-					<p>{output.data.description}</p>
 					{output.data.doi && (
 						<a class="doi" href={`https://doi.org/${output.data.doi}`} target="_blank" rel="noopener">
 							DOI: {output.data.doi}
@@ -117,7 +129,7 @@ const typeLabels: Record<string, string> = {
 	</section>
 
 	<section>
-		<h2>Selected talks & keynotes</h2>
+		<h2>Conference presentations</h2>
 		<ul class="item-list">
 			{talks.map((talk) => (
 				<li class="cv-entry">
@@ -129,17 +141,91 @@ const typeLabels: Record<string, string> = {
 						{talk.data.venue}
 						{talk.data.role && <span class="cv-role"> · {talk.data.role}</span>}
 					</p>
-					<p>{talk.data.description}</p>
 				</li>
 			))}
 		</ul>
 	</section>
 
 	<section>
-		<h2>Service & leadership</h2>
-		<!-- TODO: Add service roles (Library Carpentry governance, advisory boards, etc.) -->
-		<div class="cv-placeholder">
-			<p><em>Service — add here</em></p>
+		<h2>Selected instruction</h2>
+		<ul class="item-list">
+			<li class="cv-entry">
+				<div class="cv-entry-header">
+					<strong>Instructor, Carpentry Workshops</strong>
+					<span class="cv-date">2015 – 2022</span>
+				</div>
+				<p>Taught over 50 Library, Data, and Software Carpentry boot-camp workshops covering foundational coding and data science skills.</p>
+			</li>
+			<li class="cv-entry">
+				<div class="cv-entry-header">
+					<strong>Instructor Trainer, The Carpentries</strong>
+					<span class="cv-date">2017 – 2022</span>
+				</div>
+				<p>Taught over 10 instructor training workshops on evidence-based teaching best practices.</p>
+			</li>
+			<li class="cv-entry">
+				<div class="cv-entry-header">
+					<strong>Teaching Faculty, Berkeley Initiative for Transparency in the Social Sciences (BITSS)</strong>
+					<span class="cv-date">2019 – 2021</span>
+				</div>
+				<p>Research Transparency and Reproducibility Training — provided participants with an overview of tools and practices for transparent and reproducible social science research.</p>
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Professional service</h2>
+		<ul class="service-list">
+			<li>
+				<span class="cv-date">2021 – present</span>
+				Chair, Curriculum Advisory Committee, Library Carpentry
+			</li>
+			<li>
+				<span class="cv-date">2017 – present</span>
+				Carpentries Instructor Trainer
+			</li>
+			<li>
+				<span class="cv-date">2016 – present</span>
+				Carpentries Instructor
+			</li>
+			<li>
+				<span class="cv-date">2017 – present</span>
+				Berkeley Initiative for Transparency in Social Science (BITSS) Catalyst
+			</li>
+			<li>
+				<span class="cv-date">2016 – present</span>
+				Open Science Framework Ambassador
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Memberships</h2>
+		<ul class="service-list">
+			<li>
+				<span class="cv-date">2010 – present</span>
+				International Association for Social Science Information Services and Technology (IASSIST)
+			</li>
+			<li>
+				<span class="cv-date">2015 – present</span>
+				The Carpentries
+			</li>
+			<li>
+				<span class="cv-date">2017 – present</span>
+				Research Data Alliance
+			</li>
+			<li>
+				<span class="cv-date">2015 – present</span>
+				Inter-University Consortium for Political and Social Research (ICPSR)
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Technical skills</h2>
+		<div class="cv-entry">
+			<p><strong>Languages:</strong> Python, R, HTML, CSS, JSON, PHP, SQL</p>
+			<p><strong>Technologies:</strong> MySQL, SQLite, LaTeX, Bash, Git, Jupyter, RStudio, Stata, SAS, SPSS</p>
 		</div>
 	</section>
 </BaseLayout>
@@ -167,17 +253,30 @@ const typeLabels: Record<string, string> = {
 		gap: 1rem;
 		flex-wrap: wrap;
 	}
-	.cv-date { font-size: 0.875rem; color: rgb(var(--gray)); white-space: nowrap; }
+	.cv-date { font-size: 0.875rem; color: rgb(var(--gray)); white-space: nowrap; flex-shrink: 0; }
 	.cv-org { font-size: 0.9rem; color: rgb(var(--gray)); margin: 0.15rem 0 0.35rem; }
 	.cv-amount { font-weight: 700; color: rgb(var(--gray-dark)); }
-	.cv-role { font-size: 0.875rem; color: rgb(var(--gray-dark)); margin: 0 0 0.25rem; font-style: italic; }
+	.cv-role { font-size: 0.875rem; color: rgb(var(--gray)); font-style: italic; }
 	.cv-type { font-style: italic; }
 	.cv-entry p { font-size: 0.95rem; margin: 0 0 0.25rem; }
-	.cv-entry ul { font-size: 0.95rem; margin: 0.5rem 0 0; padding-left: 1.25rem; }
-	.cv-entry ul li { margin-bottom: 0.25rem; }
 	.doi { font-size: 0.875rem; font-family: monospace; }
-	.cv-placeholder { color: rgb(var(--gray)); font-size: 0.9rem; }
 	.item-list { list-style: none; padding: 0; margin: 0; }
 	.item-list li { border-bottom: 1px solid rgb(var(--gray-light)); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
-	.item-list li:last-child { border-bottom: none; }
+	.item-list li:last-child { border-bottom: none; padding-bottom: 0; }
+	.service-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	.service-list li {
+		padding: 0.5rem 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		font-size: 0.95rem;
+		display: flex;
+		gap: 1.5rem;
+	}
+	.service-list li:last-child { border-bottom: none; }
+	.service-list .cv-date { min-width: 7rem; }
 </style>
