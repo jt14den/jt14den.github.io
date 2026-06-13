@@ -37,6 +37,20 @@ const {
 
 const effectiveDate = date ?? pubDate;
 const pageTitle = `${title} — ${SITE_TITLE}`;
+
+// Pagefind result-card metadata
+const typeLabels: Record<string, string> = {
+	essay: 'Essay',
+	note: 'Note',
+	linkpost: 'Link',
+	crosspost: 'Crosspost',
+	roundup: 'Roundup',
+	announcement: 'Announcement',
+};
+const typeLabel = typeLabels[type] ?? 'Post';
+const dateMeta = effectiveDate
+	? effectiveDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+	: '';
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
 
@@ -56,7 +70,7 @@ const canonical = type === 'crosspost' && canonicalUrl ? canonicalUrl : pageUrl;
 	<body>
 		<Header />
 		<main id="main-content" data-pagefind-body>
-			<article>
+			<article data-pagefind-meta={`type:${typeLabel}`}>
 				<header class="post-header">
 					<!-- Badges -->
 					<div class="post-badges" style="margin-bottom: 0.5rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
@@ -71,9 +85,9 @@ const canonical = type === 'crosspost' && canonicalUrl ? canonicalUrl : pageUrl;
 						)}
 					</div>
 
-					<h1>{title}</h1>
+					<h1 data-pagefind-meta="title" data-pagefind-weight="10">{title}</h1>
 
-					<div class="post-date">
+					<div class="post-date" data-pagefind-meta={dateMeta ? `date:${dateMeta}` : undefined}>
 						{effectiveDate && <FormattedDate date={effectiveDate} />}
 						{updated && (
 							<span style="margin-left: 0.75rem; font-style: italic;">

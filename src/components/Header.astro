@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import Search from './Search.astro';
 ---
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,9 +18,45 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/impact">Impact</HeaderLink>
 			<HeaderLink href="/governance">Governance</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
+			<button type="button" id="search-open" class="search-btn" aria-label="Search (press /)" aria-keyshortcuts="/">
+				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+				Search
+			</button>
 		</nav>
 	</div>
 </header>
+
+<dialog id="search-dialog" class="search-dialog" data-pagefind-ignore aria-label="Site search">
+	<Search id="pf-modal" />
+</dialog>
+
+<script is:inline>
+	(function () {
+		const dlg = document.getElementById('search-dialog');
+		const openBtn = document.getElementById('search-open');
+		function open() {
+			if (dlg && typeof dlg.showModal === 'function' && !dlg.open) {
+				dlg.showModal();
+				setTimeout(function () {
+					const i = document.getElementById('pf-modal-input');
+					if (i) i.focus();
+				}, 30);
+			}
+		}
+		if (openBtn) openBtn.addEventListener('click', open);
+		document.addEventListener('keydown', function (e) {
+			const el = document.activeElement;
+			const tag = el && el.tagName;
+			const typing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (el && el.isContentEditable);
+			if (e.key === '/' && !typing) {
+				e.preventDefault();
+				open();
+			}
+		});
+		// click on backdrop closes (Esc closes natively)
+		if (dlg) dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+	})();
+</script>
 
 <style>
 	header {
@@ -69,6 +106,32 @@ import HeaderLink from './HeaderLink.astro';
 		color: rgb(var(--black));
 		border-bottom-color: var(--accent);
 		font-weight: 600;
+	}
+	.search-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3em;
+		padding: 0.35em 0.65em 0.35em 0;
+		font-size: 1rem;
+		font-family: inherit;
+		color: rgb(var(--gray-dark));
+		background: none;
+		border: none;
+		border-bottom: 2px solid transparent;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+	.search-btn:hover { color: rgb(var(--black)); }
+	.search-dialog {
+		width: min(640px, 92vw);
+		padding: 1rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 12px;
+		box-shadow: var(--box-shadow);
+		margin-top: 12vh;
+	}
+	.search-dialog::backdrop {
+		background: rgba(0, 0, 0, 0.35);
 	}
 	@media (max-width: 600px) {
 		nav {

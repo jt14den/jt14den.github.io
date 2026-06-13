@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Search from '../components/Search.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
@@ -9,36 +10,13 @@ import { SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={`Search — ${SITE_TITLE}`} description="Search posts and notes." />
-		<!-- Pagefind UI is generated after `astro build && pagefind --site dist`.
-		     During development it will show a message until you run a build. -->
-		<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 	</head>
 	<body>
 		<Header />
 		<main id="main-content">
 			<h1 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Search</h1>
-			<div id="search"></div>
-			<p id="search-notice" style="color: rgb(var(--gray)); font-size: 0.9rem; display: none;">
-				Search index not found. Run <code>npm run build</code> first to generate the search index.
-			</p>
+			<Search id="pf-page" autofocus placeholder="Search posts, notes, programs, scholarship…" />
 		</main>
 		<Footer />
-
-		<script is:inline>
-			window.addEventListener('DOMContentLoaded', function () {
-				import('/pagefind/pagefind-ui.js').then(function (m) {
-					new m.PagefindUI({
-						element: '#search',
-						showSubResults: true,
-						showImages: false,
-					});
-				}).catch(function () {
-					var notice = document.getElementById('search-notice');
-					var searchEl = document.getElementById('search');
-					if (notice) notice.style.display = 'block';
-					if (searchEl) searchEl.style.display = 'none';
-				});
-			});
-		</script>
 	</body>
 </html>

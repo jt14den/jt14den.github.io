@@ -1,0 +1,157 @@
+---
+interface Props {
+	id?: string;
+	placeholder?: string;
+	autofocus?: boolean;
+}
+const { id = 'pf-search', placeholder = 'Search posts, notes, programs…', autofocus = false } = Astro.props;
+---
+
+<div class="pf" data-pagefind-ignore>
+	<input
+		id={`${id}-input`}
+		class="pf-input"
+		type="search"
+		placeholder={placeholder}
+		autocomplete="off"
+		aria-label="Search"
+		autofocus={autofocus}
+	/>
+	<p id={`${id}-status`} class="pf-status" aria-live="polite"></p>
+	<div id={`${id}-results`} class="pf-results"></div>
+</div>
+
+<script is:inline define:vars={{ id }}>
+	(function () {
+		const input = document.getElementById(id + '-input');
+		const results = document.getElementById(id + '-results');
+		const status = document.getElementById(id + '-status');
+		if (!input || input.dataset.pfBound) return;
+		input.dataset.pfBound = '1';
+
+		let pf = null;
+		let failed = false;
+		let timer = null;
+
+		async function ensure() {
+			if (pf || failed) return pf;
+			try {
+				pf = await import('/pagefind/pagefind.js');
+				if (pf.options) await pf.options({ excerptLength: 25 });
+			} catch (e) {
+				failed = true;
+				status.textContent = 'Search index not available yet (run a production build).';
+			}
+			return pf;
+		}
+		function esc(s) {
+			return (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+		}
+		function card(d) {
+			const type = d.meta && d.meta.type ? '<span class="pf-type">' + esc(d.meta.type) + '</span>' : '';
+			const date = d.meta && d.meta.date ? '<span class="pf-date">' + esc(d.meta.date) + '</span>' : '';
+			const meta = type || date ? '<div class="pf-rmeta">' + type + date + '</div>' : '';
+			const title = esc((d.meta && d.meta.title) || d.url);
+			return (
+				'<a class="pf-r" href="' + d.url + '">' +
+				meta +
+				'<span class="pf-rtitle">' + title + '</span>' +
+				'<p class="pf-rex">' + (d.excerpt || '') + '</p></a>'
+			);
+		}
+		async function run() {
+			const q = input.value.trim();
+			if (!q) {
+				results.innerHTML = '';
+				status.textContent = '';
+				return;
+			}
+			const p = await ensure();
+			if (!p) return;
+			const s = await p.search(q);
+			if (!s.results.length) {
+				results.innerHTML = '';
+				status.textContent = 'No results for “' + esc(q) + '”.';
+				return;
+			}
+			const data = await Promise.all(s.results.slice(0, 12).map((r) => r.data()));
+			status.textContent = s.results.length + ' result' + (s.results.length > 1 ? 's' : '');
+			results.innerHTML = data.map(card).join('');
+		}
+		input.addEventListener('input', function () {
+			clearTimeout(timer);
+			timer = setTimeout(run, 180);
+		});
+	})();
+</script>
+
+<style is:global>
+	.pf-input {
+		width: 100%;
+		padding: 0.6rem 0.8rem;
+		font-size: 1rem;
+		font-family: inherit;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		background: white;
+	}
+	.pf-input:focus {
+		outline: 2px solid var(--accent);
+		outline-offset: 1px;
+	}
+	.pf-status {
+		margin: 0.6rem 0 0;
+		font-size: 0.8rem;
+		color: rgb(var(--gray));
+	}
+	.pf-results {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		margin-top: 0.5rem;
+	}
+	.pf-r {
+		display: block;
+		padding: 0.7rem 0.8rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		text-decoration: none;
+		color: inherit;
+	}
+	.pf-r:hover {
+		border-color: var(--accent);
+		background: rgba(var(--gray-light), 0.4);
+	}
+	.pf-rmeta {
+		display: flex;
+		gap: 0.6rem;
+		align-items: center;
+		margin-bottom: 0.2rem;
+	}
+	.pf-type {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		font-weight: 700;
+		color: var(--accent);
+	}
+	.pf-date {
+		font-size: 0.75rem;
+		color: rgb(var(--gray));
+	}
+	.pf-rtitle {
+		display: block;
+		font-weight: 600;
+		color: rgb(var(--black));
+	}
+	.pf-rex {
+		margin: 0.25rem 0 0;
+		font-size: 0.875rem;
+		color: rgb(var(--gray-dark));
+	}
+	.pf-rex mark {
+		background: rgba(var(--accent-rgb, 35, 55, 255), 0.15);
+		color: inherit;
+		padding: 0 0.1em;
+	}
+</style>
