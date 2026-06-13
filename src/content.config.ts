@@ -102,6 +102,8 @@ const talks = defineCollection({
 		type: z.enum(['talk', 'grant', 'award']).default('talk'),
 		amount: z.string().optional(),
 		role: z.string().optional(),
+		url: z.string().optional(),
+		doi: z.string().optional(),
 	}),
 });
 

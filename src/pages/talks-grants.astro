@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allItems = (await getCollection('talks')).sort(
-	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
-);
+const allItems = (await getCollection('talks', ({ data }) =>
+	import.meta.env.PROD ? data.status === 'published' : true
+)).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 
 const grants = allItems.filter((i) => i.data.type === 'grant');
 const talkItems = allItems.filter((i) => i.data.type === 'talk');
@@ -37,6 +37,12 @@ const talkYears = Object.keys(talksByYear)
 					{grant.data.venue && <p class="venue">{grant.data.venue}</p>}
 					{grant.data.role && <p class="role">{grant.data.role}</p>}
 					<p>{grant.data.description}</p>
+						{(grant.data.url || grant.data.doi) && (
+							<p class="links">
+								{grant.data.url && <a href={grant.data.url}>Details →</a>}
+								{grant.data.doi && <a href={grant.data.doi}>DOI →</a>}
+							</p>
+						)}
 				</li>
 			))}
 		</ul>
@@ -54,6 +60,12 @@ const talkYears = Object.keys(talksByYear)
 							{talk.data.venue && <p class="venue">{talk.data.venue}</p>}
 							{talk.data.role && <p class="role">{talk.data.role}</p>}
 							<p>{talk.data.description}</p>
+							{(talk.data.url || talk.data.doi) && (
+								<p class="links">
+									{talk.data.url && <a href={talk.data.url}>Slides / recording →</a>}
+									{talk.data.doi && <a href={talk.data.doi}>DOI →</a>}
+								</p>
+							)}
 						</li>
 					))}
 				</ul>
@@ -80,4 +92,6 @@ const talkYears = Object.keys(talksByYear)
 	p { margin: 0.25rem 0 0; font-size: 0.95rem; color: rgb(var(--gray-dark)); }
 	.year-group { margin-bottom: 1.5rem; }
 	.year-label { font-size: 0.95rem; color: rgb(var(--gray)); margin-bottom: 0.5rem; }
+	.links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.4rem; font-size: 0.85rem; }
+	.links a { color: var(--accent); }
 </style>
