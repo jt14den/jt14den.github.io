@@ -7,8 +7,12 @@ import Header from '../../../components/Header.astro';
 import { SITE_TITLE } from '../../../consts';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	const notes = await getCollection('notes');
+	const posts = await getCollection('blog', ({ data }) =>
+		import.meta.env.PROD ? data.status === 'published' : true
+	);
+	const notes = await getCollection('notes', ({ data }) =>
+		import.meta.env.PROD ? data.status === 'published' : true
+	);
 
 	// Collect all tags from both collections
 	const tagSet = new Set<string>();
