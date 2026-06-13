@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_AUTHOR } from '../../consts';
 
 const outputs = (await getCollection('scholarship')).sort(
 	(a, b) => (b.data.year ?? 0) - (a.data.year ?? 0),
@@ -14,9 +15,41 @@ const typeLabels: Record<string, string> = {
 	curriculum: 'Curriculum',
 	other: 'Output',
 };
+
+// Map each output type to a schema.org type for JSON-LD structured data
+const schemaType: Record<string, string> = {
+	journal: 'ScholarlyArticle',
+	'book-chapter': 'Chapter',
+	report: 'Report',
+	dataset: 'Dataset',
+	curriculum: 'LearningResource',
+	other: 'CreativeWork',
+};
+
+const authorUrl = Astro.site?.href ?? 'https://www.tim-dennis.com/';
+const scholarshipJsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': outputs.map((output) => ({
+		'@type': schemaType[output.data.type] ?? 'CreativeWork',
+		name: output.data.title,
+		author: { '@type': 'Person', name: SITE_AUTHOR, url: authorUrl },
+		...(output.data.description && { description: output.data.description }),
+		...(output.data.year && { datePublished: String(output.data.year) }),
+		...(output.data.venue && {
+			isPartOf: { '@type': 'CreativeWork', name: output.data.venue },
+		}),
+		...(output.data.doi && {
+			identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: output.data.doi },
+			sameAs: `https://doi.org/${output.data.doi}`,
+			url: `https://doi.org/${output.data.doi}`,
+		}),
+	})),
+};
 ---
 
 <BaseLayout title="Scholarship" description="Publications, reports, curricula, and other citable research outputs.">
+	<script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(scholarshipJsonLd)} />
+
 	<h1>Scholarship</h1>
 	<p>
 		Publications, reports, funded curricula, and other citable outputs from my work in research data
