@@ -26,13 +26,65 @@ const schemaType: Record<string, string> = {
 	other: 'CreativeWork',
 };
 
+// --- citation helpers (offline, no dependencies; run at build) ---
+// Authors are stored "Family, Given". Convert for display / initials.
+function toDisplayName(name: string): string {
+	const [family, given] = name.split(',').map((s) => s.trim());
+	return given ? `${given} ${family}` : family;
+}
+function apaName(name: string): string {
+	const [family, given] = name.split(',').map((s) => s.trim());
+	if (!given) return family;
+	const initials = given
+		.split(/\s+/)
+		.map((g) => `${g[0].toUpperCase()}.`)
+		.join(' ');
+	return `${family}, ${initials}`;
+}
+function apaCitation(o: (typeof outputs)[number]): string {
+	const a = o.data.authors;
+	const authorStr = a.length <= 2 ? a.map(apaName).join(' & ') : `${apaName(a[0])} et al.`;
+	const year = o.data.year ? ` (${o.data.year}).` : '';
+	const venue = o.data.venue ? ` ${o.data.venue}.` : '';
+	const doi = o.data.doi ? ` https://doi.org/${o.data.doi}` : '';
+	return `${authorStr}${year} ${o.data.title}.${venue}${doi}`.replace(/\s+/g, ' ').trim();
+}
+const bibtexType: Record<string, string> = {
+	journal: 'article',
+	'book-chapter': 'incollection',
+	report: 'techreport',
+	dataset: 'misc',
+	curriculum: 'misc',
+	other: 'misc',
+};
+function bibtex(o: (typeof outputs)[number]): string {
+	const type = bibtexType[o.data.type] ?? 'misc';
+	const key = `${(o.data.authors[0] ?? 'dennis').split(',')[0].replace(/\s+/g, '').toLowerCase()}${o.data.year ?? ''}`;
+	const lines = [
+		`@${type}{${key},`,
+		`  title  = {${o.data.title}},`,
+		`  author = {${o.data.authors.join(' and ')}},`,
+	];
+	if (o.data.year) lines.push(`  year   = {${o.data.year}},`);
+	if (o.data.venue)
+		lines.push(`  ${type === 'incollection' ? 'booktitle' : 'howpublished'} = {${o.data.venue}},`);
+	if (o.data.doi) {
+		lines.push(`  doi    = {${o.data.doi}},`);
+		lines.push(`  url    = {https://doi.org/${o.data.doi}},`);
+	}
+	lines.push('}');
+	return lines.join('\n');
+}
+
 const authorUrl = Astro.site?.href ?? 'https://www.tim-dennis.com/';
 const scholarshipJsonLd = {
 	'@context': 'https://schema.org',
 	'@graph': outputs.map((output) => ({
 		'@type': schemaType[output.data.type] ?? 'CreativeWork',
 		name: output.data.title,
-		author: { '@type': 'Person', name: SITE_AUTHOR, url: authorUrl },
+		author: output.data.authors.length
+			? output.data.authors.map((n) => ({ '@type': 'Person', name: toDisplayName(n) }))
+			: { '@type': 'Person', name: SITE_AUTHOR, url: authorUrl },
 		...(output.data.description && { description: output.data.description }),
 		...(output.data.year && { datePublished: String(output.data.year) }),
 		...(output.data.venue && {
@@ -76,6 +128,13 @@ const scholarshipJsonLd = {
 						DOI: {output.data.doi}
 					</a>
 				)}
+				{output.data.authors.length > 0 && (
+					<details class="cite">
+						<summary>Cite this</summary>
+						<p class="apa">{apaCitation(output)}</p>
+						<pre class="bibtex">{bibtex(output)}</pre>
+					</details>
+				)}
 			</li>
 		))}
 	</ul>
@@ -93,4 +152,15 @@ const scholarshipJsonLd = {
 	}
 	p { margin: 0 0 0.5rem; color: rgb(var(--gray-dark)); font-size: 0.95rem; }
 	.doi { font-size: 0.875rem; font-family: monospace; }
+	.cite { margin-top: 0.5rem; font-size: 0.85rem; }
+	.cite summary { cursor: pointer; color: var(--accent); }
+	.cite .apa { margin: 0.5rem 0; color: rgb(var(--gray-dark)); }
+	.cite .bibtex {
+		background: rgb(var(--gray-light));
+		padding: 0.6rem 0.8rem;
+		border-radius: 6px;
+		overflow-x: auto;
+		font-size: 0.8rem;
+		white-space: pre;
+	}
 </style>
