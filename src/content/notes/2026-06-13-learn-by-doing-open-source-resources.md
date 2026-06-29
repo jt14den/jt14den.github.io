@@ -11,6 +11,8 @@ The thing that stuck with me about learning R years ago was [swirl](https://swir
 
 This started when I came across [a roundup of sites every DevOps engineer should bookmark](https://medium.com/@keshrianjani20/the-websites-every-devops-engineer-should-bookmark-right-now-5bd67310688e). A lot of it crosses straight over to what we teach — git, the command line, containers, sustainability practice — so I started pulling out the *interactive* ones. We already list some of these; consider this the additive pass.
 
+Worth saying what "already list" means. The OSPO education site has a real inventory now: 43 lessons, a [public JSON API](https://ucospo.net/education/api/lessons.json), sorted into pathways and tagged by role, level, and provider. It is strong on formal material, and it leans hard toward maintaining. 25 of the 43 sit in that one pathway: packaging, testing, CI/CD, containers, reproducibility. That is the gravity these practice resources push against. The getting-started and contributing end, where you learn by making an actual pull request or fixing a broken server, is exactly where the formal collection is thinnest.
+
 Each is tagged with a **learning-resource type** — the small vocabulary I'd like us to standardize on for the Bioschemas `learningResourceType` field: *Tutorial · Lab · Game · Challenge · Course · Path · Reference · Guide*. (Topic = the section; type = the tag. Two separate axes.)
 
 **Git & the command line**
