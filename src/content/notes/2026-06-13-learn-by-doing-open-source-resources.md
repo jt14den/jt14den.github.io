@@ -45,3 +45,8 @@ Each is tagged with a **learning-resource type** — the small vocabulary I'd li
 - [Class Central — Open Source](https://www.classcentral.com/subject/open-source) — a catalog of many of the above · *(catalog / meta)*
 
 I don't think this is the list yet — it's the start of one. The open question I want to take to the group: which of these actually serve *researchers and librarians*, versus engineers who already speak the language? My plan is to keep a running scan of what's new each month and fold the good ones in before they reach our formal inventory — tagged with the same `learningResourceType` vocabulary so everything stays consistent.
+
+**July 2026 scan.** This month's pass turned up mostly curated *reading* lists, not practice-in tools: Rust learning collections, DevOps roadmap repos, the usual SRE Book and distributed-systems canon. Good material, but not learn-by-doing by the bar above, so I'm holding them out rather than padding the list. Two that do fit the bar:
+
+- [freeCodeCamp](https://www.freecodecamp.org/): build-along DevOps pipeline courses where you construct the thing as you go · **Course**
+- Node.js [first-contributions guide](https://github.com/nodejs/node/blob/main/doc/contributing/first-contributions.md): walks a real first pull request into a large production codebase, a heavier cousin of First Contributions above · **Tutorial**
