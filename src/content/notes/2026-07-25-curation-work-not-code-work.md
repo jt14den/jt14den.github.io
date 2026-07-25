@@ -3,7 +3,7 @@ title: "Curation work, not code work"
 description: "Rebuilding a Carpentries lesson on software citation taught me that the reframe that mattered wasn't a new standard. It was retargeting the whole lesson from researchers publishing their own code to librarians advising other people's."
 date: 2026-07-25
 tags: [open source, OSPO, Carpentries, lesson design, library instruction, research software]
-status: draft
+status: published
 type: note
 ---
 

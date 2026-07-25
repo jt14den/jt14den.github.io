@@ -3,7 +3,7 @@ title: "The single underscore that broke my task system"
 description: "A CLI task manager that worked fine in my terminal silently failed inside Claude Code sessions. The cause wasn't a bug in the tool, it was a shell-snapshot mechanism that quietly drops single-underscore function names before the agent ever sees them."
 date: 2026-07-25
 tags: [AI, Claude Code, workflow, shell, debugging, tooling]
-status: draft
+status: published
 type: note
 ---
 
