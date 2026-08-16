@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build && npx pagefind --site dist",
     "build:astro": "astro build",
+    "cv:build": "cd src/data && rendercv render cv.yaml -nomd -nopng --pdf-path ../../public/tim_dennis_cv.pdf",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,6 +14,10 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^6.4.4",
+    "js-yaml": "^5.3.0",
     "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9"
   }
 }

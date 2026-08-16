@@ -26,3 +26,4 @@ context.md
 # jetbrains setting folder
 .idea/
 .aider*
+src/data/rendercv_output/

@@ -1,238 +1,294 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { load as loadYaml } from 'js-yaml';
+import cvYamlRaw from '../data/cv.yaml?raw';
 
-const scholarship = (await getCollection('scholarship'))
-	.filter((s) => s.data.status === 'published')
-	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+interface CvEntry {
+	// Experience / NormalEntry fields
+	company?: string;
+	position?: string;
+	name?: string;
+	location?: string;
+	summary?: string;
+	start_date?: string;
+	end_date?: string;
+	date?: string;
+	highlights?: string[];
+	// OneLineEntry fields
+	label?: string;
+	details?: string;
+	// PublicationEntry fields
+	title?: string;
+	authors?: string[];
+	journal?: string;
+	doi?: string;
+	// BulletEntry fields
+	bullet?: string;
+	// EducationEntry fields
+	institution?: string;
+	area?: string;
+	degree?: string;
+}
 
-const allTalks = (await getCollection('talks')).filter((t) => t.data.status === 'published');
-const grants = allTalks
-	.filter((t) => t.data.type === 'grant')
-	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
-const talks = allTalks
-	.filter((t) => t.data.type === 'talk')
-	.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+interface CvData {
+	cv: {
+		name: string;
+		headline?: string;
+		location?: string;
+		email?: string;
+		website?: string;
+		social_networks?: { network: string; username: string }[];
+		sections: Record<string, CvEntry[]>;
+	};
+}
 
-const typeLabels: Record<string, string> = {
-	journal: 'Journal article',
-	'book-chapter': 'Book chapter',
-	report: 'Report',
-	dataset: 'Dataset',
-	curriculum: 'Curriculum',
-	other: 'Other',
+const { cv } = loadYaml(cvYamlRaw) as CvData;
+
+// RenderCV content supports lightweight markdown (bold/italic) — render it as HTML.
+function md(text?: string): string {
+	if (!text) return '';
+	return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
+const MONTHS = [
+	'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+function formatDate(d?: string): string {
+	if (!d) return '';
+	if (d === 'present') return 'Present';
+	const [y, m] = d.split('-');
+	if (!m) return y;
+	return `${MONTHS[parseInt(m, 10) - 1]} ${y}`;
+}
+
+function dateRange(entry: CvEntry): string {
+	if (entry.date) return formatDate(entry.date);
+	const start = formatDate(entry.start_date);
+	const end = formatDate(entry.end_date);
+	if (start && end) return `${start} – ${end}`;
+	return start || end || '';
+}
+
+const NETWORK_URL: Record<string, (username: string) => string> = {
+	LinkedIn: (u) => `https://linkedin.com/in/${u}`,
+	GitHub: (u) => `https://github.com/${u}`,
+	ORCID: (u) => `https://orcid.org/${u}`,
 };
+
+const sections = cv.sections;
+const experience = sections.experience ?? [];
+const systemwideLeadership = sections.systemwide_leadership ?? [];
+const grantsAndFunding = sections.grants_and_funding ?? [];
+const teaching = sections.teaching_and_program_building ?? [];
+const professionalService = sections.professional_service ?? [];
+const publications = sections.publications ?? [];
+const presentations = sections.selected_presentations ?? [];
+const education = sections.education ?? [];
+const technicalSkills = sections.technical_skills ?? [];
 ---
 
 <BaseLayout
 	title="CV"
-	description="Curriculum vitae for Tim Dennis, Director of the UCLA Library Data Science Center."
+	description={`Curriculum vitae for ${cv.name}${cv.headline ? `, ${cv.headline}` : ''}.`}
 >
 	<div class="cv-header">
-		<h1>Tim Dennis</h1>
+		<h1>{cv.name}</h1>
+		{cv.headline && <p class="cv-headline">{cv.headline}</p>}
 		<p class="cv-contact">
-			<a href="mailto:timdennis@ucla.edu">timdennis@ucla.edu</a> ·
-			<a href="https://www.tim-dennis.com">tim-dennis.com</a> ·
-			ORCID <a href="https://orcid.org/0000-0001-6632-3812" target="_blank" rel="noopener">0000-0001-6632-3812</a> ·
-			<a href="https://github.com/jt14den" target="_blank" rel="noopener">GitHub: jt14den</a>
+			{cv.location}
+			{cv.email && (
+				<>
+					{' '}· <a href={`mailto:${cv.email}`}>{cv.email}</a>
+				</>
+			)}
+			{cv.website && (
+				<>
+					{' '}· <a href={cv.website}>{cv.website.replace(/^https?:\/\//, '')}</a>
+				</>
+			)}
+			{(cv.social_networks ?? []).map((s) => (
+				<>
+					{' '}·{' '}
+					<a href={NETWORK_URL[s.network]?.(s.username) ?? '#'} target="_blank" rel="noopener">
+						{s.network === 'ORCID' ? `ORCID ${s.username}` : `${s.network}: ${s.username}`}
+					</a>
+				</>
+			))}
 		</p>
 		<p class="cv-pdf">
 			<a href="/tim_dennis_cv.pdf" target="_blank" rel="noopener">Download PDF version</a>
 		</p>
 	</div>
 
-	<section>
-		<h2>Experience</h2>
-		<div class="cv-entry">
-			<div class="cv-entry-header">
-				<strong>Director, Data Science Center, UCLA Library</strong>
-				<span class="cv-date">2017 – present</span>
-			</div>
-			<p class="cv-org">Los Angeles, CA</p>
-			<p>Lead a unit that supports researchers throughout the full data life cycle: planning research projects and data management plans; data acquisition, storage, cleaning, and usage; analysis; publication; curation; and preservation.</p>
-		</div>
-		<div class="cv-entry">
-			<div class="cv-entry-header">
-				<strong>Data Services & Collections Librarian, UC San Diego Library</strong>
-				<span class="cv-date">2015 – 2017</span>
-			</div>
-			<p class="cv-org">La Jolla, CA</p>
-			<p>Provided consultation and training on data discovery and re-use, research data management, and statistical programming to students, faculty, and staff. Identified and acquired new data resources. Collaborated with non-Library campus data service providers. Provided technology training and mentoring to library staff.</p>
-		</div>
-		<div class="cv-entry">
-			<div class="cv-entry-header">
-				<strong>Research Technology & Services Specialist, UC Berkeley Library Data Lab</strong>
-				<span class="cv-date">2006 – 2015</span>
-			</div>
-			<p class="cv-org">Berkeley, CA</p>
-			<p>Provided numeric data and quantitative reasoning consultation to students and faculty. Co-designed, opened, and managed the Library Data Lab in 2008. Established the Library's LibTech training programming providing internal training on a diverse array of technologies including Google Analytics, web widgets, Python, and Drupal.</p>
-		</div>
-	</section>
-
-	<section>
-		<h2>Education</h2>
-		<div class="cv-entry">
-			<div class="cv-entry-header">
-				<strong>MS, Information Management & Systems</strong>
-			</div>
-			<p class="cv-org">School of Information, University of California, Berkeley</p>
-		</div>
-		<div class="cv-entry">
-			<div class="cv-entry-header">
-				<strong>BS, Sociology</strong>
-			</div>
-			<p class="cv-org">Millsaps College, Jackson, MS</p>
-		</div>
-	</section>
-
-	<section>
-		<h2>Grants & funding</h2>
-		<ul class="item-list">
-			{grants.map((grant) => (
-				<li class="cv-entry">
+	{experience.length > 0 && (
+		<section>
+			<h2>Experience</h2>
+			{experience.map((e) => (
+				<div class="cv-entry">
 					<div class="cv-entry-header">
-						<strong>{grant.data.title}</strong>
-						<span class="cv-date">{grant.data.year}</span>
+						<strong>{e.position}, {e.company}</strong>
+						<span class="cv-date">{dateRange(e)}</span>
 					</div>
-					<p class="cv-org">
-						{grant.data.venue}
-						{grant.data.amount && <span class="cv-amount"> · {grant.data.amount}</span>}
-					</p>
-					{grant.data.role && <p class="cv-role">{grant.data.role}</p>}
-					<p>{grant.data.description}</p>
-				</li>
-			))}
-		</ul>
-	</section>
-
-	<section>
-		<h2>Publications</h2>
-		<ul class="item-list">
-			{scholarship.map((output) => (
-				<li class="cv-entry">
-					<div class="cv-entry-header">
-						<strong>{output.data.title}</strong>
-						<span class="cv-date">{output.data.year}</span>
-					</div>
-					<p class="cv-org">
-						<span class="cv-type">{typeLabels[output.data.type] ?? 'Output'}</span>
-						{output.data.venue && <span> · {output.data.venue}</span>}
-					</p>
-					{output.data.doi && (
-						<a class="doi" href={`https://doi.org/${output.data.doi}`} target="_blank" rel="noopener">
-							DOI: {output.data.doi}
-						</a>
+					{e.location && <p class="cv-org">{e.location}</p>}
+					{e.summary && <p set:html={md(e.summary)} />}
+					{e.highlights && e.highlights.length > 0 && (
+						<ul class="cv-highlights">
+							{e.highlights.map((h) => <li set:html={md(h)} />)}
+						</ul>
 					)}
-				</li>
+				</div>
 			))}
-		</ul>
-	</section>
+		</section>
+	)}
 
-	<section>
-		<h2>Conference presentations</h2>
-		<ul class="item-list">
-			{talks.map((talk) => (
-				<li class="cv-entry">
+	{education.length > 0 && (
+		<section>
+			<h2>Education</h2>
+			{education.map((ed) => (
+				<div class="cv-entry">
 					<div class="cv-entry-header">
-						<strong>{talk.data.title}</strong>
-						<span class="cv-date">{talk.data.year}</span>
+						<strong>{ed.degree}, {ed.area}</strong>
 					</div>
 					<p class="cv-org">
-						{talk.data.venue}
-						{talk.data.role && <span class="cv-role"> · {talk.data.role}</span>}
+						{ed.institution}
+						{ed.location && `, ${ed.location}`}
 					</p>
-				</li>
+					{ed.summary && <p set:html={md(ed.summary)} />}
+				</div>
 			))}
-		</ul>
-	</section>
+		</section>
+	)}
 
-	<section>
-		<h2>Selected instruction</h2>
-		<ul class="item-list">
-			<li class="cv-entry">
-				<div class="cv-entry-header">
-					<strong>Instructor, Carpentry Workshops</strong>
-					<span class="cv-date">2015 – 2022</span>
-				</div>
-				<p>Taught over 50 Library, Data, and Software Carpentry boot-camp workshops covering foundational coding and data science skills.</p>
-			</li>
-			<li class="cv-entry">
-				<div class="cv-entry-header">
-					<strong>Instructor Trainer, The Carpentries</strong>
-					<span class="cv-date">2017 – 2022</span>
-				</div>
-				<p>Taught over 10 instructor training workshops on evidence-based teaching best practices.</p>
-			</li>
-			<li class="cv-entry">
-				<div class="cv-entry-header">
-					<strong>Teaching Faculty, Berkeley Initiative for Transparency in the Social Sciences (BITSS)</strong>
-					<span class="cv-date">2019 – 2021</span>
-				</div>
-				<p>Research Transparency and Reproducibility Training — provided participants with an overview of tools and practices for transparent and reproducible social science research.</p>
-			</li>
-		</ul>
-	</section>
+	{systemwideLeadership.length > 0 && (
+		<section>
+			<h2>Cross-institutional &amp; systemwide leadership</h2>
+			<ul class="item-list">
+				{systemwideLeadership.map((e) => (
+					<li class="cv-entry">
+						<div class="cv-entry-header">
+							<strong>{e.name}</strong>
+							<span class="cv-date">{dateRange(e)}</span>
+						</div>
+						{e.summary && <p class="cv-role" set:html={md(e.summary)} />}
+						{e.highlights && e.highlights.length > 0 && (
+							<ul class="cv-highlights">
+								{e.highlights.map((h) => <li set:html={md(h)} />)}
+							</ul>
+						)}
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
 
-	<section>
-		<h2>Professional service</h2>
-		<ul class="service-list">
-			<li>
-				<span class="cv-date">2021 – present</span>
-				Chair, Curriculum Advisory Committee, Library Carpentry
-			</li>
-			<li>
-				<span class="cv-date">2017 – present</span>
-				Carpentries Instructor Trainer
-			</li>
-			<li>
-				<span class="cv-date">2016 – present</span>
-				Carpentries Instructor
-			</li>
-			<li>
-				<span class="cv-date">2017 – present</span>
-				Berkeley Initiative for Transparency in Social Science (BITSS) Catalyst
-			</li>
-			<li>
-				<span class="cv-date">2016 – present</span>
-				Open Science Framework Ambassador
-			</li>
-		</ul>
-	</section>
+	{grantsAndFunding.length > 0 && (
+		<section>
+			<h2>Grants &amp; funding</h2>
+			<ul class="item-list">
+				{grantsAndFunding.map((e) => (
+					<li class="cv-entry">
+						<div class="cv-entry-header">
+							<strong>{e.name}</strong>
+							<span class="cv-date">{dateRange(e)}</span>
+						</div>
+						{e.summary && <p class="cv-role" set:html={md(e.summary)} />}
+						{e.highlights && e.highlights.length > 0 && (
+							<ul class="cv-highlights">
+								{e.highlights.map((h) => <li set:html={md(h)} />)}
+							</ul>
+						)}
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
 
-	<section>
-		<h2>Memberships</h2>
-		<ul class="service-list">
-			<li>
-				<span class="cv-date">2010 – present</span>
-				International Association for Social Science Information Services and Technology (IASSIST)
-			</li>
-			<li>
-				<span class="cv-date">2015 – present</span>
-				The Carpentries
-			</li>
-			<li>
-				<span class="cv-date">2017 – present</span>
-				Research Data Alliance
-			</li>
-			<li>
-				<span class="cv-date">2015 – present</span>
-				Inter-University Consortium for Political and Social Research (ICPSR)
-			</li>
-		</ul>
-	</section>
+	{publications.length > 0 && (
+		<section>
+			<h2>Publications</h2>
+			<ul class="item-list">
+				{publications.map((p) => (
+					<li class="cv-entry">
+						<div class="cv-entry-header">
+							<strong set:html={md(p.title)} />
+							<span class="cv-date">{dateRange(p)}</span>
+						</div>
+						<p class="cv-org">
+							{(p.authors ?? []).length > 0 && (
+								<span set:html={p.authors!.map((a) => md(a)).join(', ') + '. '} />
+							)}
+							{p.journal}
+						</p>
+						{p.summary && <p set:html={md(p.summary)} />}
+						{p.doi && (
+							<a class="doi" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">
+								DOI: {p.doi}
+							</a>
+						)}
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
 
-	<section>
-		<h2>Technical skills</h2>
-		<div class="cv-entry">
-			<p><strong>Languages:</strong> Python, R, HTML, CSS, JSON, PHP, SQL</p>
-			<p><strong>Technologies:</strong> MySQL, SQLite, LaTeX, Bash, Git, Jupyter, RStudio, Stata, SAS, SPSS</p>
-		</div>
-	</section>
+	{presentations.length > 0 && (
+		<section>
+			<h2>Selected presentations &amp; invited talks</h2>
+			<ul class="item-list">
+				{presentations.map((p) => (
+					<li class="cv-entry">
+						<p set:html={md(p.bullet)} />
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
+
+	{teaching.length > 0 && (
+		<section>
+			<h2>Teaching &amp; program building</h2>
+			<ul class="service-list wrap">
+				{teaching.map((t) => (
+					<li>
+						<strong>{t.label}</strong>
+						<span set:html={md(t.details)} />
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
+
+	{professionalService.length > 0 && (
+		<section>
+			<h2>Professional service, governance &amp; standing</h2>
+			<ul class="service-list wrap">
+				{professionalService.map((s) => (
+					<li>
+						<strong>{s.label}</strong>
+						<span set:html={md(s.details)} />
+					</li>
+				))}
+			</ul>
+		</section>
+	)}
+
+	{technicalSkills.length > 0 && (
+		<section>
+			<h2>Technical skills</h2>
+			<div class="cv-entry">
+				{technicalSkills.map((s) => (
+					<p><strong>{s.label}:</strong> {s.details}</p>
+				))}
+			</div>
+		</section>
+	)}
 </BaseLayout>
 
 <style>
 	.cv-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid rgb(var(--gray-light)); }
 	h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+	.cv-headline { font-size: 1.05rem; color: rgb(var(--gray-dark)); margin: 0 0 0.5rem; }
 	.cv-contact { font-size: 0.9rem; color: rgb(var(--gray)); margin: 0 0 0.5rem; }
 	.cv-pdf { font-size: 0.875rem; margin: 0; }
 	h2 {
@@ -255,28 +311,18 @@ const typeLabels: Record<string, string> = {
 	}
 	.cv-date { font-size: 0.875rem; color: rgb(var(--gray)); white-space: nowrap; flex-shrink: 0; }
 	.cv-org { font-size: 0.9rem; color: rgb(var(--gray)); margin: 0.15rem 0 0.35rem; }
-	.cv-amount { font-weight: 700; color: rgb(var(--gray-dark)); }
-	.cv-role { font-size: 0.875rem; color: rgb(var(--gray)); font-style: italic; }
-	.cv-type { font-style: italic; }
+	.cv-role { font-size: 0.875rem; color: rgb(var(--gray)); font-style: italic; margin: 0.15rem 0 0.35rem; }
 	.cv-entry p { font-size: 0.95rem; margin: 0 0 0.25rem; }
+	.cv-highlights { margin: 0.35rem 0 0.25rem; padding-left: 1.1rem; }
+	.cv-highlights li { font-size: 0.95rem; margin-bottom: 0.3rem; }
 	.doi { font-size: 0.875rem; font-family: monospace; }
 	.item-list { list-style: none; padding: 0; margin: 0; }
 	.item-list li { border-bottom: 1px solid rgb(var(--gray-light)); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
 	.item-list li:last-child { border-bottom: none; padding-bottom: 0; }
-	.service-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-	}
-	.service-list li {
-		padding: 0.5rem 0;
-		border-bottom: 1px solid rgb(var(--gray-light));
-		font-size: 0.95rem;
-		display: flex;
-		gap: 1.5rem;
-	}
+	.service-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+	.service-list li { padding: 0.6rem 0; border-bottom: 1px solid rgb(var(--gray-light)); font-size: 0.95rem; }
 	.service-list li:last-child { border-bottom: none; }
-	.service-list .cv-date { min-width: 7rem; }
+	.service-list.wrap li { display: flex; flex-direction: column; gap: 0.2rem; }
+	.service-list.wrap li strong { font-size: 0.95rem; }
+	.service-list.wrap li span { color: rgb(var(--gray-dark)); }
 </style>

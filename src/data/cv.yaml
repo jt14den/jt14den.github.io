@@ -1,0 +1,238 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# Source of truth: resume/master-inventory.md (sourced from the 2025-26 UCLA
+# Librarian Series Academic Peer Review Data Summary). Built 2026-08-16.
+cv:
+  name: Tim Dennis
+  headline: Director, Data Science Center — UCLA Library
+  location: Los Angeles, CA
+  email: timdennis@ucla.edu
+  phone:
+  website: https://tim-dennis.com
+  social_networks:
+    - network: LinkedIn
+      username: jtimdennis
+    - network: GitHub
+      username: jt14den
+    - network: ORCID
+      username: 0000-0001-6632-3812
+  sections:
+    experience:
+      - company: UCLA Library
+        position: Director, Data Science Center
+        start_date: 2017-04
+        end_date: present
+        location: Los Angeles, CA
+        highlights:
+          - Lead campus data services and computational research support; supervise 4 FTE staff (1 vacancy) and 5 DataSquad student staff directly, 15 student consultants across program history; ~10-12 total team including cross-functional project teams (ML/AI, Dataverse/Data Management, Emerging Technologies, GIS, OSPO)
+          - Manage annual operating budget of approximately $600K across multiple accounts
+          - "**UCLA Dataverse** (2018-present): 312 registered users, 1,603 datasets, 142,300+ downloads, grown from 15 files (2019) to 54,655 files (2026); harvested 1,014 legacy Social Science Data Archive datasets"
+          - "**Redivis** (2022-present): selected and licensed the platform, negotiated restricted-dataset access, navigated FERPA/PHI/HIPAA compliance approval for P3/P4 restricted research data; scaled from 5 workflows/444GB (Jan 2023) to 2.9PB processed (2024); supports UCLA Political Science research publishing in *APSR*, *PNAS*, *BJPolS*, *AEJ: Policy*; cited at FORCE11 2024"
+          - "**DataSquad** (2021-present): founded and direct this student consulting workforce, 24% of total service volume, 100% career placement (10/10 students) at McKinsey, Amazon, World Wide Technology, Ekimetrics, CVS Health, AIG, Stanford"
+          - "Research support enabled a $5M Dana Center for Neuroscience and Society grant (Carceral Ecologies partnership) and federal NIH/NSF/Robert Wood Johnson Foundation grants (BioCritical Studies Lab); together these directly supported 2 of 6 (33%) of UCLA's 2024 Public Impact Research Award winners"
+          - Co-led ESRI licensing transformation (Jan 2023), doubling monthly new user registrations on average; lead coordinator for campus response to the NIH Data Management and Sharing Policy
+          - "Sponsored and participated in DSC/DataSquad AI/ML pilot projects (2023-present): participant in a Library Systems Team/DSC experiment evaluating OCR, spaCy NER, and OpenAI models for automated metadata extraction on the 10,000+ document Campaign Literature Archive against Dublin Core/MODS standards (2023); sponsored a DataSquad prototype exploring LLM-assisted Data Management Plan generation (Nov 2023); provided hands-on technical support on a DataSquad oral history AI-transcription project, including Redivis AI-layer integration and Hugging Face model setup"
+          - Nominee, UCLA Administrative Management Group Excellence in Leadership Award, 2025 — nominated by direct reports
+      - company: UC San Diego Library
+        position: Data Services & Collections Librarian
+        start_date: 2015-01
+        end_date: 2017-04
+        location: La Jolla, CA
+        highlights:
+          - Provided consultation and training on data discovery/reuse, research data management, and statistical programming; administered UCSD's local Dataverse instance
+          - Proposed and led redesign of the Data/GIS Lab into a studio-style cross-disciplinary data services space (opened Fall 2016)
+          - Organized UCSD's inaugural Software Carpentry Workshop (Fall 2015); advocated successfully for the Library to become a Software Carpentry Affiliate; became a badged Software/Data Carpentry instructor
+          - Built a recurring data skills series with UCSD's School of Global Policy and Strategy — curriculum design and reproducible-workflow (TIER methodology) training for graduate students
+      - company: UC Berkeley Library
+        position: Research Technology & Services Specialist, Library Data Lab
+        start_date: 2006-01
+        end_date: 2015-01
+        location: Berkeley, CA
+        highlights:
+          - Co-designed, opened (2008), and managed the Library Data Lab; provided quantitative reasoning consultation, 15 hours/week, to a lab serving 1,000+ users/year
+          - Established the Library's LibTech internal training program (Google Analytics, web widgets, Python, Drupal)
+          - Drupal developer for the library — architected multiple production sites; implemented Agile methods, Vagrant, GitHub, Travis CI, and Behavior-Driven Development with the dev team
+
+    systemwide_leadership:
+      - name: UC Carpentries
+        start_date: 2020-01
+        end_date: present
+        summary: Founder and Systemwide Lead; Co-Chair, 2024-present
+        highlights:
+          - Ten-campus UC network; 28 workshops delivered (2023-2025), 2,896 total attendees
+      - name: UC Open Source Program Office (OSPO)
+        start_date: 2023-01
+        end_date: present
+        summary: Co-Principal Investigator, Sloan Foundation Grant ($1.85M, awarded Spring 2024); Lead, UC OSPO Education Working Group
+        highlights:
+          - Contributed to conceptualization, funding acquisition, and proposal writing; partnership with five other UC libraries
+      - name: UC Love Data Week
+        start_date: 2018-01
+        end_date: present
+        summary: Co-founder & Executive Sponsor (co-founded during COVID-19)
+        highlights:
+          - Provides executive leadership and institutional sponsorship, supervises campus and systemwide organizers, teaches select sessions
+          - 75 individual sessions across three years (2023-2025); 2,098 unique registrants (2023), 2,595 (2024)
+      - name: UC Research IT Committee (RITC)
+        start_date: 2017-04
+        end_date: present
+        summary: Research Facilitator
+      - name: Research Data Services Working Group
+        start_date: 2023-01
+        end_date: present
+        summary: Steering Committee member; co-lead, UCLA Research Data Roadmap development
+      - name: UC GIS Week
+        start_date: 2020-08
+        end_date: present
+        summary: Sponsor & Strategic Supporter — enabled the GIS Librarian to establish this systemwide initiative
+      - name: UC Open annual conference
+        start_date: 2023-01
+        end_date: present
+        summary: Co-developer, in partnership with five other UC libraries; 125 attendees
+      - name: DataSquad International
+        summary: Co-lead with Paula Lackie (Carleton College)
+
+    grants_and_funding:
+      - name: IMLS Laura Bush 21st Century Librarian Program
+        start_date: 2022-01
+        end_date: 2025-01
+        summary: "Program Director. RE-252335-OLS-22, **$237,839**"
+        highlights:
+          - Delivered 15 lessons (14 proposed); 28 authors across 14 institutions; DMP 101 lesson achieved global Library Carpentry curriculum adoption
+          - "CRediT roles: Conceptualization, Funding acquisition (Lead Grant Writer), Project administration, Software, Supervision"
+      - name: UC OSPO, Sloan Foundation continuation grant
+        start_date: 2023-01
+        end_date: present
+        summary: "Co-Principal Investigator & UCLA Lead. **$1.85M** (UC-wide allocation, partnership with five other UC libraries)"
+      - name: Norman Powell Philanthropic Gifts
+        start_date: 2023-01
+        end_date: 2024-01
+        summary: Program Director & Fund Manager
+        highlights:
+          - Secured $50,000 in new donor funding (2023-2024) for DataSquad expansion
+          - Managed the final year of a $201,285 continuing gift (2020-2023) for DSC education programs
+
+    teaching_and_program_building:
+      - label: 2023-2025 instruction
+        details: Primary instructor or co-instructor for 22 workshops/sessions, personally reaching 1,118 learners across UCLA, UC Carpentries, UC Love Data Week, and standalone programming
+      - label: Guest lectures
+        details: "UCLA DH 201 (Intro to Digital Humanities); UCLA Labor Studies Capstone (OpenRefine + Tableau); UCLA NS 191H/NS192BX Neuroscience Honors Seminar; UCLA IS262A \"Data Management Plans and the Role of Libraries\" (Oct 2025, published/DOI'd)"
+      - label: Teaching outside UCLA
+        details: Carpentries Instructor Training co-instructor (100+ learners total); Library Carpentry workshops for other institutions (200+ learners), 2022-2025
+      - label: Library Carpentry Curriculum Advisory/Governance Group
+        details: Co-Chair (2021-present) — defined the formal lesson adoption process; led adoption of four new lessons (Intro to Python, Computational Thinking, Data Management Planning, AI for GLAM); Lesson Development Trainer (2024-present); Instructor Trainer (2017-present); Instructor (2015-present)
+      - label: '"Intro to AI for GLAM" Code Sprint (Jan 2024)'
+        details: Co-hosted a seven-hour global code sprint with the Library Carpentry Curriculum Advisory Committee to advance this AI-literacy lesson toward stable release; 14 participants from 9 institutions across the US, UK, Germany, and South Africa (including Hugging Face, the Smithsonian, and The National Archives UK); 14 issues closed, 7 pull requests merged, accessible SVG flowcharts and alt-text added throughout the lesson
+      - label: '"Agentic Research Workflows" Lesson (2026, in development)'
+        details: "Author, Carpentries Workbench lesson on using AI coding agents for research work while preserving validation, reproducibility, and research judgment — covers CLI-first workflows, project-grounding via CLAUDE.md/AGENTS.md, and validation strategies (synthetic data generation, domain plausibility, cross-AI auditing); adapted from the UC Berkeley D-Lab \"Vibe Coding for Research\" workshop"
+
+    professional_service:
+      - label: Research Data Alliance (RDA)
+        details: Co-Chair, Libraries for Research Data Interest Group (2023-present)
+      - label: The Carpentries
+        details: Instructor Training Leadership Group (2021-present); member since 2016
+      - label: GO FAIR USA
+        details: FAIR Data Stewardship Interest Group (2021-present)
+      - label: Berkeley Initiative for Transparency in Social Science (BITSS)
+        details: Catalyst (2017-present)
+      - label: Center for Open Science
+        details: Ambassador (2016-present)
+      - label: Inter-University Consortium for Political and Social Research (ICPSR)
+        details: Official Representative (2015-present)
+      - label: IASSIST
+        details: Member since 2009
+
+    publications:
+      - title: "L2 Voter History and Demographic Dataset [Dataset]"
+        authors:
+          - UCLA Library
+        journal: Redivis
+        date: 2024-01
+        summary: Supervisor role — national 50-state voter registration/demographic dataset with persistent identifier
+      - title: "Meeting the Challenges of Data Support Services in Academic Libraries: Advocating for an International DataSquad Model"
+        authors:
+          - D. Wiltshire
+          - P. Lackie
+          - "*Tim Dennis*"
+          - E. Parke
+        journal: Data Culture in Academic Libraries, ACRL
+        date: 2024-01
+      - title: "From a Data Archive to Data Science: Supporting Current Research"
+        authors:
+          - "*Tim Dennis*"
+          - et al.
+        journal: "In Herndon, J. (Ed.), Data Science in the Library. Facet Publishing"
+        date: 2021-01
+      - title: "I See, UC, We All See Carpentries: Collaboratively Scaling Workshop Instruction Across a University System"
+        authors:
+          - "*Tim Dennis*"
+          - et al.
+        journal: The Carpentries Blog
+        date: 2021-01
+      - title: "Library Carpentry: Tidy Data for Librarians"
+        authors:
+          - "*Tim Dennis*"
+          - et al.
+        journal: Zenodo
+        doi: 10.5281/zenodo.3954067
+        date: 2020-01
+      - title: "Top 10 FAIR Data and Software Things"
+        authors:
+          - "*Tim Dennis*"
+          - et al.
+        journal: Zenodo
+        doi: 10.5281/zenodo.2555498
+        date: 2019-01
+      - title: "Using R and ggvis to Create Interactive Graphics for Exploratory Data Analysis"
+        authors:
+          - "*Tim Dennis*"
+        journal: "In Magnuson, L. (Ed.), Data Visualization. Rowman & Littlefield"
+        date: 2016-01
+
+    selected_presentations:
+      - bullet: RDA Plenary, Sweden (2023); SCaLE 22x, Pasadena (2025); UC Tech (2024); CNI (Nov 2025); IASSIST & CARTO, Halifax (2024); Linux Foundation "What's Next for Open Source," New York (2024)
+      - bullet: Invited panelist, UN OSPOs for Good (United Nations, New York, 2024 — invitation only)
+      - bullet: Presenter, FORCE11 Conference on UCLA Redivis infrastructure (UCLA, Aug 2024)
+      - bullet: "\"Radical Partnerships: Expanding Academic Collaboration in Data and Computational Sciences\" — CNI Spring 2022 Membership Meeting, San Diego"
+      - bullet: "\"The Carpentries: Building Local and Global Communities of Practice to Improve Data Skills\" (invited) — AGU Fall Meeting 2019, San Francisco"
+      - bullet: "\"From a Data Archive to Data Science\" — IASSIST 2019, Sydney, Australia"
+      - bullet: "\"Positioning Libraries to Support Data Science\" (invited keynote) — Library and Information Association of South Africa Conference 2017, Johannesburg"
+
+    education:
+      - institution: University of California, Berkeley
+        area: Information Management & Systems
+        degree: MS
+        location: Berkeley, CA
+        summary: "Focus: XML technologies/standards, information design, user experience research"
+      - institution: Millsaps College
+        area: Sociology
+        degree: BS
+        location: Jackson, MS
+
+    technical_skills:
+      - label: Languages
+        details: Python, R, HTML, CSS, JSON, PHP, SQL
+      - label: Technologies
+        details: MySQL, SQLite, LaTeX, Bash scripting, Git, Jupyter, RStudio, Stata, SAS, SPSS, Drupal
+
+design:
+  theme: classic
+  page:
+    top_margin: 1.5cm
+    bottom_margin: 1.5cm
+    left_margin: 1.5cm
+    right_margin: 1.5cm
+  typography:
+    line_spacing: 0.5em
+  sections:
+    space_between_regular_entries: 0.9em
+    space_between_text_based_entries: 0.2em
+
+locale:
+  language: english
+
+settings:
+  current_date: today
+  render_command:
+    output_folder: rendercv_output
+  bold_keywords: []
+  pdf_title: Tim Dennis - CV
