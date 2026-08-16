@@ -3,7 +3,7 @@ title: "What would it take for a university OSPO to support its solo maintainers
 description: "A working note: if critical open source rests on a few unpaid people, and some of them are inside the UC system, what could a university open source program office actually do about it?"
 date: 2026-06-12
 tags: [OSPO, open source, software sustainability, UC, infrastructure]
-status: draft
+status: published
 type: note
 ---
 

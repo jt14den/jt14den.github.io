@@ -3,7 +3,7 @@ title: "The prompt that makes a model disagree with me"
 description: "A standing prompt template whose only job is to stop a second model from agreeing with my own diagnosis. Tested it on my own project-management setup and it found the weak joint in an argument I was ready to act on."
 date: 2026-07-25
 tags: [AI, LLM, workflow, verification, decision-making]
-status: draft
+status: published
 type: note
 ---
 
