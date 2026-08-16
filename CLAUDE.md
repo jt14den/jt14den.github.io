@@ -27,12 +27,11 @@ No test suite configured.
 | Route | Page | Source |
 |---|---|---|
 | `/` | Writing-first homepage | `src/pages/index.astro` |
-| `/blog` | Blog listing (published only) | `src/pages/blog/index.astro` |
-| `/blog/[slug]` | Blog post | `src/pages/blog/[...slug].astro` |
-| `/blog/tags/[tag]` | Tag pages | `src/pages/blog/tags/[tag].astro` |
-| `/blog/archive` | Posts by year | `src/pages/blog/archive.astro` |
-| `/notes` | Notes listing | `src/pages/notes/index.astro` |
-| `/notes/[slug]` | Note/linkpost/crosspost | `src/pages/notes/[...slug].astro` |
+| `/writing` | Unified blog+notes river (published only) | `src/pages/writing/index.astro` |
+| `/writing/tags/[tag]` | Tag pages, across both collections | `src/pages/writing/tags/[tag].astro` |
+| `/writing/archive` | All writing by year | `src/pages/writing/archive.astro` |
+| `/blog/[slug]` | Blog post (URL unchanged; listing lives at `/writing`) | `src/pages/blog/[...slug].astro` |
+| `/notes/[slug]` | Note/linkpost/crosspost (URL unchanged) | `src/pages/notes/[...slug].astro` |
 | `/programs` | Programs hub | `src/pages/programs/index.astro` |
 | `/programs/[slug]` | Individual programs | `src/pages/programs/[...slug].astro` |
 | `/case-studies` | Case study listing | `src/pages/case-studies/index.astro` |
@@ -45,12 +44,14 @@ No test suite configured.
 | `/search` | Pagefind search | `src/pages/search.astro` |
 | `/rss.xml` | RSS feed (blog + notes) | `src/pages/rss.xml.js` |
 
+Old `/blog`, `/blog/archive`, `/blog/tags/[tag]`, and `/notes` index URLs redirect to their `/writing` equivalents (configured in `astro.config.mjs`) — individual post/note permalinks were left unchanged. `src/lib/writing.ts` exports `getWritingItems()`, the shared merge-and-sort helper behind the homepage, `/writing`, `/writing/archive`, and `/writing/tags/[tag]`.
+
 ## Content collections (`src/content.config.ts`)
 
 | Collection | Directory | Key extra fields |
 |---|---|---|
 | `blog` | `src/content/blog/` | `date`/`pubDate` (legacy), `type`, `status`, `canonicalUrl`, `externalUrl` |
-| `notes` | `src/content/notes/` | same as blog + `promoteToBlog` |
+| `notes` | `src/content/notes/` | same as blog + `promoteToBlog` (legacy — no longer changes where a note appears now that `/writing` shows everything; kept for the "From Notes" badge on individual post pages) |
 | `programs` | `src/content/programs/` | `startYear`, `collaborators[]`, `relatedLinks[]`, `order` |
 | `caseStudies` | `src/content/case-studies/` | `partner`, `outcomes[]`, `year` |
 | `scholarship` | `src/content/scholarship/` | `doi`, `venue`, `year`, `type` |
@@ -76,7 +77,7 @@ Use `getCollection('caseStudies')` (camelCase) for the case-studies collection.
 
 - `src/consts.ts` — `SITE_TITLE`, `SITE_DESCRIPTION`, `SITE_AUTHOR`
 - `src/styles/global.css` — all CSS: vars, typography, post lists, tags, badges, layouts
-- `src/components/Header.astro` — nav: Blog | Notes | Programs | Case Studies | Impact | Governance | About
+- `src/components/Header.astro` — nav: Writing | Programs | Case Studies | Impact | Governance | About
 - `src/components/Footer.astro` — copyright, RSS, Search, GitHub, LinkedIn links
 - `public/fonts/` — Atkinson Hyperlegible (woff)
 - `.github/workflows/deploy.yml` — CI/CD: astro build → pagefind → GitHub Pages

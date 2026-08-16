@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & {
+	/** Extra top-level path segments (e.g. legacy URL prefixes) that should also count as active */
+	activePrefixes?: string[];
+};
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, activePrefixes = [], ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const topSegment = subpath?.[0] || '';
+const isActive = href === pathname || href === '/' + topSegment || activePrefixes.includes(topSegment);
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

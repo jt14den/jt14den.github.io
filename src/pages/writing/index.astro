@@ -1,0 +1,70 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import { getWritingItems } from '../../lib/writing';
+
+const items = await getWritingItems();
+
+// Gather all unique tags
+const allTags = [...new Set(items.flatMap((item) => item.tags))].sort();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Writing — ${SITE_TITLE}`} description="Essays, notes, and linkposts on research data, open science, library leadership, and building things that last." />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content" data-pagefind-ignore>
+			<h1 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Writing</h1>
+			<p style="color: rgb(var(--gray)); font-size: 0.9rem; margin-bottom: 1.5rem;">
+				<a href="/writing/archive/">Archive</a>
+				{allTags.length > 0 && ' · Tags: '}
+				{allTags.slice(0, 8).map((tag, i) => (
+					<>
+						<a href={`/writing/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>{tag}</a>
+						{i < Math.min(allTags.length, 8) - 1 && ', '}
+					</>
+				))}
+			</p>
+
+			{items.length > 0 ? (
+				<ul class="post-list">
+					{items.map((item) => (
+						<li>
+							<p class="post-meta">
+								{item.date && <FormattedDate date={item.date} />}
+								{item.type === 'crosspost' && (
+									<span class="type-badge crosspost">Crosspost</span>
+								)}
+								{item.type === 'linkpost' && (
+									<span class="type-badge linkpost">Link</span>
+								)}
+								{item.tags.slice(0, 2).map((tag) => (
+									<a
+										href={`/writing/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
+										class="tag"
+										style="font-size: 0.72rem;"
+									>{tag}</a>
+								))}
+							</p>
+							<p class="post-title">
+								<a href={item.href}>{item.title}</a>
+							</p>
+							{item.description && (
+								<p class="post-desc">{item.description}</p>
+							)}
+						</li>
+					))}
+				</ul>
+			) : (
+				<p style="color: rgb(var(--gray));">No published posts yet.</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

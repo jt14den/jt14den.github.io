@@ -17,8 +17,6 @@ interface Props {
 	externalUrl?: string;
 	/** Set to true for notes that promoted to blog — shows "From Notes" badge */
 	fromNotes?: boolean;
-	/** Set to true for notes pages (adjusts back link) */
-	isNote?: boolean;
 }
 
 const {
@@ -32,7 +30,6 @@ const {
 	canonicalUrl,
 	externalUrl,
 	fromNotes = false,
-	isNote = false,
 } = Astro.props;
 
 const effectiveDate = date ?? pubDate;
@@ -100,7 +97,7 @@ const canonical = type === 'crosspost' && canonicalUrl ? canonicalUrl : pageUrl;
 						<ul class="tags">
 							{tags.map((tag) => (
 								<li class="tag">
-									<a href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>{tag}</a>
+									<a href={`/writing/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}>{tag}</a>
 								</li>
 							))}
 						</ul>
@@ -128,8 +125,8 @@ const canonical = type === 'crosspost' && canonicalUrl ? canonicalUrl : pageUrl;
 
 				<footer class="post-footer">
 					<div>
-						<a href={isNote ? '/notes/' : '/blog/'} style="font-size: 0.9rem; color: rgb(var(--gray)); text-decoration: none;">
-							← {isNote ? 'All notes' : 'All posts'}
+						<a href="/writing/" style="font-size: 0.9rem; color: rgb(var(--gray)); text-decoration: none;">
+							← All writing
 						</a>
 					</div>
 					<a

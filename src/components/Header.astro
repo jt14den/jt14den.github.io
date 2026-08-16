@@ -11,8 +11,7 @@ import Search from './Search.astro';
 			<a href="/">{SITE_TITLE}</a>
 		</div>
 		<nav aria-label="Main navigation">
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/notes">Notes</HeaderLink>
+			<HeaderLink href="/writing" activePrefixes={["blog", "notes"]}>Writing</HeaderLink>
 			<HeaderLink href="/programs">Programs</HeaderLink>
 			<HeaderLink href="/case-studies">Case Studies</HeaderLink>
 			<HeaderLink href="/impact">Impact</HeaderLink>

@@ -1,0 +1,64 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Header from '../../../components/Header.astro';
+import { SITE_TITLE } from '../../../consts';
+import { getWritingItems } from '../../../lib/writing';
+
+export async function getStaticPaths() {
+	const items = await getWritingItems();
+
+	const tagSet = new Set<string>();
+	items.forEach((item) => item.tags.forEach((t) => tagSet.add(t)));
+
+	return Array.from(tagSet).map((tag) => ({
+		params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+		props: { tag },
+	}));
+}
+
+const { tag } = Astro.props;
+const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+
+const items = (await getWritingItems()).filter((item) =>
+	item.tags.some((t) => t.toLowerCase().replace(/\s+/g, '-') === tagSlug),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`#${tag} — ${SITE_TITLE}`} description={`Posts tagged "${tag}"`} />
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<p style="font-size: 0.85rem; color: rgb(var(--gray)); margin-bottom: 0.5rem;">
+				<a href="/writing/" style="color: rgb(var(--gray)); text-decoration: none;">Writing</a> › Tag
+			</p>
+			<h1 style="font-size: 1.4rem; margin-bottom: 1.5rem;">#{tag}</h1>
+
+			{items.length > 0 ? (
+				<ul class="post-list">
+					{items.map((item) => (
+						<li>
+							<p class="post-meta">
+								{item.date && <FormattedDate date={item.date} />}
+							</p>
+							<p class="post-title">
+								<a href={item.href}>{item.title}</a>
+							</p>
+							{item.description && (
+								<p class="post-desc">{item.description}</p>
+							)}
+						</li>
+					))}
+				</ul>
+			) : (
+				<p style="color: rgb(var(--gray));">No posts with this tag.</p>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
