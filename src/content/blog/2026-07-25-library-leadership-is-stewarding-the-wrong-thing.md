@@ -2,7 +2,7 @@
 title: "Library Leadership Is Stewarding the Wrong Thing"
 description: "Ask what a library leader is supposed to protect and the answers you get are a building, a budget, and a collection. Those are means, not the mission. The job is stewarding the conditions under which knowledge gets made."
 pubDate: 2026-07-25
-status: draft
+status: published
 type: essay
 tags: [library leadership, higher education, information science, vision]
 ---
