@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import entries from '../data/bibliography.csl.json';
+
+interface CslAuthor {
+	family?: string;
+	given?: string;
+	literal?: string;
+}
+interface CslEntry {
+	id: string;
+	type: string;
+	title?: string;
+	author?: CslAuthor[];
+	issued?: { 'date-parts': number[][] };
+	'container-title'?: string;
+	volume?: string;
+	issue?: string;
+	page?: string;
+	DOI?: string;
+	URL?: string;
+	keyword?: string;
+	note?: string;
+}
+
+const data = entries as CslEntry[];
+
+function authorNames(a?: CslAuthor[]): string {
+	if (!a || a.length === 0) return '';
+	return a
+		.map((p) => (p.literal ? p.literal : [p.given, p.family].filter(Boolean).join(' ')))
+		.join(', ');
+}
+function year(e: CslEntry): string {
+	return e.issued?.['date-parts']?.[0]?.[0]?.toString() ?? '';
+}
+function confidence(note?: string): string | null {
+	const m = note?.match(/Confidence:\s*([a-z-]+)/i);
+	return m ? m[1].toLowerCase() : null;
+}
+function venueLine(e: CslEntry): string {
+	const parts = [e['container-title']];
+	if (e.volume) parts.push(e.issue ? `${e.volume}(${e.issue})` : e.volume);
+	if (e.page) parts.push(e.page);
+	return parts.filter(Boolean).join(', ');
+}
+
+const topicLabels: Record<string, string> = {
+	'computational-methods': 'Computational Methods',
+	ospo: 'Open Source Program Offices',
+	'agentic-research': 'Agentic AI / Coding Tools',
+	infrastructure: 'Infrastructure',
+	'gis-services': 'GIS Services',
+};
+
+// Group entries by topic — an entry with multiple keywords appears in each of its topic groups
+const byTopic = new Map<string, CslEntry[]>();
+for (const e of data) {
+	const topics = (e.keyword ?? '').split(',').map((k) => k.trim()).filter((k) => k in topicLabels);
+	for (const t of topics) {
+		if (!byTopic.has(t)) byTopic.set(t, []);
+		byTopic.get(t)!.push(e);
+	}
+}
+const topicOrder = ['computational-methods', 'ospo', 'agentic-research', 'infrastructure', 'gis-services'];
+for (const list of byTopic.values()) {
+	list.sort((a, b) => (year(b) || '0').localeCompare(year(a) || '0'));
+}
+---
+
+<BaseLayout
+	title="Bibliography"
+	description="An annotated, machine-readable bibliography backing the research behind this site's writing — grouped by topic, with confidence ratings on every source."
+>
+	<h1>Bibliography</h1>
+	<p>
+		An annotated bibliography of sources behind the research on this site — not just a
+		citation list. Every entry carries a confidence rating and a note on what it actually
+		says and where it's weak, the same discipline as the notes themselves.
+	</p>
+	<p style="font-size: 0.9rem; color: rgb(var(--gray));">
+		Machine-readable version at <a href="/bibliography.csl.json"><code>/bibliography.csl.json</code></a>
+		(CSL-JSON) — the same data this page renders.
+	</p>
+
+	{topicOrder.filter((t) => byTopic.has(t)).map((topic) => (
+		<section class="topic-section">
+			<h2>{topicLabels[topic]}</h2>
+			<ul class="item-list">
+				{byTopic.get(topic)!.map((e) => {
+					const conf = confidence(e.note);
+					return (
+						<li>
+							<h3>
+								{e.URL ? <a href={e.URL} target="_blank" rel="noopener">{e.title}</a> : e.title}
+							</h3>
+							<div class="meta">
+								{authorNames(e.author) && <span>{authorNames(e.author)}</span>}
+								{year(e) && <span>{year(e)}</span>}
+								{venueLine(e) && <span>{venueLine(e)}</span>}
+								{conf && <span class={`confidence conf-${conf.replace(/[^a-z]/g, '-')}`}>{conf}</span>}
+							</div>
+							{e.note && (
+								<details class="note">
+									<summary>Annotation</summary>
+									<p>{e.note}</p>
+								</details>
+							)}
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	))}
+</BaseLayout>
+
+<style>
+	h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+	h2 { font-size: 1.2rem; margin: 2rem 0 0.75rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(var(--gray-light)); }
+	h3 { font-size: 1rem; margin: 0 0 0.25rem; }
+	.topic-section:first-of-type h2 { margin-top: 1.5rem; }
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+		margin-bottom: 0.4rem;
+	}
+	.confidence {
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		padding: 0.1rem 0.5rem;
+		border-radius: 999px;
+		background: rgb(var(--gray-light));
+	}
+	.conf-high { background: #d7f2df; color: #1a6b34; }
+	.conf-medium, .conf-medium-high { background: #fde9c8; color: #8a5a00; }
+	.conf-low, .conf-low-medium { background: #f7d9d9; color: #8a1f1f; }
+	.note { margin-top: 0.35rem; font-size: 0.85rem; }
+	.note summary { cursor: pointer; color: var(--accent); }
+	.note p { margin: 0.4rem 0 0; color: rgb(var(--gray-dark)); }
+</style>
