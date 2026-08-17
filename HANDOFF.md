@@ -1,31 +1,24 @@
-# Session Handoff — 2026-07-25
+# Session Handoff — 2026-08-16
 
 ## Accomplished
-- Published 4 notes: lesson-catalog-metadata, three-llms-without-getting-burned, curation-work-not-code-work, single-underscore-that-broke-my-task-system (21ac5b7, c2d6e6e, 104451d)
-- Wired Cloudflare Web Analytics beacon into `src/components/BaseHead.astro` (52eaf31); onboarded `www.tim-dennis.com` in the Cloudflare dashboard, wizard completed
-- Drafted 4th library-leadership essay: `src/content/blog/2026-07-25-library-leadership-is-stewarding-the-wrong-thing.md` (uncommitted)
-- Drafted companion note on the `/validate-external` stress-test technique: `src/content/notes/2026-07-25-the-prompt-that-makes-a-model-disagree-with-me.md` (uncommitted)
-- Updated hub note `~/obsidian/projects/Personal Site (tim-dennis.com).md` with follow-ups and current draft/published status
+- New favicon: theme-aware ring+dot mark replacing the leftover Astro-template glyph (e184468)
+- Merged Blog and Notes into one `/writing` river: unified index/archive/tags, redirects for old `/blog`, `/blog/archive`, `/blog/tags/*`, `/notes` URLs, permalinks unchanged (09dcbf0)
+- Published `ospo-solo-maintainers` and `the-prompt-that-makes-a-model-disagree-with-me` notes; light edit on `ai-and-the-stewardship-gap` (edae287)
+- Ran `/validate-external` on the 4th library-leadership essay, verified all 3 external citations, applied 8 of 9 revisions, published (e0e3689, 231f04b)
 - Appended today's work to `~/obsidian/reference/work-log.md`
 
 ## Pending — pick up here next session
-- Run `/validate-external` on the library-leadership essay before publishing
-- Decide framing: institutional critique only (current draft) vs. adding the personal "why the standard librarian track doesn't get you here" argument
-- Confirm the cargo-cult / functional-vs-subject-specialization example reads accurately, not flattened
-- Commit + push the two uncommitted drafts once reviewed
-- 3 older stub notes still unfinished: `ai-agents-near-infrastructure`, `ai-and-the-stewardship-gap`, `what-breaks-in-agentic-coding`
-- Two more pitched-but-undrafted ideas: "test your restore path" (Postgres/Dataverse CVE story), CLI-vs-MCP crowded-field piece
+- `2026-07-02-ai-and-the-stewardship-gap.md` still `status: draft` — edited this session, one more read before publishing
+- 2 older stub notes still unfinished: `ai-agents-near-infrastructure`, `what-breaks-in-agentic-coding`
+- New note ideas surfaced but not drafted: a fabricated-stat catch from cross-checking two AI research passes (8/11 work log), a data-contamination bug (not a model hallucination) from the DataSquad laptop review (7/26), reconstructing the SSDA/DSC 60-year institutional lineage from primary sources, a schema gap that silently broke a feature for months (OSPO Education, 8/11)
+- `promoteToBlog` field on notes is now vestigial (no separate blog listing to promote into since the /writing merge) — still only gates the unused "From Notes" badge on individual post pages; cleanup optional
 
 ## Decisions made
-- Publish only fully-finished notes; leave explicit "WORKING NOTE / STUB" drafts as `status: draft`
-- Skip the ArcGIS storage/governance piece as a blog topic (adjacent to Library Reorg, politically sensitive) at Tim's request
-- Cloudflare Web Analytics chosen over GoatCounter/Plausible: free, no cookie consent needed, no DNS change required
+- Library-leadership essay stays institutional-only, no personal-track angle added (Tim's call, confirmed) — the career-path argument is a future essay, not a paragraph here
+- `/validate-external` adjudication trail for the essay saved to `validation-prompt-library-leadership-2026-08-16.md` in repo root
 
 ## Files modified
-- `src/components/BaseHead.astro` — added Cloudflare beacon script
-- `src/content/notes/2026-06-30-lesson-catalog-metadata.md`, `2026-07-02-three-llms-without-getting-burned.md` — status: draft to published
-- `src/content/notes/2026-06-13-learn-by-doing-open-source-resources.md` — July scan addendum (earlier session, committed)
-- New: 2 published notes, 2 draft-uncommitted files (blog essay + note) listed above
+- See commits e184468, 09dcbf0, edae287, e0e3689, 231f04b — all pushed to origin/master
 
 ## Blockers / waiting on
-- `project-registry.yaml`'s `personal_website` entry has no `obsidian_hub_note` field, so `projctx task add personal_website ...` fails; tasks for this project currently require hand-editing the hub note directly
+- None. Working tree clean, everything pushed. `project-registry.yaml`'s `personal_website` entry still has no `obsidian_hub_note` field (unverified this session, carried from 7/25 handoff)
