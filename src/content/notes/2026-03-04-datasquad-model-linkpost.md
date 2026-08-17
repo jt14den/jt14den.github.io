@@ -14,5 +14,3 @@ The DataSquad model works because it aligns incentives.
 Students get real consulting experience — not busy work, actual research problems. Researchers get data support they couldn't otherwise afford. The library gets multiplied capacity.
 
 Carleton's model (credit to Paula Lackey) proved the concept. What UCLA did was adapt it, sustain it, and connect it to a broader infrastructure strategy.
-
-The DataSquad site documents our approach:
