@@ -1,0 +1,728 @@
+[
+  {
+    "id": "hashicorp-terraform-mcp-ga-2026",
+    "type": "webpage",
+    "title": "Terraform MCP server is now generally available",
+    "author": [
+      {
+        "literal": "HashiCorp"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "URL": "https://www.hashicorp.com/en/blog/terraform-mcp-server-is-now-generally-available",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Vendor announcement of Terraform MCP Server GA (June 2026) for HCP Terraform and Terraform Enterprise. Read-only by default; destructive/apply tools gated behind ENABLE_TF_OPERATIONS=true. Load-bearing for the \"AI as infrastructure interface\" claim, but vendor-authored with an incentive to sell. Confidence: high (for the product facts)."
+  },
+  {
+    "id": "hashicorp-terraform-mcp-patterns-2026",
+    "type": "webpage",
+    "title": "Terraform MCP server: Four real-world AI infrastructure patterns",
+    "author": [
+      {
+        "literal": "HashiCorp"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://www.hashicorp.com/en/blog/terraform-mcp-server-four-real-world-ai-infrastructure-patterns",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Enumerates four agent patterns: plan review, drift detection, change explanation, standardized code generation. Useful as the concrete \"what agents actually do with IaC\" reference. Vendor blog. Confidence: high (for the patterns)."
+  },
+  {
+    "id": "hashicorp-terraform-vault-mcp-2026",
+    "type": "webpage",
+    "title": "Build secure, AI-driven workflows with Terraform and Vault MCP servers",
+    "author": [
+      {
+        "literal": "HashiCorp"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://www.hashicorp.com/en/blog/build-secure-ai-driven-workflows-with-new-terraform-and-vault-mcp-servers",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Pairing Terraform MCP with Vault MCP so agents request secrets through a governed broker instead of holding them in context. Supports the \"secrets stay in a broker\" best practice. Vendor. Confidence: high (for the pattern)."
+  },
+  {
+    "id": "infoq-terraform-mcp-ga-2026",
+    "type": "webpage",
+    "title": "Terraform MCP Server Enables AI Assistants to Interact with Terraform Infrastructure",
+    "author": [
+      {
+        "literal": "InfoQ"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "URL": "https://www.infoq.com/news/2026/06/terraform-mcp-server-ga/",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Independent press coverage of the Terraform MCP GA — useful as non-vendor corroboration of the same facts. Confidence: high."
+  },
+  {
+    "id": "terraform-mcp-docs-2026",
+    "type": "webpage",
+    "title": "Terraform MCP server overview and reference",
+    "author": [
+      {
+        "literal": "HashiCorp"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://developer.hashicorp.com/terraform/mcp-server",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Canonical docs. create_run supports plan_and_apply and refresh_state; destructive tools require ENABLE_TF_OPERATIONS=true. Cite this over blogs for exact tool behavior. Confidence: high."
+  },
+  {
+    "id": "redhat-aap27-2026",
+    "type": "webpage",
+    "title": "What's new in Red Hat Ansible Automation Platform 2.7",
+    "author": [
+      {
+        "literal": "Red Hat"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "URL": "https://developers.redhat.com/articles/2026/06/10/whats-new-red-hat-ansible-automation-platform-2-7",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "AAP 2.7 GA (June 2026) adds a Technology-Preview native MCP server (agents query jobs, gather facts, launch workflows) and an MCP-backed assistant in the VS Code Ansible extension. Note: Tech Preview, not GA. Confidence: high (for the release facts)."
+  },
+  {
+    "id": "redhat-ansible-lightspeed-2026",
+    "type": "webpage",
+    "title": "Ansible Lightspeed with IBM watsonx Code Assistant",
+    "author": [
+      {
+        "literal": "Red Hat"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://developers.redhat.com/products/ansible/lightspeed",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Natural-language to YAML for tasks/playbooks/roles; GA. IMPORTANT LIMIT: requires an AAP subscription — not usable with UCLA's forked community dataverse-ansible playbook without one. Confidence: high."
+  },
+  {
+    "id": "babenko-terraform-skill-2026",
+    "type": "webpage",
+    "title": "terraform-skill: Terraform best practices for AI coding agents",
+    "author": [
+      {
+        "family": "Babenko",
+        "given": "Anton"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://github.com/antonbabenko/terraform-skill",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "agentic-research, infrastructure",
+    "note": "Community \"skill\" encoding Terraform conventions for AI agents to follow when generating HCL. Practitioner resource (well-known author), not peer-reviewed. Confidence: medium."
+  },
+  {
+    "id": "dennis-claude-md-corrections-2026",
+    "type": "webpage",
+    "title": "CLAUDE.md Optimization Report: correction-cluster analysis",
+    "author": [
+      {
+        "family": "Dennis",
+        "given": "Tim"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          5
+        ]
+      ]
+    },
+    "keyword": "agentic-research",
+    "note": "Analysis of 63 user corrections across 197 Claude Code sessions (Mar–May 2026). Finding: scope/process (44%) and factual-state (37%) errors dominate over voice (19%); core failure is acting on inferred state. Single-user, self-selected sample. Confidence: medium (indicative, not a benchmark)."
+  },
+  {
+    "id": "koren-hinz-ai-oss-2026",
+    "type": "webpage",
+    "title": "Vibe Coding Kills Open Source",
+    "author": [
+      {
+        "family": "Koren",
+        "given": "Mikl{\\'o}s"
+      },
+      {
+        "family": "B{\\'e}k{\\'e}s",
+        "given": "G{\\'a}bor"
+      },
+      {
+        "family": "Hinz",
+        "given": "Julian"
+      },
+      {
+        "family": "Lohmann",
+        "given": "Alexander"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "container-title": "Zenodo",
+    "DOI": "10.5281/zenodo.19374601",
+    "URL": "https://doi.org/10.5281/zenodo.19374601",
+    "keyword": "ospo, agentic-research",
+    "note": "PRIMARY LOCATED (was a secondhand X stub). The argument that AI/\"vibe coding\" makes OSS easier to consume while weakening the feedback, attention, and revenue that sustain maintainers. Limits: Zenodo preprint (v2), not peer-reviewed, and the title is a deliberately provocative framing — represent the finding, not the headline. Confidence: medium (real primary, but preprint)."
+  },
+  {
+    "id": "nature-ai-productivity-41m-2026",
+    "type": "article-journal",
+    "title": "Artificial intelligence tools expand scientists' impact but contract science's focus",
+    "author": [
+      {
+        "family": "Hao",
+        "given": "Qing"
+      },
+      {
+        "family": "Xu",
+        "given": "Fengli"
+      },
+      {
+        "family": "Li",
+        "given": "Yong"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "container-title": "Nature",
+    "volume": "649",
+    "page": "1237-1243",
+    "DOI": "10.1038/s41586-025-09922-y",
+    "URL": "https://doi.org/10.1038/s41586-025-09922-y",
+    "keyword": "ospo, agentic-research",
+    "note": "PRIMARY LOCATED (was a secondhand X stub). Peer-reviewed Nature article: AI tools expand individual scientists' impact (more papers, more citations) but contract the collective focus of science. Directly supports the \"individual gains, collective narrowing\" claim. Still observational and AI-use is inferred, so it shows association, not causation. Confidence: medium (peer-reviewed, but observational)."
+  },
+  {
+    "id": "mit-coding-agents-output-2026",
+    "type": "report",
+    "title": "Writing Code vs. Shipping Code: Productivity Effects Across Generations of AI Coding Tools",
+    "author": [
+      {
+        "family": "Demirer",
+        "given": "Mert"
+      },
+      {
+        "family": "Musolff",
+        "given": "Leon"
+      },
+      {
+        "family": "Yang",
+        "given": "Liyuan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          5
+        ]
+      ]
+    },
+    "issue": "35275",
+    "DOI": "10.3386/w35275",
+    "URL": "https://doi.org/10.3386/w35275",
+    "keyword": "agentic-research, infrastructure",
+    "note": "PRIMARY LOCATED (was a secondhand X stub). NBER working paper measuring productivity effects across generations of AI coding tools — the title itself is the thesis: writing code and shipping code diverge. Directly backs \"code production is not shipped/maintained software.\" Limit: working paper, not yet peer-reviewed; general software dev, not academic research software specifically. Confidence: medium."
+  },
+  {
+    "id": "pudari-rse-workforce-2026",
+    "type": "webpage",
+    "title": "RSE workforce challenges: maintenance incentives and domain complexity",
+    "author": [
+      {
+        "family": "Pudari",
+        "given": "Rohith"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          6
+        ]
+      ]
+    },
+    "URL": "https://x.com/rohithpudari/status/2069178295653183580",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "ospo",
+    "note": "Survey-thread summary naming RSE's core problems: correctness with weak tests, domain concepts embedded in code, low career incentive for maintenance. Community survey, self-selected, social-posted. Confidence: medium."
+  },
+  {
+    "id": "uc-ospo-network-ucsc-2024",
+    "type": "webpage",
+    "title": "UC OSPO Network (Sloan-funded, UC Santa Cruz-led)",
+    "author": [
+      {
+        "literal": "UC Santa Cruz News"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "URL": "https://news.ucsc.edu/2024/04/uc-ospo-network/",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "ospo",
+    "note": "Announcement of the multi-campus UC OSPO Network (Berkeley, Davis, Santa Barbara, San Diego, Santa Cruz), Sloan-funded, building on the first UC OSPO at UCSC. Institutional source. Confidence: high."
+  },
+  {
+    "id": "ucla-joins-uc-ospo-2026",
+    "type": "webpage",
+    "title": "UCLA joins multi-UC-campus effort to build a network of open source program offices",
+    "author": [
+      {
+        "literal": "UCLA Library News"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://www.library.ucla.edu/about/news/ucla-joins-multi-uc-campus-effort-to-build-network-of-open-source-program-offices/",
+    "accessed": {
+      "raw": "2026-07-02"
+    },
+    "keyword": "ospo",
+    "note": "UCLA Library's own announcement of joining the UC OSPO Network. Primary institutional source for UCLA's participation. Confidence: high."
+  },
+  {
+    "id": "qss-comp-social-science-fragmentation-2026",
+    "type": "article-journal",
+    "title": "The emergence of computational social science: Intellectual integration or persistent fragmentation?",
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "container-title": "Quantitative Science Studies",
+    "publisher": "MIT Press",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Frames comp social science's disciplinary identity as still unresolved as of 2026: fragmentation vs. genuine intellectual integration. Not read in full, title/abstract-level via WebSearch. Confidence: low-medium (real venue, content not verified firsthand)."
+  },
+  {
+    "id": "arxiv-division-to-unity-css-2024",
+    "type": "webpage",
+    "title": "From Division to Unity: A Large-Scale Study on the Emergence of Computational Social Science, 1990-2021",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Bibliometric study tracing comp social science's formation 1990-2021. arXiv ID decodes to Dec 2024, corrected from an earlier mislabeling as 2026 in the raw research pass. Not read in full. Confidence: medium (arXiv preprint, dated deterministically by ID; content not verified firsthand)."
+  },
+  {
+    "id": "lazer-comp-social-science-obstacles",
+    "type": "article-journal",
+    "title": "Computational social science: Obstacles and opportunities",
+    "author": [
+      {
+        "family": "Lazer",
+        "given": "David"
+      },
+      {
+        "family": "Watts",
+        "given": "Duncan"
+      },
+      {
+        "literal": "et al."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "container-title": "Science",
+    "DOI": "10.1126/science.aaz8170",
+    "URL": "https://doi.org/10.1126/science.aaz8170",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Follow-up to Lazer et al. 2009, reassessing the field a decade-plus later. Confidence: medium (upgraded from low; year/co-author now corroborated, full author list and direct-source read still pending). Year and Watts co-authorship confirmed via WebSearch synthesis (not a direct primary fetch of the DOI page); full author list beyond Lazer and Watts still unconfirmed."
+  },
+  {
+    "id": "lazer-life-in-network-2009",
+    "type": "article-journal",
+    "title": "Life in the network: The coming age of computational social science",
+    "author": [
+      {
+        "family": "Lazer",
+        "given": "David"
+      },
+      {
+        "family": "Pentland",
+        "given": "Alex"
+      },
+      {
+        "family": "Adamic",
+        "given": "Lada"
+      },
+      {
+        "family": "Aral",
+        "given": "Sinan"
+      },
+      {
+        "family": "Barab{\\'a}si",
+        "given": "Albert-L{\\'a}szl{\\'o}"
+      },
+      {
+        "family": "Brewer",
+        "given": "Devon"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "container-title": "Science",
+    "volume": "323",
+    "issue": "5915",
+    "page": "721-723",
+    "DOI": "10.1126/science.1167742",
+    "URL": "https://doi.org/10.1126/science.1167742",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "The founding paper widely credited with naming and launching computational social science as a field. Confidence: high (widely corroborated citation details: volume, pages, DOI all consistent across sources)."
+  },
+  {
+    "id": "nd-dome-initiative-2026",
+    "type": "webpage",
+    "title": "Notre Dame launches Data, AI, and Computing Initiative to unify emerging technology research, education and academic services",
+    "author": [
+      {
+        "literal": "University of Notre Dame"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          7
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods, academic-reorg",
+    "note": "Merges Notre Dame's Center for Research Computing and Applied Analytics & Emerging Technology Lab into one \"DOME\" (Deployment, Operations, Modeling, Engineering) unit. Real, current, named institutional example of research-computing/library-data/AI-lab consolidation. Confidence: high (primary institutional announcement)."
+  },
+  {
+    "id": "wang-zhou-ai-for-science-library-2026",
+    "type": "article-journal",
+    "title": "Developing university library services for supporting \"AI for Science\" research: Understanding the requirements of users",
+    "author": [
+      {
+        "family": "Wang",
+        "given": "Zengmin"
+      },
+      {
+        "family": "Zhou",
+        "given": "Lihong"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Studies what university libraries specifically need to support AI-for-Science research. Not read in full, title/author-level via WebSearch. Confidence: medium (real venue and named authors, content not verified firsthand)."
+  },
+  {
+    "id": "sciencedirect-holistic-research-data-support-2026",
+    "type": "webpage",
+    "title": "Reshaping the future of academic library: Service model for holistic research data support",
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Frames library adaptation as staffing/funding as much as technical: multidisciplinary teams, sustainable funding, HPC partnerships. Confidence: low (metadata incomplete). Author metadata not yet verified; title and venue (ScienceDirect) only, via WebSearch snippet."
+  },
+  {
+    "id": "ssi-rse-state-of-nation-2017",
+    "type": "report",
+    "title": "Research Software Engineers: State of the Nation Report",
+    "author": [
+      {
+        "literal": "Software Sustainability Institute"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          4
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Foundational document for the RSE-as-profession movement, tracing back to discussions at the UK Software Sustainability Institute's 2012 Collaborations Workshop. Confidence: medium (real, dated report; not read in full this session)."
+  },
+  {
+    "id": "katz-rse-2030",
+    "type": "webpage",
+    "title": "Research Software Engineering in 2030",
+    "author": [
+      {
+        "family": "Katz",
+        "given": "Daniel S."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Forward-looking position paper by the field's most prominent current figure (NCSA/UIUC; co-founder of the Research Software Alliance, ReSA). Confidence: medium (real arXiv preprint, not read in full)."
+  },
+  {
+    "id": "four-pillars-rse-2020",
+    "type": "webpage",
+    "title": "The Four Pillars of Research Software Engineering",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Author(s) not yet confirmed from search snippet. Confidence: low-medium (real arXiv preprint by ID, author list and content not verified firsthand)."
+  },
+  {
+    "id": "nasem-statistics-2035-2026",
+    "type": "report",
+    "title": "Frontiers of Statistics in Science and Engineering: 2035 and Beyond",
+    "author": [
+      {
+        "family": "{National Academies of Sciences",
+        "given": "Engineering,"
+      },
+      {
+        "literal": "Medicine}"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Consensus study report on the trajectory of statistical/computational science through 2035. Confidence: medium (real NASEM report, not read in full). Committee chaired by Katherine Ensor (Rice University)."
+  },
+  {
+    "id": "nlp-relies-on-linguistics",
+    "type": "article-journal",
+    "title": "Natural Language Processing RELIES on Linguistics",
+    "container-title": "Computational Linguistics",
+    "publisher": "MIT Press",
+    "volume": "51",
+    "issue": "3",
+    "page": "1009",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Argues NLP still depends on linguistics across six facets (resources, evaluation, low-resource settings, interpretability, explanation, study of language) even in the LLM era, against the \"learn language from scratch\" framing. Confidence: medium-high (verifiable journal/volume/issue/page citation; not read in full)."
+  },
+  {
+    "id": "mccarty-humanities-computing-2005",
+    "type": "book",
+    "title": "Humanities Computing",
+    "author": [
+      {
+        "family": "McCarty",
+        "given": "Willard"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2005
+        ]
+      ]
+    },
+    "container-title": "Palgrave Macmillan",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Widely recommended foundational text for the digital-humanities/humanities-computing field. Confidence: medium (consistently cited across library reading lists; not read in full)."
+  },
+  {
+    "id": "burdick-digital-humanities-report",
+    "type": "webpage",
+    "title": "Digital\\_Humanities",
+    "author": [
+      {
+        "family": "Burdick",
+        "given": "Anne"
+      },
+      {
+        "family": "Drucker",
+        "given": "Johanna"
+      },
+      {
+        "family": "Lunenfeld",
+        "given": "Peter"
+      },
+      {
+        "family": "Presner",
+        "given": "Todd"
+      },
+      {
+        "family": "Schnapp",
+        "given": "Jeffrey"
+      }
+    ],
+    "container-title": "MIT Press",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "A field-defining \"what is digital humanities\" report/book, widely used as an entry point. Confidence: medium (real, well-known work; publication year unconfirmed). Year commonly cited as 2012 but not independently confirmed this session -- VERIFICATION NEEDED."
+  }
+]
