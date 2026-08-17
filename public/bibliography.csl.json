@@ -380,9 +380,65 @@
     "note": "UCLA Library's own announcement of joining the UC OSPO Network. Primary institutional source for UCLA's participation. Confidence: high."
   },
   {
+    "id": "ho-jasist-rdm-2026",
+    "type": "article-journal",
+    "title": "Research data management services in academic libraries to support the research data life cycle: A systematic review",
+    "author": [
+      {
+        "family": "Ho",
+        "given": "Richard Cheng Yong"
+      },
+      {
+        "family": "Wong",
+        "given": "Suei Nee"
+      },
+      {
+        "family": "Chia",
+        "given": "Patsy"
+      },
+      {
+        "family": "Tang",
+        "given": "Chris"
+      },
+      {
+        "family": "Ng",
+        "given": "Magdeline Tao Tao"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "container-title": "Journal of the Association for Information Science and Technology",
+    "volume": "77",
+    "issue": "1",
+    "page": "272-300",
+    "DOI": "10.1002/asi.70008",
+    "URL": "https://doi.org/10.1002/asi.70008",
+    "keyword": "academic-reorg, computational-methods",
+    "note": "ARIST systematic review synthesizing 89 empirical studies of academic-library RDM services worldwide. Internal partnership appeared in 60% of studies; technical data-use/analysis services appeared in only 9% -- reinforces the distinction between libraries' strong advisory/repository/metadata/coordination roles and the much scarcer provision of intensive technical analysis. Peer-reviewed. Confidence: high for the RDM-specific finding; the wiki article itself flags that \"discipline-specific\" in this literature usually means subject-matter expertise, not DSC's methods/tools model — don't over-extend. Full author list, volume, pages added via ChatGPT deep-research verification 2026-08-16; also relevant to the public computational-methods canon, not just the private reorg-response research it was originally pulled for."
+  },
+  {
     "id": "qss-comp-social-science-fragmentation-2026",
     "type": "article-journal",
     "title": "The emergence of computational social science: Intellectual integration or persistent fragmentation?",
+    "author": [
+      {
+        "family": "P{\\\"a}{\\\"a}kk{\\\"o}nen",
+        "given": "Juho"
+      },
+      {
+        "family": "Nelimarkka",
+        "given": "Matti"
+      },
+      {
+        "family": "Reijula",
+        "given": "Samuli"
+      }
+    ],
     "issued": {
       "date-parts": [
         [
@@ -392,28 +448,53 @@
     },
     "container-title": "Quantitative Science Studies",
     "publisher": "MIT Press",
+    "volume": "7",
+    "page": "460-484",
+    "DOI": "10.1162/QSS.a.463",
+    "URL": "https://doi.org/10.1162/QSS.a.463",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Frames comp social science's disciplinary identity as still unresolved as of 2026: fragmentation vs. genuine intellectual integration. Not read in full, title/abstract-level via WebSearch. Confidence: low-medium (real venue, content not verified firsthand)."
+    "note": "Co-citation network analysis built around ~70 IC2S2 keynote speakers, 2000-2020: finds increasing clustering and path length, i.e. fragmentation, not integration -- network science remains CSS's central shared literature but subcommunities have grown more internally cohesive and more distant from each other. Authors caution fragmentation also occurs in mature disciplines and that prominent-speaker sampling misses much of the field. In tension with @arxiv-division-to-unity-css-2024's finding of semantic blending -- see wiki article Uncertainty section, this is a genuine open disagreement (different measurement: co-citation structure vs. semantic similarity across a much larger corpus), not resolved by picking one. Confidence: high (full text examined). Verified via ChatGPT deep-research pass 2026-08-16, cross-checked against the University of Helsinki repository full text."
   },
   {
     "id": "arxiv-division-to-unity-css-2024",
-    "type": "webpage",
+    "type": "paper-conference",
     "title": "From Division to Unity: A Large-Scale Study on the Emergence of Computational Social Science, 1990-2021",
+    "author": [
+      {
+        "family": "Bao",
+        "given": "Honglin"
+      },
+      {
+        "family": "Zhang",
+        "given": "Jiawei"
+      },
+      {
+        "family": "Cao",
+        "given": "Mingxuan"
+      },
+      {
+        "family": "Evans",
+        "given": "James A."
+      }
+    ],
     "issued": {
       "date-parts": [
         [
-          2024
+          2025
         ]
       ]
     },
+    "page": "859-863",
+    "DOI": "10.1145/3701716.3715502",
+    "URL": "https://doi.org/10.1145/3701716.3715502",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Bibliometric study tracing comp social science's formation 1990-2021. arXiv ID decodes to Dec 2024, corrected from an earlier mislabeling as 2026 in the raw research pass. Not read in full. Confidence: medium (arXiv preprint, dated deterministically by ID; content not verified firsthand)."
+    "note": "Applies a CSS classifier to 11 million papers, compares transformer-based knowledge embeddings; finds inflections around 2005 and 2014, concludes CSS developed a distinct semantic identity through 2014 but increasingly blended into parent social sciences after. In tension with @qss-comp-social-science-fragmentation-2026's fragmentation finding -- different measurement (semantic similarity across a huge corpus vs. co-citation structure among prominent scholars), a field can diffuse its methods outward while its specialist communities fragment inward. Confidence: high (full citation verified). arXiv preprint posted Dec 11, 2024 (per ChatGPT deep-research verification); became a WWW 2025 Companion paper, not a standalone 2026 publication -- corrects an earlier mislabeling in the raw research pass that also called this \"2026.\""
   },
   {
     "id": "lazer-comp-social-science-obstacles",
@@ -422,14 +503,63 @@
     "author": [
       {
         "family": "Lazer",
-        "given": "David"
+        "given": "David M. J."
+      },
+      {
+        "family": "Pentland",
+        "given": "Alex"
       },
       {
         "family": "Watts",
-        "given": "Duncan"
+        "given": "Duncan J."
       },
       {
-        "literal": "et al."
+        "family": "Aral",
+        "given": "Sinan"
+      },
+      {
+        "family": "Athey",
+        "given": "Susan"
+      },
+      {
+        "family": "Contractor",
+        "given": "Noshir"
+      },
+      {
+        "family": "Freelon",
+        "given": "Deen"
+      },
+      {
+        "family": "Gonz{\\'a}lez-Bail{\\'o}n",
+        "given": "Sandra"
+      },
+      {
+        "family": "King",
+        "given": "Gary"
+      },
+      {
+        "family": "Margetts",
+        "given": "Helen"
+      },
+      {
+        "family": "Nelson",
+        "given": "Alondra"
+      },
+      {
+        "family": "Salganik",
+        "given": "Matthew J."
+      },
+      {
+        "family": "Strohmaier",
+        "given": "Markus"
+      },
+      {
+        "family": "Vespignani",
+        "given": "Alessandro"
+      },
+      {
+        "family": "Wagner",
+        "given": "Claudia"
       }
     ],
     "issued": {
@@ -440,13 +570,16 @@
       ]
     },
     "container-title": "Science",
+    "volume": "369",
+    "issue": "6507",
+    "page": "1060-1062",
     "DOI": "10.1126/science.aaz8170",
     "URL": "https://doi.org/10.1126/science.aaz8170",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Follow-up to Lazer et al. 2009, reassessing the field a decade-plus later. Confidence: medium (upgraded from low; year/co-author now corroborated, full author list and direct-source read still pending). Year and Watts co-authorship confirmed via WebSearch synthesis (not a direct primary fetch of the DOI page); full author list beyond Lazer and Watts still unconfirmed."
+    "note": "Full author list, volume, and pages independently verified 2026-08-16 (WebSearch cross-check, matched a ChatGPT deep-research pass exactly). Policy-forum piece, not a systematic review: argues institutional arrangements (platform-data access, privacy infrastructure, ethics/governance, incentives, integrated training) lag behind CSS's methodological progress; recommends public-private data-access structures, secure administrative-data facilities, multidisciplinary institutes. Confidence: high."
   },
   {
     "id": "lazer-life-in-network-2009",
@@ -518,7 +651,7 @@
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods, academic-reorg",
-    "note": "Merges Notre Dame's Center for Research Computing and Applied Analytics & Emerging Technology Lab into one \"DOME\" (Deployment, Operations, Modeling, Engineering) unit. Real, current, named institutional example of research-computing/library-data/AI-lab consolidation. Confidence: high (primary institutional announcement)."
+    "note": "Merges Notre Dame's Center for Research Computing and Applied Analytics & Emerging Technology Lab into \"DOME\" (Deployment, Operations, Modeling, Engineering); broader initiative also coordinates the Lucy Family Institute and Scientific AI activities. CORRECTION: primary sources do NOT identify the library as a participant -- an earlier draft of the wiki article's TLDR incorrectly characterized this as merging \"library-data\" units. It is a research-computing/AI-lab consolidation; library involvement is unconfirmed, not a fact. Confidence: high (primary institutional announcement) for what's stated; the library-involvement claim was actively wrong and has been removed. Initiative launched Sept. 2025; unified structure/DOME name announced July 29, 2026 (dates refined via ChatGPT deep-research verification)."
   },
   {
     "id": "wang-zhou-ai-for-science-library-2026",
@@ -537,32 +670,65 @@
     "issued": {
       "date-parts": [
         [
-          2026
+          2026,
+          7
         ]
       ]
     },
+    "container-title": "Journal of Librarianship and Information Science",
+    "DOI": "10.1177/09610006261462964",
+    "URL": "https://doi.org/10.1177/09610006261462964",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Studies what university libraries specifically need to support AI-for-Science research. Not read in full, title/author-level via WebSearch. Confidence: medium (real venue and named authors, content not verified firsthand)."
+    "note": "25 interviews with researchers, librarians, and library managers in China; derives 10 requirements under 5 headings (AI-for-Science readiness, research-idea development, collaboration networks, research execution, publication). Also flags algorithmic limitations, ethics, data-property questions, over-reliance, rising demand for specialized information services. Generalizability beyond the Chinese case is proposed by the authors, not empirically tested -- don't over-extend. Confidence: medium-high (real venue/DOI/authors; content is abstract-level, not full-text). OnlineFirst July 8, 2026. Accessible source was the publisher's detailed abstract, not the restricted full article (per ChatGPT deep-research pass)."
   },
   {
     "id": "sciencedirect-holistic-research-data-support-2026",
-    "type": "webpage",
+    "type": "article-journal",
     "title": "Reshaping the future of academic library: Service model for holistic research data support",
+    "author": [
+      {
+        "family": "Ku",
+        "given": "Kam Ming"
+      },
+      {
+        "family": "Ramesh Mahboobani",
+        "given": "Vanessa"
+      },
+      {
+        "family": "Qiu",
+        "given": "Yifei Vivian"
+      },
+      {
+        "family": "Yang",
+        "given": "Tao"
+      },
+      {
+        "family": "Woo",
+        "given": "Esther Mei Wa"
+      }
+    ],
     "issued": {
       "date-parts": [
         [
-          2026
+          2026,
+          1
         ]
       ]
     },
+    "container-title": "Journal of Academic Librarianship",
+    "volume": "52",
+    "issue": "1",
+    "page": "103180",
+    "DOI": "10.1016/j.acalib.2025.103180",
+    "URL": "https://doi.org/10.1016/j.acalib.2025.103180",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Frames library adaptation as staffing/funding as much as technical: multidisciplinary teams, sustainable funding, HPC partnerships. Confidence: low (metadata incomplete). Author metadata not yet verified; title and venue (ScienceDirect) only, via WebSearch snippet."
+    "note": "University of Hong Kong survey: demand for hands-on help with analysis, visualization, cleaning; substantial reliance on self-teaching and peers; significant AI-project participation. Proposes a one-stop \"Data Clinic\" combining advisory and technical support; calls for advanced librarian skills and collaborative delivery. Confidence: medium (real venue/DOI/authors; abstract-level only, no full text available). DOI assigned 2025, issue date January 2026. CORRECTION: an earlier draft's claim that this piece emphasizes funding specifically was not substantiated by the abstract (per ChatGPT deep-research pass, which could only access the repository abstract, not full text) -- removed that framing below."
   },
   {
     "id": "ssi-rse-state-of-nation-2017",
@@ -612,20 +778,52 @@
   },
   {
     "id": "four-pillars-rse-2020",
-    "type": "webpage",
+    "type": "article-journal",
     "title": "The Four Pillars of Research Software Engineering",
+    "author": [
+      {
+        "family": "Cohen",
+        "given": "Jeremy"
+      },
+      {
+        "family": "Katz",
+        "given": "Daniel S."
+      },
+      {
+        "family": "Barker",
+        "given": "Michelle"
+      },
+      {
+        "family": "Chue Hong",
+        "given": "Neil P."
+      },
+      {
+        "family": "Haines",
+        "given": "Robert"
+      },
+      {
+        "family": "Jay",
+        "given": "Caroline"
+      }
+    ],
     "issued": {
       "date-parts": [
         [
-          2020
+          2021
         ]
       ]
     },
+    "container-title": "IEEE Software",
+    "volume": "38",
+    "issue": "1",
+    "page": "97-105",
+    "DOI": "10.1109/MS.2020.2973362",
+    "URL": "https://doi.org/10.1109/MS.2020.2973362",
     "accessed": {
       "raw": "2026-08-16"
     },
     "keyword": "computational-methods",
-    "note": "Author(s) not yet confirmed from search snippet. Confidence: low-medium (real arXiv preprint by ID, author list and content not verified firsthand)."
+    "note": "Defines sustainable RSE support through four mutually dependent pillars: software development, community, training, policy. Frames research software as institutional infrastructure maintained by specialist professionals, not disposable code incidental to individual grants. Confidence: high (full citation verified). arXiv preprint 2020, published version IEEE Software 2021; full citation via ChatGPT deep-research pass."
   },
   {
     "id": "nasem-statistics-2035-2026",
@@ -724,5 +922,818 @@
     },
     "keyword": "computational-methods",
     "note": "A field-defining \"what is digital humanities\" report/book, widely used as an entry point. Confidence: medium (real, well-known work; publication year unconfirmed). Year commonly cited as 2012 but not independently confirmed this session -- VERIFICATION NEEDED."
+  },
+  {
+    "id": "sapoval-deep-learning-biosciences-2022",
+    "type": "article-journal",
+    "title": "Current progress and open challenges for applying deep learning across the biosciences",
+    "author": [
+      {
+        "family": "Sapoval",
+        "given": "Nicolae"
+      },
+      {
+        "family": "Aghazadeh",
+        "given": "Amirali"
+      },
+      {
+        "family": "Nute",
+        "given": "Michael G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "container-title": "Nature Communications",
+    "volume": "13",
+    "page": "1728",
+    "DOI": "10.1038/s41467-022-29268-7",
+    "URL": "https://doi.org/10.1038/s41467-022-29268-7",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Broad review: protein structure/function prediction, genome engineering, systems biology/data integration, phylogenetics. Treats the protein-structure breakthrough as genuine but identifies shared bottlenecks: training data, problem formulation, transfer to new settings, interpretability, architecture reuse. Confidence: medium (real Nature Communications article; via ChatGPT deep-research, not independently read in full)."
+  },
+  {
+    "id": "argelaguet-single-cell-integration-2021",
+    "type": "article-journal",
+    "title": "Computational principles and challenges in single-cell data integration",
+    "author": [
+      {
+        "family": "Argelaguet",
+        "given": "Ricard"
+      },
+      {
+        "family": "Cuomo",
+        "given": "Anna S. E."
+      },
+      {
+        "family": "Stegle",
+        "given": "Oliver"
+      },
+      {
+        "family": "Marioni",
+        "given": "John C."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "container-title": "Nature Biotechnology",
+    "volume": "39",
+    "issue": "10",
+    "page": "1202-1215",
+    "DOI": "10.1038/s41587-021-00895-7",
+    "URL": "https://doi.org/10.1038/s41587-021-00895-7",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Documents the methodological shift from single-assay analysis to integrating samples, technologies, donors, batches, modalities. Data harmonization and latent representation are now primary scientific methods, not preprocessing. Confidence: medium (real Nature Biotechnology article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "vandereyken-single-cell-spatial-multiomics-2023",
+    "type": "article-journal",
+    "title": "Methods and applications for single-cell and spatial multi-omics",
+    "author": [
+      {
+        "family": "Vandereyken",
+        "given": "Katy"
+      },
+      {
+        "family": "Sifrim",
+        "given": "Alejandro"
+      },
+      {
+        "family": "Thienpont",
+        "given": "Bernard"
+      },
+      {
+        "family": "Voet",
+        "given": "Thierry"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "container-title": "Nature Reviews Genetics",
+    "volume": "24",
+    "page": "494-515",
+    "DOI": "10.1038/s41576-023-00580-2",
+    "URL": "https://doi.org/10.1038/s41576-023-00580-2",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Extends the shift to combined molecular modalities with spatial coordinates. Discussion of missing/unmatched measurements, resolution, validation shows why bioinformatics support now requires large-scale storage/compute, specialized pipelines, domain-aware statistical advice. Confidence: medium (real Nature Reviews Genetics article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "li-foundation-models-bioinformatics-2024",
+    "type": "article-journal",
+    "title": "Progress and opportunities of foundation models in bioinformatics",
+    "author": [
+      {
+        "family": "Li",
+        "given": "Qing"
+      },
+      {
+        "family": "Hu",
+        "given": "Zhihang"
+      },
+      {
+        "family": "Wang",
+        "given": "Yixuan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "container-title": "Briefings in Bioinformatics",
+    "volume": "25",
+    "issue": "6",
+    "page": "bbae548",
+    "DOI": "10.1093/bib/bbae548",
+    "URL": "https://doi.org/10.1093/bib/bbae548",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Organizes biological foundation models around sequence analysis, structure construction, function prediction, multimodal integration. Emphasizes noise, bias, interpretability, and cases where general models underperform -- parallels NLP concerns while requiring biological validation. Confidence: medium (real Briefings in Bioinformatics article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "su-zhang-dh-bibliometrics-2022",
+    "type": "article-journal",
+    "title": "Research output, intellectual structures and contributors of digital humanities research: A longitudinal analysis 2005-2020",
+    "author": [
+      {
+        "family": "Su",
+        "given": "Fangli"
+      },
+      {
+        "family": "Zhang",
+        "given": "Yin"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "container-title": "Journal of Documentation",
+    "volume": "78",
+    "issue": "3",
+    "page": "673-695",
+    "DOI": "10.1108/JD-11-2020-0199",
+    "URL": "https://doi.org/10.1108/JD-11-2020-0199",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Bibliometric/social-network/term-network analysis finds DH developing through four stages with durable themes: collections/content; technologies/theories/methods; collaboration/interdisciplinarity/support; reflection on DH's own evolution. Evidence that infrastructure and collaboration are constitutive of the field, not auxiliary. Confidence: medium (real Journal of Documentation article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "tilton-mimno-johnson-computational-humanities-2024",
+    "type": "chapter",
+    "title": "What gets counted: Computational humanities under revision",
+    "author": [
+      {
+        "family": "Tilton",
+        "given": "Lauren"
+      },
+      {
+        "family": "Mimno",
+        "given": "David"
+      },
+      {
+        "family": "Johnson",
+        "given": "Jessica Marie"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "container-title": "University of Minnesota Press",
+    "issue": "11",
+    "DOI": "10.5749/9781452973098",
+    "URL": "https://doi.org/10.5749/9781452973098",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Defines computational humanities as both use AND critique of computational methods; rejects clean close/distant-reading or quantitative/qualitative boundaries; foregrounds data creation, labor, code quality, reproducibility, positionality, power. Explicitly argues for humanities expertise within HPC support since support structures affect which research gets priority -- directly relevant to a library DSC's role. Confidence: medium (real edited volume chapter; via ChatGPT deep-research)."
+  },
+  {
+    "id": "da-computational-case-against-cls-2019",
+    "type": "article-journal",
+    "title": "The computational case against computational literary studies",
+    "author": [
+      {
+        "family": "Da",
+        "given": "Nan Z."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "Critical Inquiry",
+    "volume": "45",
+    "issue": "3",
+    "page": "601-639",
+    "DOI": "10.1086/702594",
+    "URL": "https://doi.org/10.1086/702594",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Audits prominent computational literary studies work, argues many fail basic statistical validation or can't sustain their interpretive claims. Generated an extensive critical forum; makes methodological validation -- not just tool access -- a central support requirement. Counterpoint to Tilton/Mimno/Johnson's more expansive framing (see wiki Uncertainty section). Confidence: medium-high (well-known, widely cited piece; via ChatGPT deep-research)."
+  },
+  {
+    "id": "gururaja-nlp-paradigm-shifts-2023",
+    "type": "paper-conference",
+    "title": "To build our future, we must know our past: Contextualizing paradigm shifts in natural language processing",
+    "author": [
+      {
+        "family": "Gururaja",
+        "given": "Sireesh"
+      },
+      {
+        "family": "Bertsch",
+        "given": "Amanda"
+      },
+      {
+        "family": "Na",
+        "given": "Clara"
+      },
+      {
+        "family": "Widder",
+        "given": "David"
+      },
+      {
+        "family": "Strubell",
+        "given": "Emma"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "page": "13310-13325",
+    "DOI": "10.18653/v1/2023.emnlp-main.822",
+    "URL": "https://doi.org/10.18653/v1/2023.emnlp-main.822",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "26 long-form interviews plus ACL Anthology bibliometrics; distinguishes recurring methodological cycles from genuinely unprecedented changes, especially benchmark culture and centralized software/model infrastructure. Current NLP is increasingly dependent on shared pretrained models, software stacks, compute, industrial resources -- alters funding, incentives, who can participate. Confidence: medium-high (real EMNLP paper; via ChatGPT deep-research)."
+  },
+  {
+    "id": "zubiaga-nlp-llm-era-2024",
+    "type": "article-journal",
+    "title": "Natural language processing in the era of large language models",
+    "author": [
+      {
+        "family": "Zubiaga",
+        "given": "Arkaitz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "container-title": "Frontiers in Artificial Intelligence",
+    "volume": "6",
+    "page": "1350306",
+    "DOI": "10.3389/frai.2023.1350306",
+    "URL": "https://doi.org/10.3389/frai.2023.1350306",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Traces the transition from bag-of-words/task-specific classifiers through embeddings/transformers to pretrained generative models. LLMs are now de facto experimental baselines, but closed models produce serious reproducibility, contamination, privacy, bias, explainability, version-instability problems. Confidence: medium (real Frontiers in AI article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "bommasani-foundation-models-2021",
+    "type": "webpage",
+    "title": "On the opportunities and risks of foundation models",
+    "author": [
+      {
+        "family": "Bommasani",
+        "given": "Rishi"
+      },
+      {
+        "family": "Hudson",
+        "given": "Drew A."
+      },
+      {
+        "family": "Adeli",
+        "given": "Ehsan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "URL": "https://crfm.stanford.edu/report.html",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "The report that supplied the \"foundation model\" framing itself: broad self-supervised pretraining + adaptation across many tasks. Describes homogenization as both leverage and systemic risk -- improvements/defects in a few upstream models propagate downstream. Well-known, foundational. Confidence: high (widely known, verified via ChatGPT deep-research)."
+  },
+  {
+    "id": "bender-stochastic-parrots-2021",
+    "type": "paper-conference",
+    "title": "On the dangers of stochastic parrots: Can language models be too big?",
+    "author": [
+      {
+        "family": "Bender",
+        "given": "Emily M."
+      },
+      {
+        "family": "Gebru",
+        "given": "Timnit"
+      },
+      {
+        "family": "McMillan-Major",
+        "given": "Angelina"
+      },
+      {
+        "family": "Shmitchell",
+        "given": "Shmargaret"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "610-623",
+    "DOI": "10.1145/3442188.3445922",
+    "URL": "https://doi.org/10.1145/3442188.3445922",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Landmark position paper: ever-larger LMs impose environmental/financial costs, obscure training-corpus content and biases, concentrate research capacity, generate plausible form without grounded meaning. Recommendations (document/curate data, assess stakeholder values before building, pursue scaling alternatives) directly challenge a \"just buy compute/API access\" service strategy. Counterpoint to Bommasani et al. Confidence: high (extremely well-known paper, independently known to be real)."
+  },
+  {
+    "id": "lamprecht-rse-research-questions-2022",
+    "type": "article-journal",
+    "title": "What do we (not) know about research software engineering?",
+    "author": [
+      {
+        "family": "Lamprecht",
+        "given": "Anna-Lena"
+      },
+      {
+        "family": "Martinez-Ortiz",
+        "given": "Carlos"
+      },
+      {
+        "family": "Barker",
+        "given": "Michelle"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "container-title": "Journal of Open Research Software",
+    "volume": "10",
+    "issue": "1",
+    "page": "11",
+    "DOI": "10.5334/jors.384",
+    "URL": "https://doi.org/10.5334/jors.384",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "27-person international workshop produced 65 RSE research questions across people/policy/infrastructure; only 24 (37%) connected to existing literature. Career paths, recognition, training, recruitment, retention, funding dominated priorities -- RSE's unresolved problems are at least as organizational as technical. Confidence: medium-high (real JORS article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "carver-research-software-practice-survey-2022",
+    "type": "article-journal",
+    "title": "A survey of the state of the practice for research software in the United States",
+    "author": [
+      {
+        "family": "Carver",
+        "given": "Jeffrey C."
+      },
+      {
+        "family": "Weber",
+        "given": "Nic"
+      },
+      {
+        "family": "Ram",
+        "given": "Karthik"
+      },
+      {
+        "family": "Gesing",
+        "given": "Sandra"
+      },
+      {
+        "family": "Katz",
+        "given": "Daniel S."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "container-title": "PeerJ Computer Science",
+    "volume": "8",
+    "page": "e963",
+    "DOI": "10.7717/peerj-cs.963",
+    "URL": "https://doi.org/10.7717/peerj-cs.963",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Survey of 1,149 primarily US researchers: recurring shortages of time/opportunity for software training across the lifecycle, weak funding models, inadequate professional credit. Quantitative support for dedicated RSE capacity rather than assuming disciplinary researchers can absorb production-quality software work via short workshops. Confidence: medium-high (real PeerJ CS article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "cosden-rse-career-entry-points-2022",
+    "type": "article-journal",
+    "title": "Research software engineers: Career entry points and training gaps",
+    "author": [
+      {
+        "family": "Cosden",
+        "given": "Ian A."
+      },
+      {
+        "family": "McHenry",
+        "given": "Kenton"
+      },
+      {
+        "family": "Katz",
+        "given": "Daniel S."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "container-title": "Computing in Science \\& Engineering",
+    "volume": "24",
+    "issue": "6",
+    "page": "14-21",
+    "DOI": "10.1109/MCSE.2023.3258630",
+    "URL": "https://doi.org/10.1109/MCSE.2023.3258630",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Identifies three major routes into RSE careers with different associated gaps, rather than assuming a uniform CS pipeline. Connects formalization of university/national-lab/industry RSE groups to recruitment, retention, career progression, cross-disciplinary training. Confidence: medium-high (real Computing in Science & Engineering article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "ucsd-school-computing-data-sciences-2024",
+    "type": "webpage",
+    "title": "UC Regents approve new School of Computing, Information and Data Sciences at UC San Diego",
+    "author": [
+      {
+        "literal": "UC San Diego"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          7
+        ]
+      ]
+    },
+    "URL": "https://today.ucsd.edu/story/uc-regents-approve-new-school-of-computing-information-and-data-sciences-at-uc-san-diego",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Placed the San Diego Supercomputer Center and the Hal{\\i}c{\\i}o{\\u{g}}lu Data Science Institute together as foundational pillars of a new school -- combining HPC/data-intensive infrastructure with data-science/AI research and education. School-level academic consolidation, not a library/service-desk reorganization; structurally comparable to Notre Dame's DOME. Confidence: high (primary institutional announcement)."
+  },
+  {
+    "id": "unc-school-data-information-sciences-2026",
+    "type": "webpage",
+    "title": "Carolina's School of Data and Information Sciences launches",
+    "author": [
+      {
+        "literal": "University of North Carolina at Chapel Hill"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026,
+          7
+        ]
+      ]
+    },
+    "URL": "https://www.unc.edu/posts/2026/07/01/carolinas-school-of-data-and-information-sciences-launches/",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Merges UNC's School of Information and Library Science with its School of Data Science and Society, planned Oct. 2025, launched July 1, 2026. The strongest example found of formal LIS/data-science fusion at the academic-school level -- not a library operational reorganization. Confidence: high (primary source directly verified). CORRECTION: a ChatGPT deep-research pass claimed this merger \"explicitly cites generative AI\" as a motivation. Direct WebFetch of this primary source, 2026-08-16, found no mention of AI as a driver -- the actual text cites building \"on our strengths in information, library and data sciences.\" That specific claim was NOT adopted into the wiki/canon."
+  },
+  {
+    "id": "mcgill-digital-research-services-2021",
+    "type": "webpage",
+    "title": "New Digital Research Services team and website",
+    "author": [
+      {
+        "literal": "McGill University"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          3
+        ]
+      ]
+    },
+    "URL": "https://www.mcgill.ca/research/channels/news/new-digital-research-services-team-and-website-329961",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Closest operational analogue to a library data-service center: Research and Innovation, McGill Libraries, and IT Services jointly support RDM, advanced research computing, and research software through a common hub -- a shared gateway/routing layer WITHOUT administratively merging the partner organizations. This is the \"federated gateway\" model, distinct from Notre Dame/UCSD/UNC's structural consolidation. Confidence: high (primary institutional source, via ChatGPT deep-research)."
+  },
+  {
+    "id": "rod-zhou-rousseau-mcgill-rdm-2023",
+    "type": "article-journal",
+    "title": "There's no \"I\" in research data management: Reshaping RDM services toward a collaborative multi-stakeholder model",
+    "author": [
+      {
+        "family": "Rod",
+        "given": "Alisa B."
+      },
+      {
+        "family": "Zhou",
+        "given": "Biru"
+      },
+      {
+        "family": "Rousseau",
+        "given": "Marc-{\\'E}tienne"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "container-title": "Journal of eScience Librarianship",
+    "volume": "12",
+    "issue": "1",
+    "DOI": "10.7191/jeslib.624",
+    "URL": "https://doi.org/10.7191/jeslib.624",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "McGill case study documenting the centralized collaborative service (vice-principal for research, library, IT, research ethics) including shared intake and \"query the panel\" consultations. Valuable implementation detail; single reflective case, doesn't establish comparative effectiveness. Confidence: medium-high (real eScience Librarianship article; via ChatGPT deep-research)."
+  },
+  {
+    "id": "macdougall-ruediger-rds-landscape-2024",
+    "type": "webpage",
+    "title": "The research data services landscape at US and Canadian higher education institutions",
+    "author": [
+      {
+        "family": "MacDougall",
+        "given": "Ruby"
+      },
+      {
+        "family": "Ruediger",
+        "given": "Dylan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          3
+        ]
+      ]
+    },
+    "container-title": "Ithaka S+R",
+    "DOI": "10.18665/sr.320420",
+    "URL": "https://doi.org/10.18665/sr.320420",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Systematic web inventory: 120 US institutions, 8 Canadian universities, a 29-university collaboration. 495 services at R1s (avg 12.4/school), 165 at R2s (avg 4.1), 45 at liberal arts colleges (avg 1.1); 73% consultation, 27% training. Libraries supplied ~40-46% of services at research universities, ~60% at liberal arts colleges; bioinformatics located almost exclusively in research-office/medical-school cores; IT's modest 8-15% share understates its qualitative importance for computing/storage/partnership. Confidence: high (independently verified numbers). Percentages independently verified 2026-08-16 via direct fetch: R1 libraries 227/495 services (~46%), R2 64/165 (~39%), liberal arts 27/45 (~60%) -- matches the ChatGPT deep-research summary closely (reported as \"40-45%... 60%\")."
+  },
+  {
+    "id": "mccracken-macdougall-researcher-challenges-2025",
+    "type": "webpage",
+    "title": "Researcher challenges and experiences with data services",
+    "author": [
+      {
+        "family": "McCracken",
+        "given": "Chelsea"
+      },
+      {
+        "family": "MacDougall",
+        "given": "Ruby"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "container-title": "Ithaka S+R",
+    "DOI": "10.18665/sr.322388",
+    "URL": "https://doi.org/10.18665/sr.322388",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "294 interview transcripts from 27 institutions, stratified sample of 41 analyzed. Researchers commonly didn't understand \"data services\" as a category, preferred individualized/memorable services, struggled with data size/custody/access/permissions/pipelines/publication, frequently treated IT/legal/ethics offices as part of the same support ecosystem. Strong evidence for one recognizable intake point; coded sample relatively small. Confidence: medium-high (real Ithaka S+R report; via ChatGPT deep-research)."
+  },
+  {
+    "id": "tenopir-rds-academic-libraries-2020",
+    "type": "report",
+    "title": "Research Data Services in Academic Libraries: Where Are We Today?",
+    "author": [
+      {
+        "family": "Tenopir",
+        "given": "Carol"
+      },
+      {
+        "family": "Kaufman",
+        "given": "Jordan"
+      },
+      {
+        "family": "Sandusky",
+        "given": "Robert"
+      },
+      {
+        "family": "Pollock",
+        "given": "Danielle"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "issue": "5",
+    "URL": "https://www.choice360.org/research/research-data-services-in-academic-libraries-where-are-we-today/",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "Compares 2019 North American library-director survey with 2012: share of libraries with NO research-data services declined from ~60% to 44.1%. Growth uneven -- larger institutions more likely to have dedicated specialists; insufficient funding, staff time, personnel, faculty interest remained principal barriers. Confidence: medium-high (real Choice white paper with linked dataset; via ChatGPT deep-research)."
+  },
+  {
+    "id": "maimone-carcc-workforce-2022",
+    "type": "paper-conference",
+    "title": "Characterizing the US research computing and data workforce",
+    "author": [
+      {
+        "family": "Maimone",
+        "given": "Christina"
+      },
+      {
+        "family": "Yockel",
+        "given": "Scott"
+      },
+      {
+        "family": "Middelkoop",
+        "given": "Timothy"
+      },
+      {
+        "family": "Stauffer",
+        "given": "Ashley"
+      },
+      {
+        "family": "Reidy",
+        "given": "Chris"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "DOI": "10.1145/3491418.3530289",
+    "URL": "https://doi.org/10.1145/3491418.3530289",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "CaRCC survey: 563 valid responses (539 with RCD responsibilities, 452 at academic institutions); CaRCC estimated a US academic workforce of at least 5,000. Establishes RCD as a heterogeneous professional workforce (infrastructure, data, software, facilitation, domain backgrounds); workforce snapshot, not longitudinal. Confidence: medium-high (real PEARC paper; via ChatGPT deep-research)."
+  },
+  {
+    "id": "hofelich-mohr-arl-rads-cost-2024",
+    "type": "report",
+    "title": "Making Research Data Publicly Accessible: Estimates of Institutional \\& Researcher Expense",
+    "author": [
+      {
+        "family": "Hofelich Mohr",
+        "given": "Alicia"
+      },
+      {
+        "family": "Carlson",
+        "given": "Jake"
+      },
+      {
+        "family": "Ge",
+        "given": "Lizhao"
+      },
+      {
+        "family": "Herndon",
+        "given": "Joel"
+      },
+      {
+        "family": "Kozlowski",
+        "given": "Wendy"
+      },
+      {
+        "family": "Moore",
+        "given": "Jennifer"
+      },
+      {
+        "family": "Petters",
+        "given": "Jonathan"
+      },
+      {
+        "family": "Taylor",
+        "given": "Shawna"
+      },
+      {
+        "family": "Hudson Vitale",
+        "given": "Cynthia"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "DOI": "10.29242/report.radsexpense2024",
+    "URL": "https://doi.org/10.29242/report.radsexpense2024",
+    "accessed": {
+      "raw": "2026-08-16"
+    },
+    "keyword": "computational-methods",
+    "note": "RADS study, six research-intensive universities: average combined institutional + researcher data-sharing cost ~\\$2.5M/year, institutional totals \\$800K-\\$6M+. Public-data support is a distributed institutional expense spanning libraries, IT, research offices, researcher labor. Six-institution sample -- not a sector-wide cost benchmark. Confidence: medium-high (real ARL report; via ChatGPT deep-research)."
   }
 ]
