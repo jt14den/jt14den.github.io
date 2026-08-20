@@ -83,6 +83,7 @@ const scholarship = defineCollection({
 		authors: z.array(z.string()).default([]),
 		venue: z.string().optional(),
 		year: z.number().optional(),
+		url: z.string().optional(),
 		type: z
 			.enum(['journal', 'book-chapter', 'report', 'dataset', 'curriculum', 'other'])
 			.default('other'),

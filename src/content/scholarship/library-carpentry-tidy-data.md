@@ -7,6 +7,7 @@ year: 2020
 type: curriculum
 venue: Zenodo
 doi: "10.5281/zenodo.3954067"
+url: "https://librarycarpentry.org/lc-spreadsheets/"
 authors:
   - "Lake, Sherry"
   - "Dennis, Tim"

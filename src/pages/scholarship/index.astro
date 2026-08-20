@@ -118,16 +118,23 @@ const scholarshipJsonLd = {
 					{output.data.year && <span>{output.data.year}</span>}
 				</div>
 				<p>{output.data.description}</p>
-				{output.data.doi && (
-					<a
-						class="doi"
-						href={`https://doi.org/${output.data.doi}`}
-						target="_blank"
-						rel="noopener"
-					>
-						DOI: {output.data.doi}
-					</a>
-				)}
+				<div class="links">
+					{output.data.url && (
+						<a class="lesson-link" href={output.data.url} target="_blank" rel="noopener">
+							View lesson
+						</a>
+					)}
+					{output.data.doi && (
+						<a
+							class="doi"
+							href={`https://doi.org/${output.data.doi}`}
+							target="_blank"
+							rel="noopener"
+						>
+							DOI: {output.data.doi}
+						</a>
+					)}
+				</div>
 				{output.data.authors.length > 0 && (
 					<details class="cite">
 						<summary>Cite this</summary>
@@ -151,6 +158,8 @@ const scholarshipJsonLd = {
 		margin-bottom: 0.5rem;
 	}
 	p { margin: 0 0 0.5rem; color: rgb(var(--gray-dark)); font-size: 0.95rem; }
+	.links { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+	.lesson-link { font-size: 0.875rem; color: var(--accent); }
 	.doi { font-size: 0.875rem; font-family: monospace; }
 	.cite { margin-top: 0.5rem; font-size: 0.85rem; }
 	.cite summary { cursor: pointer; color: var(--accent); }
