@@ -368,11 +368,11 @@ input { font-size: 16px; }
 	display: flex;
 	flex-direction: column;
 }
-.item-list li {
+.item-list > li {
 	padding: 1.25rem 0;
 	border-bottom: 1px solid rgb(var(--gray-light));
 }
-.item-list li:last-child {
+.item-list > li:last-child {
 	border-bottom: none;
 }
 
