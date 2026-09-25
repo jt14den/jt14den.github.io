@@ -7,6 +7,8 @@ year: 2026
 type: report
 venue: "UCLA Library Data Science Center"
 url: "https://ucla-data-science-center.github.io/rdwg-research-data-infrastructure/"
+authors:
+  - "Dennis, Tim"
 ---
 
 Built for the 12-week One IT Research Working Group, charged by UCLA's EVCP and CIO to assess campus research technology infrastructure. I represented the Library and the Data Science Center on the group.
