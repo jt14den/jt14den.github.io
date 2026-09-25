@@ -6,4 +6,6 @@ status: published
 year: 2016
 type: book-chapter
 venue: "Data Visualization: A Guide to Visual Storytelling for Libraries, ed. Lauren Magnuson. Rowman & Littlefield."
+authors:
+  - "Dennis, Tim"
 ---

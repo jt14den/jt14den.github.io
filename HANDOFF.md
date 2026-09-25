@@ -1,24 +1,27 @@
-# Session Handoff — 2026-08-16
+# Session Handoff — 2026-08-20
 
 ## Accomplished
-- New favicon: theme-aware ring+dot mark replacing the leftover Astro-template glyph (e184468)
-- Merged Blog and Notes into one `/writing` river: unified index/archive/tags, redirects for old `/blog`, `/blog/archive`, `/blog/tags/*`, `/notes` URLs, permalinks unchanged (09dcbf0)
-- Published `ospo-solo-maintainers` and `the-prompt-that-makes-a-model-disagree-with-me` notes; light edit on `ai-and-the-stewardship-gap` (edae287)
-- Ran `/validate-external` on the 4th library-leadership essay, verified all 3 external citations, applied 8 of 9 revisions, published (e0e3689, 231f04b)
-- Appended today's work to `~/obsidian/reference/work-log.md`
+- Added 8 authored-lesson entries to `/scholarship` (LC Python, R, Computational Thinking, Sharing Research Software, Agentic Research Workflows, LC Git/Shell/SQL/OpenRefine/Data Intro), sourced from ORCID, Zenodo, and each repo's CITATION.cff (d598788)
+- Added `url` field to scholarship schema so entries link to the rendered lesson site, not just the DOI
+- Fixed a real CSS bug on `/cv`: unscoped global `.item-list li` selector was adding extra dividers and inconsistent bullet markers to nested highlight lists (df90d7c)
+- Restructured nav to `Writing | Programs | CV | About` + Search; dropped Case Studies/Impact/Governance from the header (still reachable via homepage WORK section, just not fighting for top-level space)
+- Footer rebuilt with icon+label links (RSS, Search, CV, Scholarship, GitHub, LinkedIn, ORCID) instead of plain text
+- Drafted a GitHub issue (copied to clipboard, not posted) proposing an AI-agent-instruction case study for `lc-computational-thinking`
+- Logged carpentries_program task #34: add CITATION.cff to `lc-computational-thinking` crediting Tim as co-author
 
 ## Pending — pick up here next session
-- `2026-07-02-ai-and-the-stewardship-gap.md` still `status: draft` — edited this session, one more read before publishing
-- 2 older stub notes still unfinished: `ai-agents-near-infrastructure`, `what-breaks-in-agentic-coding`
-- New note ideas surfaced but not drafted: a fabricated-stat catch from cross-checking two AI research passes (8/11 work log), a data-contamination bug (not a model hallucination) from the DataSquad laptop review (7/26), reconstructing the SSDA/DSC 60-year institutional lineage from primary sources, a schema gap that silently broke a feature for months (OSPO Education, 8/11)
-- `promoteToBlog` field on notes is now vestigial (no separate blog listing to promote into since the /writing merge) — still only gates the unused "From Notes" badge on individual post pages; cleanup optional
+- Post the drafted GitHub issue to `LibraryCarpentry/lc-computational-thinking` if Tim still wants it (was copied to clipboard mid-session, may be stale)
+- Add CITATION.cff to `lc-computational-thinking` upstream repo (tracked in carpentries_program task #34)
+- Consider whether Impact/Governance page content should get merged into About/CV rather than staying standalone (raised, not decided)
+- `/cv` data has a near-duplicate: "UC Open Source Program Office (OSPO)" appears under both Cross-institutional Leadership and Grants & Funding sections in `src/data/cv.yaml` — flagged during review, not fixed
 
 ## Decisions made
-- Library-leadership essay stays institutional-only, no personal-track angle added (Tim's call, confirmed) — the career-path argument is a future essay, not a paragraph here
-- `/validate-external` adjudication trail for the essay saved to `validation-prompt-library-leadership-2026-08-16.md` in repo root
+- Lessons live in the existing `scholarship` collection (type: curriculum), not a new dedicated Lessons page
+- Older 2019 Library Carpentry lessons (Git/Shell/SQL/OpenRefine/Data Intro) use a curated short author list (lead contributors only) rather than full 100+ name Zenodo dumps
+- CV promoted to top-level nav; Case Studies/Impact/Governance demoted out of nav (Tim's call: they read as "fluffy" next to a CV that already has the receipts)
 
 ## Files modified
-- See commits e184468, 09dcbf0, edae287, e0e3689, 231f04b — all pushed to origin/master
+- See commits d598788, df90d7c, both pushed to origin/master
 
 ## Blockers / waiting on
-- None. Working tree clean, everything pushed. `project-registry.yaml`'s `personal_website` entry still has no `obsidian_hub_note` field (unverified this session, carried from 7/25 handoff)
+- None. Working tree clean, everything pushed.

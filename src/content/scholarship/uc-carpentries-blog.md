@@ -6,4 +6,14 @@ status: published
 year: 2021
 type: other
 venue: The Carpentries Blog
+url: "https://carpentries.org/blog/2021/01/uc-carpentries-workshop/"
+authors:
+  - "Dennis, Tim"
+  - "Jamison, Jamie"
+  - "Labou, Stephanie"
+  - "Otsuji, Reid"
+  - "Peterson, Scott"
+  - "Shaffer, Justin"
+  - "Mccosh, Rick"
+  - "De Siqueira, Alexandre"
 ---

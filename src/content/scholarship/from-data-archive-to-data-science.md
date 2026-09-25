@@ -6,4 +6,12 @@ status: published
 year: 2021
 type: book-chapter
 venue: "Data Science in the Library: Tools and Strategies for Supporting Data-Driven Research and Instruction, ed. Joel Herndon. Facet Publishing."
+authors:
+  - "Dennis, Tim"
+  - "Yao, Zhiyuan"
+  - "Phan, Leigh"
+  - "Allen, Kristian"
+  - "Jamison, Jamie"
+  - "Daniels, Doug"
+  - "Ali, Ibraheem"
 ---
