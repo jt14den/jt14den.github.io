@@ -1,27 +1,31 @@
-# Session Handoff — 2026-08-20
+# Session Handoff - 2026-09-25
 
 ## Accomplished
-- Added 8 authored-lesson entries to `/scholarship` (LC Python, R, Computational Thinking, Sharing Research Software, Agentic Research Workflows, LC Git/Shell/SQL/OpenRefine/Data Intro), sourced from ORCID, Zenodo, and each repo's CITATION.cff (d598788)
-- Added `url` field to scholarship schema so entries link to the rendered lesson site, not just the DOI
-- Fixed a real CSS bug on `/cv`: unscoped global `.item-list li` selector was adding extra dividers and inconsistent bullet markers to nested highlight lists (df90d7c)
-- Restructured nav to `Writing | Programs | CV | About` + Search; dropped Case Studies/Impact/Governance from the header (still reachable via homepage WORK section, just not fighting for top-level space)
-- Footer rebuilt with icon+label links (RSS, Search, CV, Scholarship, GitHub, LinkedIn, ORCID) instead of plain text
-- Drafted a GitHub issue (copied to clipboard, not posted) proposing an AI-agent-instruction case study for `lc-computational-thinking`
-- Logged carpentries_program task #34: add CITATION.cff to `lc-computational-thinking` crediting Tim as co-author
+- Published OpenAlex bibliometrics post, linked to the live `lc-r` episode (`64afa09`)
+- Deduped UC OSPO on CV: leadership entry is now just the Education WG role; grant details live under Grants (`src/data/cv.yaml`)
+- Authors added to 3 scholarship entries: Facet chapter (7, from published text), Carpentries blog (8, from byline, plus url), ggvis (solo)
+- New scholarship entries: `gis-librarians-r1-report.md`, `ucla-research-data-infrastructure-evidence.md` (both authored by Tim) (`446fa0f`, `71d5a6f`)
+- Crossposted both reports to /writing as `type: crosspost` with canonicalUrl to the source (`3c2c1e1`)
+- Rewrote history to drop a Claude attribution line; force-pushed master
 
-## Pending — pick up here next session
-- Post the drafted GitHub issue to `LibraryCarpentry/lc-computational-thinking` if Tim still wants it (was copied to clipboard mid-session, may be stale)
-- Add CITATION.cff to `lc-computational-thinking` upstream repo (tracked in carpentries_program task #34)
-- Consider whether Impact/Governance page content should get merged into About/CV rather than staying standalone (raised, not decided)
-- `/cv` data has a near-duplicate: "UC Open Source Program Office (OSPO)" appears under both Cross-institutional Leadership and Grants & Funding sections in `src/data/cv.yaml` — flagged during review, not fixed
+## Pending - pick up here next session
+1. Fix the GIS report's "6 of 9" vs "7 of 9" UC comprehensive campus contradiction in `~/projects/gis-librarians-library/report/index.qmd` BEFORE minting (DOI freezes the version)
+2. GIS DOI: repo has no LICENSE or CITATION.cff yet; add both, enable Zenodo GitHub integration, cut a release
+3. RDWG DOI: LICENSE + CITATION.cff already merged (rdwg-research-data-infrastructure PR #1); enable Zenodo, cut v1.0 release (release notes were drafted 9/21)
+4. Add `doi:` to both scholarship entries above; optionally note DOI on the crossposts
+5. Fix `uc-carpentries-blog.md` description ("10 UC campuses" is wrong; post is one joint workshop across UCLA/UCSD/Berkeley)
+6. Decide authors (or none) for `lessons-for-librarians-open-science`, `library-carpentry-governance`, `uc-ospo-sloan-grant`
+7. Lower priority: Impact/Governance fold into About/CV (undecided); add `obsidian_hub_note` to `personal_website` in project-registry.yaml; `lc-computational-thinking` issue + CITATION.cff
 
 ## Decisions made
-- Lessons live in the existing `scholarship` collection (type: curriculum), not a new dedicated Lessons page
-- Older 2019 Library Carpentry lessons (Git/Shell/SQL/OpenRefine/Data Intro) use a curated short author list (lead contributors only) rather than full 100+ name Zenodo dumps
-- CV promoted to top-level nav; Case Studies/Impact/Governance demoted out of nav (Tim's call: they read as "fluffy" next to a CV that already has the receipts)
+- Research outputs go on the site as a scholarship entry (type: report) plus a short crosspost, not a full essay
+- GIS entry uses the report's main title only; the pointed subtitle was left off
+- One IT crosspost describes what the evidence site argued, not what the working group recommended
+- Carpentries byline spelling "Mccosh, Rick" kept as published
 
 ## Files modified
-- See commits d598788, df90d7c, both pushed to origin/master
+- `src/content/blog/2026-09-21-openalex-bibliometrics-lesson.md`, `src/data/cv.yaml`
+- `src/content/scholarship/` (3 edited, 2 new), `src/content/notes/2026-09-24-*-crosspost.md` (2 new)
 
 ## Blockers / waiting on
-- None. Working tree clean, everything pushed.
+- None. Working tree clean after this file is committed.
