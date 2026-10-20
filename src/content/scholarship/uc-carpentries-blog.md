@@ -1,6 +1,6 @@
 ---
 title: "I See, UC, We All See Carpentries: Collaboratively Scaling Workshop Instruction Across a University System"
-description: Account of building the UC Carpentries network — coordinating instructor training, workshop delivery, and shared infrastructure across 10 UC campuses.
+description: Account of one joint Carpentries workshop run across UCLA, UCSD, and Berkeley, and what it took to coordinate instructors, logistics, and shared infrastructure across campuses.
 tags: [carpentries, UC system, training, scaling]
 status: published
 year: 2021
