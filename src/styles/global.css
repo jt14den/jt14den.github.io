@@ -264,6 +264,16 @@ input { font-size: 16px; }
 	color: #166534;
 	border: 1px solid #bbf7d0;
 }
+.type-badge.til {
+	background: #fff7ed;
+	color: #9a3412;
+	border: 1px solid #fed7aa;
+}
+.type-badge.reflection {
+	background: #f5f3ff;
+	color: #5b21b6;
+	border: 1px solid #ddd6fe;
+}
 .type-badge.from-notes {
 	background: #fef9c3;
 	color: #713f12;

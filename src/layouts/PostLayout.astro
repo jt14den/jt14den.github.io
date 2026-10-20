@@ -43,6 +43,8 @@ const typeLabels: Record<string, string> = {
 	crosspost: 'Crosspost',
 	roundup: 'Roundup',
 	announcement: 'Announcement',
+	til: 'TIL',
+	reflection: 'Reflection',
 };
 const typeLabel = typeLabels[type] ?? 'Post';
 const dateMeta = effectiveDate
@@ -76,6 +78,12 @@ const canonical = type === 'crosspost' && canonicalUrl ? canonicalUrl : pageUrl;
 						)}
 						{type === 'linkpost' && (
 							<span class="type-badge linkpost">Link</span>
+						)}
+						{type === 'til' && (
+							<span class="type-badge til">TIL</span>
+						)}
+						{type === 'reflection' && (
+							<span class="type-badge reflection">Reflection</span>
 						)}
 						{fromNotes && (
 							<span class="type-badge from-notes">From Notes</span>

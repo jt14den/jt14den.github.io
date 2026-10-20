@@ -44,6 +44,12 @@ const allTags = [...new Set(items.flatMap((item) => item.tags))].sort();
 								{item.type === 'linkpost' && (
 									<span class="type-badge linkpost">Link</span>
 								)}
+								{item.type === 'til' && (
+									<span class="type-badge til">TIL</span>
+								)}
+								{item.type === 'reflection' && (
+									<span class="type-badge reflection">Reflection</span>
+								)}
 								{item.tags.slice(0, 2).map((tag) => (
 									<a
 										href={`/writing/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`}

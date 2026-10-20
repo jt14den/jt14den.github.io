@@ -12,7 +12,7 @@ const postBase = {
 	topic: z.array(z.string()).default([]),
 	status: z.enum(['draft', 'published']).default('draft'),
 	type: z
-		.enum(['essay', 'note', 'linkpost', 'announcement', 'roundup', 'crosspost'])
+		.enum(['essay', 'note', 'linkpost', 'announcement', 'roundup', 'crosspost', 'til', 'reflection'])
 		.default('essay'),
 	canonicalUrl: z.string().optional(),
 	externalUrl: z.string().optional(),

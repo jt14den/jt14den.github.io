@@ -61,7 +61,7 @@ Use `getCollection('caseStudies')` (camelCase) for the case-studies collection.
 
 **Blog/notes `status` field:** Only `status: published` entries appear in listings. Old 2016–2018 posts default to `draft`.
 
-**Blog/notes `type` field:** `essay` | `note` | `linkpost` | `crosspost` | `roundup` | `announcement`
+**Blog/notes `type` field:** `essay` | `note` | `linkpost` | `crosspost` | `roundup` | `announcement` | `til` (short "I figured out X" technical post) | `reflection` (periodic look back at tools, approaches, what changed)
 
 **`promoteToBlog: true`** on a note makes it appear in `/blog/` listing with a "From Notes" badge.
 
