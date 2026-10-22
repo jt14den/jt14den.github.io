@@ -1,31 +1,37 @@
-# Session Handoff - 2026-09-25
+# Session Handoff - 2026-10-22
 
 ## Accomplished
-- Published OpenAlex bibliometrics post, linked to the live `lc-r` episode (`64afa09`)
-- Deduped UC OSPO on CV: leadership entry is now just the Education WG role; grant details live under Grants (`src/data/cv.yaml`)
-- Authors added to 3 scholarship entries: Facet chapter (7, from published text), Carpentries blog (8, from byline, plus url), ggvis (solo)
-- New scholarship entries: `gis-librarians-r1-report.md`, `ucla-research-data-infrastructure-evidence.md` (both authored by Tim) (`446fa0f`, `71d5a6f`)
-- Crossposted both reports to /writing as `type: crosspost` with canonicalUrl to the source (`3c2c1e1`)
-- Rewrote history to drop a Claude attribution line; force-pushed master
+- Added `til` and `reflection` post types: `src/content.config.ts`, `PostLayout.astro`, `index.astro`, `writing/index.astro`, `global.css`, `CLAUDE.md` (commit "Add til and reflection post types")
+- Fixed `uc-carpentries-blog.md` description (one joint workshop, not "10 UC campuses")
+- Drafted essay `src/content/blog/2026-10-20-every-number-on-the-site-is-a-claim.md` (`status: draft`, pushed). Source: `~/projects/dsc-stats-reports` (claim-register.md, headline_aggregates.csv, hl() in index.qmd)
+- GIS report fix: "6 of 9" now "7 of 9" (verified against `output/institutions_analysis.csv`); LICENSE + CITATION.cff added. PR https://github.com/jt14den/gis-librarians-library/pull/1 (branch `doi-prep`)
+- Registry: `personal_website` got `obsidian_hub_note` in `~/projects/project-registry.yaml`
+- Built skill `~/.claude/skills/blog-scan/` (SKILL.md + scan-transcripts.py); ran 3 scans; candidates in `~/obsidian/projects/Personal Site (tim-dennis.com).md`
 
 ## Pending - pick up here next session
-1. Fix the GIS report's "6 of 9" vs "7 of 9" UC comprehensive campus contradiction in `~/projects/gis-librarians-library/report/index.qmd` BEFORE minting (DOI freezes the version)
-2. GIS DOI: repo has no LICENSE or CITATION.cff yet; add both, enable Zenodo GitHub integration, cut a release
-3. RDWG DOI: LICENSE + CITATION.cff already merged (rdwg-research-data-infrastructure PR #1); enable Zenodo, cut v1.0 release (release notes were drafted 9/21)
-4. Add `doi:` to both scholarship entries above; optionally note DOI on the crossposts
-5. Fix `uc-carpentries-blog.md` description ("10 UC campuses" is wrong; post is one joint workshop across UCLA/UCSD/Berkeley)
-6. Decide authors (or none) for `lessons-for-librarians-open-science`, `library-carpentry-governance`, `uc-ospo-sloan-grant`
-7. Lower priority: Impact/Governance fold into About/CV (undecided); add `obsidian_hub_note` to `personal_website` in project-registry.yaml; `lc-computational-thinking` issue + CITATION.cff
+1. Review the draft essay; run `/humanizer`, then set `status: published` in `src/content/blog/2026-10-20-every-number-on-the-site-is-a-claim.md`. Confirm the 17,466 and 159-fold figures are fine to publish.
+2. Merge gis-librarians-library PR #1, enable Zenodo on `jt14den/gis-librarians-library`, cut release, add `doi:` to `src/content/scholarship/gis-librarians-r1-report.md`
+3. RDWG: enable Zenodo on `ucla-data-science-center/rdwg-research-data-infrastructure`, cut v1.0, add `doi:` to `ucla-research-data-infrastructure-evidence.md`
+4. Draft next from the hub note (`## Blog candidates scanned 2026-10-20`): Quarto dual-delivery note, GIS "build is the audit trail" note, cron/Keychain TIL. Ask Tim audience + tone first.
+5. Decide authors (or none) for `lessons-for-librarians-open-science`, `library-carpentry-governance`, `uc-ospo-sloan-grant`
+6. Optional: schedule `/blog-scan` monthly (cron currently fails on "Not logged in", so run by hand)
 
 ## Decisions made
-- Research outputs go on the site as a scholarship entry (type: report) plus a short crosspost, not a full essay
-- GIS entry uses the report's main title only; the pointed subtitle was left off
-- One IT crosspost describes what the evidence site argued, not what the working group recommended
-- Carpentries byline spelling "Mccosh, Rick" kept as published
+- Audience data and library colleagues, tone practical. Why: Tim's answer 2026-10-20.
+- Server/prod-ops items are low interest; Quarto usage is the lead theme. Why: Tim said server setup is boring.
+- Essay uses only public claims (#1, #8). Rejected: entries naming people or restricted files, reorg framing.
+- GIS LICENSE is CC BY 4.0 to match RDWG. Rejected: BSD-3 (CLAUDE.md default) for a report.
+- Blog scan lens: data librarian with 20+ years in IT.
+
+## Assumed, not verified
+- GIS report not re-rendered after the 7-of-9 edit. Confirm: `quarto render` in `~/projects/gis-librarians-library/report`.
+- "Instruction file not loaded" fix (Oct 12) not confirmed to have held.
+- `gis-librarians-library` LICENSE is a short CC BY notice copied from RDWG, not full license text.
 
 ## Files modified
-- `src/content/blog/2026-09-21-openalex-bibliometrics-lesson.md`, `src/data/cv.yaml`
-- `src/content/scholarship/` (3 edited, 2 new), `src/content/notes/2026-09-24-*-crosspost.md` (2 new)
+- `~/websites/jt14den-astro`: content.config.ts, PostLayout.astro, index.astro, writing/index.astro, global.css, CLAUDE.md, uc-carpentries-blog.md, new draft essay
+- `~/projects/gis-librarians-library`: report/index.qmd, LICENSE, CITATION.cff (branch `doi-prep`)
+- `~/obsidian/projects/Personal Site (tim-dennis.com).md`, `~/obsidian/reference/work-log.md`, `~/projects/project-registry.yaml`
 
 ## Blockers / waiting on
-- None. Working tree clean after this file is committed.
+- Zenodo steps need Tim (GitHub account/org settings).
